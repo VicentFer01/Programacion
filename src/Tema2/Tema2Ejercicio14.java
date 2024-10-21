@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Tema2Ejercicio14 {
     public static void main(String[] args) {
         int personas, noches;
-        double pEstandar;
+        double pEstandar, pDescuento;
         final double Pnoche = 15;
         Scanner scan = new Scanner(System.in);
         System.out.println("Introduce la cantidad de personas");
@@ -19,9 +19,15 @@ public class Tema2Ejercicio14 {
         noches = scan.nextInt();
         System.out.println("Serán " + personas + " personas y " + noches + " noches");
 
-        if (personas < 5 && personas > 1) {
+        if (personas > 5 && noches > 7) {
             pEstandar = personas * Pnoche;
-        } else
+            pDescuento = pEstandar - (pEstandar * 0.25);
+            System.out.println("El total es " + pEstandar + " y con el descuento " + pDescuento);
+        } else {
+            pEstandar = personas * Pnoche;
+            System.out.println("El total es " + pEstandar);
+
+        }
 
     }
 }
