@@ -25,7 +25,7 @@ public class Tema2Ejercicio17 {
                 ancho = scan.nextDouble();
                 area =  lado * ancho;
                 perimetro = 2 * (lado * ancho);
-                System.out.println("El area del rectangulo es " + area + "y el perimetro " + perimetro);
+                System.out.println("El area del rectangulo es " + area + "  y el perimetro " + perimetro);
                 break;
             case 2:
                 System.out.println("Introduce la base del triangulo");
