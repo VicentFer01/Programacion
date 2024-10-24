@@ -51,6 +51,7 @@ public class Tema2Ejercicio15 {
             } else {
                 esBisiesto = false;
             }
+            scan.close();
 
         }
     }

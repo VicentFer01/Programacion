@@ -28,6 +28,7 @@ public class Tema2Ejercicio14 {
             System.out.println("El total es " + pEstandar);
 
         }
+        scan.close();
 
     }
 }

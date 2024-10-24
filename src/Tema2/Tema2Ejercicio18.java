@@ -15,5 +15,6 @@ public class Tema2Ejercicio18 {
         } else {
             System.out.println("El numero no puede ser negativo");
         }
+        scan.close();
     }
 }

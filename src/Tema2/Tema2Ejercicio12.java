@@ -39,7 +39,7 @@ public class Tema2Ejercicio12 {
         } else {
             System.out.println("El número 3 es el menor.");
         }
-
+        scanner.close();
 
     }
 }

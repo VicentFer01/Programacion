@@ -38,7 +38,7 @@ public class Tema2Ejercicio17 {
             default:
                 System.out.println("No has introducido un caracter valido");
 
-
+            scan.close();
 
         }
     }

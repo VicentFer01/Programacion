@@ -16,6 +16,6 @@ public class Tema2Ejercicio13 {
 
         horafinal = segundos + 1;
         System.out.println("La hora final es " + hora + " horas " + minutos + " minutos " + horafinal + " segundos");
-
+        scan.close();
     }
 }

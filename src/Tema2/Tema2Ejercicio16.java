@@ -25,6 +25,7 @@ public class Tema2Ejercicio16 {
             default:
                 System.out.println("No se ha introducido una opción válida.");
         }
+        scan.close();
     }
 }
 
