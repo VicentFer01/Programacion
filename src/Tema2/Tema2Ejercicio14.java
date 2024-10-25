@@ -20,11 +20,11 @@ public class Tema2Ejercicio14 {
         System.out.println("Serán " + personas + " personas y " + noches + " noches");
 
         if (personas > 5 && noches > 7) {
-            pEstandar = personas * Pnoche;
+            pEstandar = (noches * Pnoche) * personas ;
             pDescuento = pEstandar - (pEstandar * 0.25);
             System.out.println("El total es " + pEstandar + " y con el descuento " + pDescuento);
         } else {
-            pEstandar = personas * Pnoche;
+            pEstandar = (noches * Pnoche) * personas ;
             System.out.println("El total es " + pEstandar);
 
         }

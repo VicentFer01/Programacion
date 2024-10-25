@@ -13,6 +13,12 @@ public class Tema2Ejercicio15 {
         mes  = scan.nextInt();
         int dias = 0;
 
+        if ((anyo % 4 == 0 && anyo % 100 !=0) || (anyo % 400 ==0 )) {
+            esBisiesto = true;
+        } else {
+            esBisiesto = false;
+        }
+
 
         switch (mes) {
             case 1:
@@ -46,11 +52,7 @@ public class Tema2Ejercicio15 {
 
             System.out.println("El mes " + mes + " del año " + anyo + " tiene " + dias + " dias");
 
-            if ((anyo % 4 == 0 && anyo % 100 !=0) || (anyo % 400 ==0 )) {
-                esBisiesto = true;
-            } else {
-                esBisiesto = false;
-            }
+
             scan.close();
 
         }

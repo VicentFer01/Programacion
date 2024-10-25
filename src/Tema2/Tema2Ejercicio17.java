@@ -36,7 +36,7 @@ public class Tema2Ejercicio17 {
                 System.out.println("La area del triangulo es " + area);
                 break;
             default:
-                System.out.println("No has introducido un caracter valido");
+                System.out.println("N o has introducido un caracter valido");
 
             scan.close();
 
