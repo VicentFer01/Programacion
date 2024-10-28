@@ -7,6 +7,7 @@ public class Tema2Ejercicio20 {
         Scanner scan = new Scanner(System.in);
         int A, B;
         int counter;
+
         System.out.println("Introduce el valor de A");
         A = scan.nextInt();
         System.out.println("Introduce el valor de B");
@@ -14,11 +15,11 @@ public class Tema2Ejercicio20 {
 
         if (B > A) {
             counter = A;
-            while (A < B) {
+            System.out.println(counter);
+            while (counter < B) {
                 counter = counter + 2;
                 System.out.println(counter);
             }
         }
-
     }
 }
