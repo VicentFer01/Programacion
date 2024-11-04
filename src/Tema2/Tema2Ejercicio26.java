@@ -1,15 +1,37 @@
-/*package Tema2;
+package Tema2;
 
 import java.util.Scanner;
 
 public class Tema2Ejercicio26 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int num, counter;
         System.out.println("Introduce el numero entero");
-        num = scan.nextInt();
-        num / num
+        int num = scan.nextInt();
 
+        boolean esPrimo = true;
+
+        if (num <= 1) {
+            esPrimo = false;
+        } else if (num == 2) {
+            esPrimo = true;
+        } else if (num % 2 == 0) {
+            esPrimo = false;
+        } else {
+            int raiz = (int) Math.sqrt(num);
+            for (int i = 3; i <= raiz; i += 2) {
+                if (num % i == 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+        }
+
+        if (esPrimo) {
+            System.out.println("El numero es primo");
+        } else {
+            System.out.println("El numero no es primo");
+        }
+
+        scan.close();
     }
 }
-*/
