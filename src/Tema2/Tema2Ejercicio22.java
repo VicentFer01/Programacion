@@ -2,7 +2,7 @@ package Tema2;
 
 import java.util.Scanner;
 
-public class Tema2Ejercicio22 {
+public class    Tema2Ejercicio22 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int num, cont;
