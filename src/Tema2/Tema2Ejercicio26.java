@@ -4,18 +4,22 @@ import java.util.Scanner;
 
 public class Tema2Ejercicio26 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingresa un número entero: ");
-        int numero = scanner.nextInt();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Introduce el numero entero");
+        int num = scan.nextInt();
 
         boolean esPrimo = true;
 
-        if (numero <= 1) {
+        if (num <= 1) {
+            esPrimo = false;
+        } else if (num == 2) {
+            esPrimo = true;
+        } else if (num % 2 == 0) {
             esPrimo = false;
         } else {
-            for (int i = 2; i <= Math.sqrt(numero); i++) {
-                if (numero % i == 0) {
+            int raiz = (int) Math.sqrt(num);
+            for (int i = 3; i <= raiz; i += 2) {
+                if (num % i == 0) {
                     esPrimo = false;
                     break;
                 }
@@ -23,9 +27,11 @@ public class Tema2Ejercicio26 {
         }
 
         if (esPrimo) {
-            System.out.println(numero + " es un número primo.");
+            System.out.println("El numero es primo");
         } else {
-            System.out.println(numero + " no es un número primo.");
+            System.out.println("El numero no es primo");
         }
+
+        scan.close();
     }
 }

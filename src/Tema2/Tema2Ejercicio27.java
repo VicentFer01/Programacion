@@ -1,20 +1,19 @@
-public class PrimerosPrimos {
-    public static void main(String[] args) {
-        int cantidadPrimos = 20;
-        int contador = 0;
-        int numero = 2; // Comenzamos desde el primer primo
+package Tema2;
+/*27.Haz un programa que encuentre e imprima por consola los 20 primeros
+números primos.*/
 
-        while (contador < cantidadPrimos) {
+public class Tema2Ejercicio27 {
+    public static void main(String[] args) {
+        int contador = 0;
+        int numero = 2;
+
+        while (contador < 20) {
             boolean esPrimo = true;
 
-            if (numero <= 1) {
-                esPrimo = false; // 0 y 1 no son primos
-            } else {
-                for (int i = 2; i <= Math.sqrt(numero); i++) {
-                    if (numero % i == 0) {
-                        esPrimo = false;
-                        break;
-                    }
+            for (int i = 2; i * i <= numero; i++) {
+                if (numero % i == 0) {
+                    esPrimo = false;
+                    break;
                 }
             }
 
