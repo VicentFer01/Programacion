@@ -6,7 +6,7 @@ public class Tema2Ejercicio19 {
         int counter = 0;
 
         while (counter < max) {
-            counter = counter + 2 ;
+            counter += 2 ;
             System.out.println(counter);
         }
 

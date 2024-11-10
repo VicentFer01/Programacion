@@ -17,7 +17,7 @@ public class Tema2Ejercicio23 {
                 break;
             }
 
-            suma += numero;
+            suma = suma + numero;
             contador++;
         }
 

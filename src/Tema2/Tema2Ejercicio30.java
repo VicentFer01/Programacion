@@ -34,20 +34,20 @@ public class Tema2Ejercicio30 {
                         result = num1 / num2;
                     } else {
                         System.out.println("Error: División por cero.");
-                        continue;  // Skip to next iteration if division by zero
+                        continue;
                     }
                     break;
                 default:
                     System.out.println("Operacion no valida");
-                    continue;  // Skip to next iteration if invalid operation
+                    continue;
             }
 
             System.out.println("El resultado es " + result);
 
-            System.out.println("¿Quieres hacer otra operación? (s para sí, cualquier otra tecla para no):");
+            System.out.println("¿Quieres hacer otra operación? (si para sí, cualquier otra tecla para no):");
             seguir = scan.next();
 
-        } while (seguir.equalsIgnoreCase("s"));
+        } while (seguir.equals("si"));
 
         System.out.println("Programa terminado.");
         scan.close();

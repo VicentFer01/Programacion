@@ -12,12 +12,12 @@ public class Tema2Ejercicio31 {
 
         if (num > 1) {
             esprimo = false;
-        }
-        else if (num == 2 || num == 3) {
+        } else if (num == 2 || num == 3) {
             esprimo = true;
         } else if (num % 2 == 0) {
-            
+
         }
 
 
     }
+}

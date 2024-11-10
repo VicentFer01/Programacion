@@ -13,9 +13,9 @@ public class Tema2Ejercicio29 {
 
         while (guess != randomInt) {
             if (guess < randomInt) {
-                System.out.println("El número es incorrecto, pista: el número es mayor");
+                System.out.println("El número es incorrecto pista: el número es mayor");
             } else {
-                System.out.println("El número es incorrecto, pista: el número es menor");
+                System.out.println("El número es incorrecto pista: el número es menor");
             }
             System.out.println("Introduce otro número");
             guess = scan.nextInt();
