@@ -52,8 +52,3 @@ public class Tema2Ejercicio30 {
         scan.close();
     }
 }
-
-
-
-
-

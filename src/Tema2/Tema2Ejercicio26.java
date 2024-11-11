@@ -32,6 +32,7 @@ public class Tema2Ejercicio26 {
             System.out.println("El numero no es primo");
         }
 
+
         scan.close();
     }
 }
