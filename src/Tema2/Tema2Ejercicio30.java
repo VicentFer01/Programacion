@@ -10,7 +10,7 @@ public class Tema2Ejercicio30 {
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("Introduce el primero numero");
+            System.out.println("Introduce el primer numero");
             num1 = scan.nextDouble();
 
             System.out.println("Introduce el segundo numero");
@@ -33,18 +33,17 @@ public class Tema2Ejercicio30 {
                     if (num2 != 0) {
                         result = num1 / num2;
                     } else {
-                        System.out.println("Error: División por cero.");
-                        continue;
+                        System.out.println("Error");
+
                     }
                     break;
                 default:
                     System.out.println("Operacion no valida");
-                    continue;
             }
 
             System.out.println("El resultado es " + result);
 
-            System.out.println("¿Quieres hacer otra operación? (si para sí, cualquier otra tecla para no):");
+            System.out.println("¿Quieres hacer otra operación? (pon si):");
             seguir = scan.next();
 
         } while (seguir.equals("si"));

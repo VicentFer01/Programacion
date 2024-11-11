@@ -5,7 +5,7 @@ public class T19v2 {
         int max = 1000;
         int count;
 
-        for (count = 0; count <= max; count = count + 2) {
+        for (count = 0; count <= max; count += 2) {
             System.out.println(count);
         }
     }

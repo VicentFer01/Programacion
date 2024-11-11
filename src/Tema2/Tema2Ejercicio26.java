@@ -17,7 +17,7 @@ public class Tema2Ejercicio26 {
         } else if (num % 2 == 0) {
             esPrimo = false;
         } else {
-            int raiz = (int) Math.sqrt(num);
+            int raiz = (int) Math.sqrt(num);  /*Desde el 3 hata la raiz del numero siempre hay un numero primo */
             for (int i = 3; i <= raiz; i += 2) {
                 if (num % i == 0) {
                     esPrimo = false;

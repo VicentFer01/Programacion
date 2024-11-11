@@ -8,7 +8,7 @@ public class Tema2Ejercicio23 {
         int contador = 0;
         int numero;
 
-        System.out.println("Introduce números enteros positivos (introduce un número negativo para terminar):");
+        System.out.println("Introduce números enteros positivos (numero negativo para terminar):");
 
         while (true) {
              numero = scanner.nextInt();
@@ -23,7 +23,7 @@ public class Tema2Ejercicio23 {
 
         if (contador > 0) {
             double media =  (double) suma / contador;
-            System.out.println("La media de los números ingresados es: " + media);
+            System.out.println("La media de los numeros  es: " + media);
         } else {
             System.out.println("No se ingresaron números positivos.");
         }
