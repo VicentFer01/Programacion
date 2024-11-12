@@ -10,15 +10,25 @@ public class Juego {
         int player1PJelection, player2PJelection;
 
         // Rondas y operaciones //
-        int turn, danyobase;
+        int roundcounter = 1,turn, danyobase;
 
 
         // Stats Clases//
-        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroDEF = 30;
-        int ArqueroVEL = 85, ArqueroATQ = 60, ArqueroHP = 65, ArqueroDEF = 15;
-        int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20;
-        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60, AsesinoDEF = 15;
-        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 15;
+        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroDEF = 30, CaballeroHPregen = 10;
+        double CaballeroCritChance = 0.35, CaballeroArmorPen = 10;
+
+        int ArqueroVEL = 85, ArqueroATQ = 60, ArqueroHP = 65, ArqueroDEF = 15, ArqueroHPregen = 5;
+        double ArqueroCritChance = 0.35, ArqueroArmorPen = 10;
+
+        int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20, MagoHPregen = 5;
+        double MagoCritChance = 0.35, MagArmorPen = 10;
+
+        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60, AsesinoDEF = 15, AsesinoHPregen = 5;
+        double AsesinoCritChance = 0.35, AsesinoArmorPen = 10;
+
+        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 15, AlquimistaHPregen = 5;
+        double AlquimistaCritChance = 0.35, AlquimistaArmorPen = 10;
+
 
 
         // Pociones //
@@ -53,8 +63,11 @@ public class Juego {
 
         
         // Stats del jugador (se otorgan al elegir clase)
-        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1DEF = 0;
-        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2DEF = 0;
+        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1DEF = 0, player1HPregen = 0;
+        double player1PEN = 0, player1Crit = 0;
+
+        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2DEF = 0,player2HPregen = 0;
+        double player2PEN = 0, player2Crit = 0;
 
 
         System.out.println("Introduzca 'Si' para empezar");
@@ -221,6 +234,9 @@ public class Juego {
                     player1VEL = CaballeroVEL;
                     player1DEF = CaballeroDEF;
                     player1HP = CaballeroHP;
+                    player1HPregen = CaballeroHPregen;
+                    player1Crit = CaballeroCritChance;
+                    player1PEN = CaballeroArmorPen;
                     potimaxPlayer1 = potiPlayer1 = 3;
                     player1ABIL = player1ABILcab;
                     player1ABILs = CabABIL;
@@ -232,6 +248,9 @@ public class Juego {
                     player1VEL = ArqueroVEL;
                     player1DEF = ArqueroDEF;
                     player1HP = ArqueroHP;
+                    player1HPregen = ArqueroHPregen;
+                    player1Crit = ArqueroCritChance;
+                    player1PEN = ArqueroArmorPen;
                     potimaxPlayer1 = potiPlayer1 = 4;
                     player1ABIL = player1ABILarq;
                     player1ABILs = ArqABIL;
@@ -244,6 +263,9 @@ public class Juego {
                     player1VEL = MagoVEL;
                     player1DEF = MagoDEF;
                     player1HP = MagoHP;
+                    player1HPregen = MagoHPregen;
+                    player1Crit = MagoCritChance;
+                    player1PEN = MagArmorPen;
                     potimaxPlayer1 = potiPlayer1 = 5;
                     player1ABIL = player1ABILmag;
                     player1ABILs = MagABIL;
@@ -256,6 +278,9 @@ public class Juego {
                     player1VEL = AsesinoVEL;
                     player1DEF = AsesinoDEF;
                     player1HP = AsesinoHP;
+                    player1HPregen = AsesinoHPregen;
+                    player1Crit = AsesinoCritChance;
+                    player1PEN = AsesinoArmorPen;
                     potimaxPlayer1 = potiPlayer1 = 3;
                     player1ABIL = player1ABILase;
                     player1ABILs = AseABIL;
@@ -268,6 +293,9 @@ public class Juego {
                     player1VEL = AlquimistaVEL;
                     player1DEF = AlquimistaDEF;
                     player1HP = AlquimistaHP;
+                    player1HPregen = AlquimistaHPregen;
+                    player1Crit = AlquimistaCritChance;
+                    player1PEN = AlquimistaArmorPen;
                     potimaxPlayer1 = potiPlayer1 = 5;
                     player1ABIL = player1ABILalq;
                     player1ABILs = AlqABIL;
@@ -285,6 +313,9 @@ public class Juego {
                     player2VEL = CaballeroVEL;
                     player2DEF = CaballeroDEF;
                     player2HP = CaballeroHP;
+                    player1HPregen = CaballeroHPregen;
+                    player1Crit = CaballeroCritChance;
+                    player1PEN = CaballeroArmorPen;
                     potimaxPlayer2 = potiPlayer2 = 3;
                     player2ABIL = player1ABILcab;
                     player2ABILs = CabABIL;
@@ -297,6 +328,9 @@ public class Juego {
                     player2VEL = ArqueroVEL;
                     player2DEF = ArqueroDEF;
                     player2HP = ArqueroHP;
+                    player1HPregen = ArqueroHPregen;
+                    player1Crit = ArqueroCritChance;
+                    player1PEN = ArqueroArmorPen;
                     potimaxPlayer2 = potiPlayer2 = 4;
                     player2ABIL = player1ABILarq;
                     player2ABILs = ArqABIL;
@@ -309,6 +343,9 @@ public class Juego {
                     player2VEL = MagoVEL;
                     player2DEF = MagoDEF;
                     player2HP = MagoHP;
+                    player2HPregen = MagoHPregen;
+                    player2Crit = MagoCritChance;
+                    player2PEN = MagArmorPen;
                     potimaxPlayer2 = potiPlayer2 = 5;
                     player2ABIL = player1ABILmag;
                     player2ABILs = ArqABIL;
@@ -321,6 +358,9 @@ public class Juego {
                     player2VEL = AsesinoVEL;
                     player2DEF = AsesinoDEF;
                     player2HP = AsesinoHP;
+                    player2HPregen = AsesinoHPregen;
+                    player2Crit = AsesinoCritChance;
+                    player2PEN = AsesinoArmorPen;
                     potimaxPlayer2 = potiPlayer2 = 3;
                     player2ABIL = player1ABILase;
                     player2ABILs = AseABIL;
@@ -333,6 +373,9 @@ public class Juego {
                     player2VEL = AlquimistaVEL;
                     player2DEF = AlquimistaDEF;
                     player2HP = AlquimistaHP;
+                    player2HPregen = AlquimistaHPregen;
+                    player2Crit = AlquimistaCritChance;
+                    player2PEN = AlquimistaArmorPen;
                     potimaxPlayer2 = potiPlayer2 = 5;
                     player2ABIL = player1ABILalq;
                     player2ABILs = AlqABIL;
@@ -345,6 +388,8 @@ public class Juego {
             boolean turnoJugador1 = player1VEL >= player2VEL;
 
             while (player1HP > 0 && player2HP > 0) {
+                System.out.println();
+                System.out.println("Comienza la ronda numero " + roundcounter );
                 if (turnoJugador1) {
                     System.out.println();
                     System.out.println();
@@ -356,10 +401,11 @@ public class Juego {
                     turn = scan.nextInt();
                     switch (turn) {
                         case 1:
+                            player2DEF = (int) (player2DEF - player1PEN);
                             danyobase = player1ATQ - player2DEF;
                             player2HP = player2HP - danyobase;
                             System.out.println();
-                            System.out.println("Jugador 1 hizo " + danyobase + " de daño, enemigo ahora tiene " + player2HP + "HP.");
+                            System.out.println("Jugador 1 hizo " + danyobase + " de daño, El enemigo ahora tiene " + player2HP + "HP.");
                             break;
                         case 2:
                             if (potiPlayer1 > 0) {
@@ -390,10 +436,12 @@ public class Juego {
                     turn = scan.nextInt();
                     switch (turn) {
                         case 1:
+                            player1DEF = (int) (player1DEF - player2PEN);
+
                             danyobase = player2ATQ - player1DEF;
                             player1HP = player1HP - danyobase;
                             System.out.println();
-                            System.out.println("Jugador 2 hizo " + danyobase + " de daño, enemigo ahora tiene " + player1HP + "HP.");
+                            System.out.println("Jugador 2 hizo " + danyobase + " de daño, El enemigo ahora tiene " + player1HP + "HP.");
                             break;
                         case 2:
                             if (potiPlayer2 > 0) {
@@ -409,14 +457,32 @@ public class Juego {
                         case 3:
                             System.out.println("Has utilizado la habilidad " + player2ABILs);
 
+
                     }
                 }
+                    roundcounter = roundcounter + 1;
+                roundcounter = roundcounter - 1;
                 turnoJugador1 = !turnoJugador1;
+
+
                 // Aqui se le otorga el turno al otro jugador //
             }
             System.out.println();
             System.out.println();
-            System.out.println(player1HP > 0 ? "Jugador 1 gana!" : "Jugador 2 gana!");
+            System.out.println(player1HP > 0 ? "J _____ _     _                       _              _                           \n" +
+                    "| ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  / |   __ _  __ _ _ __   __ _ \n" +
+                    "|  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__| | |  / _` |/ _` | '_ \\ / _` |\n" +
+                    "| |___| |   | | |_| | (_| | (_| | (_| | (_) | |    | | | (_| | (_| | | | | (_| |\n" +
+                    "|_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_|  \\__, |\\__,_|_| |_|\\__,_|\n" +
+                    "          |__/       |___/                              |___/                   " :
+
+
+                    " _____ _     _                       _              ____                            \n" +
+                            "| ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  |___ \\    __ _  __ _ _ __   __ _ \n" +
+                            "|  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__|   __) |  / _` |/ _` | '_ \\ / _` |\n" +
+                            "| |___| |   | | |_| | (_| | (_| | (_| | (_) | |     / __/  | (_| | (_| | | | | (_| |\n" +
+                            "|_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_____|  \\__, |\\__,_|_| |_|\\__,_|\n" +
+                            "          |__/       |___/                                  |___/                   ");
         } else {
             System.out.println("Una pena que no quieras jugar.");
         }
