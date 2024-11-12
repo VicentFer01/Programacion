@@ -8,21 +8,22 @@ public class Juego {
 
         int player1PJ, player2PJ;
         int player1PJelection, player2PJelection;
-        int turn;
+        int turn = 0;
+        int turn1, turn2, turn3, danyobase;
 
         /*Existen las clases Caballero, Arquero, Mago, Asesino, Alquimista
         Los stats son VEL, ATQ, HP, DEF*/
 
         int Caballero = 1, Arquero = 2, Mago = 3, Asesino = 4, Alquimista = 5;
 
-        int CaballeroVEL = 50, CaballeroATQ = 20, CaballeroHP = 100, CaballeroDEF = 50;
-        int ArqueroVEL = 80, ArqueroATQ = 35, ArqueroHP = 70, ArqueroDEF = 30;
-        int MagoVEL = 60, MagoATQ = 30, MagoHP = 80, MagoDEF = 40;
-        int AsesinoVEL = 90, AsesinoATQ = 45, AsesinoHP = 70, AsesinoDEF = 30;
-        int AlquimistaVEL = 65, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 50;
+        int CaballeroVEL = 50, CaballeroATQ = 50, CaballeroHP = 100, CaballeroDEF = 30;
+        int ArqueroVEL = 80, ArqueroATQ = 55, ArqueroHP = 70, ArqueroDEF = 20;
+        int MagoVEL = 60, MagoATQ = 40, MagoHP = 80, MagoDEF = 20;
+        int AsesinoVEL = 90, AsesinoATQ = 45, AsesinoHP = 70, AsesinoDEF = 20;
+        int AlquimistaVEL = 65, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 10;
 
-       int player1VEL = 0, player1ATQ, player1HP = 0, player1DEF;
-       int player2VEL = 0, player2ATQ, player2HP = 0, player2DEF;
+       int player1VEL = 0, player1ATQ, player1HP = 0, player1DEF = 0;
+       int player2VEL = 0, player2ATQ, player2HP = 0, player2DEF = 0;
 
 
 
@@ -151,26 +152,51 @@ public class Juego {
 
             System.out.println("Jugador 2 elige tu personaje");
             player2PJelection = scan.nextInt();
-            switch (player1PJelection) {
+            switch (player2PJelection) {
                 case 1:
                     System.out.println("Has elegido al caballero!");
                     player2PJ = Caballero;
+
+                    player2ATQ = CaballeroATQ;
+                    player2VEL = CaballeroVEL;
+                    player2DEF = CaballeroDEF;
+                    player2HP = CaballeroHP;
                     break;
                 case 2:
                     System.out.println("Has elegido al arquero!");
                     player2PJ = Arquero;
+
+                    player2ATQ = ArqueroATQ;
+                    player2VEL = ArqueroVEL;
+                    player2DEF = ArqueroDEF;
+                    player2HP = ArqueroHP;
                     break;
                 case 3:
                     System.out.println("Has elegido al mago!");
                     player2PJ = Mago;
+
+                    player2ATQ = MagoATQ;
+                    player2VEL = MagoVEL;
+                    player2DEF = MagoDEF;
+                    player2HP = MagoHP;
                     break;
                 case 4:
                     System.out.println("Has elegido al asesino!");
                     player2PJ = Asesino;
+
+                    player2ATQ = AsesinoATQ;
+                    player2VEL = AsesinoVEL;
+                    player2DEF = AsesinoDEF;
+                    player2HP = AsesinoHP;
                     break;
                 case 5:
                     System.out.println("Has elegido al arquero!");
                     player2PJ = Alquimista;
+
+                    player2ATQ = AlquimistaATQ;
+                    player2VEL = AlquimistaVEL;
+                    player2DEF = AlquimistaDEF;
+                    player2HP = AlquimistaHP;
                     break;
             }
 
@@ -179,40 +205,55 @@ public class Juego {
             while ( player1HP > 0 && player2HP > 0) {
 
                 if (player1VEL > player2VEL) {
-                    System.out.println("El jugador 1 comienza primero (> VEL)");
+                    System.out.println("Turno del jugador 1)");
                     System.out.println("Utiliza tu turno");
+                    System.out.println("Habilidades");
+                    System.out.println("1. Ataque basico.");
+                    System.out.println("2. Usar poción de vida (3x)");
+                    System.out.println("3. Habilidad única (1x)");
 
-                    switch (player1PJelection) {
+                    turn = scan.nextInt();
+                    switch (turn) {
                         case 1:
-                            System.out.println("Habilidades");
                             System.out.println("1. Ataque basico.");
-                            System.out.println("2. Usar poción de vida (3x)");
-                            System.out.println("3. Habilidad única (1x)");
-
-
+                            danyobase = CaballeroATQ - player2DEF;
+                            player2HP = player2HP - danyobase;
+                            System.out.println("El daño base es " + danyobase + " puntos de vida, el enemigo tiene ahora "+ player2HP);
+                            break;
                         case 2:
-                            System.out.println("Habilidades");
-                            System.out.println("1. Ataque basico");
-                            System.out.println("2. Usar pocion de vida (4x)");
-                            System.out.println("3. Habilidad unica");
-
+                            System.out.println("2. Usar poción de vida");
+                            break;
                         case 3:
-                            System.out.println("Habilidades");
-                            System.out.println("1. Ataque basico");
-                            System.out.println("2. Usar pocion de vida 5x)");
-                            System.out.println("3. Habilidad unica");
+                            System.out.println("3. Habilidad única");
+                            break;
 
-                        case 4:
-                            System.out.println("Habilidades");
-                            System.out.println("1. Ataque basico");
-                            System.out.println("2. Usar pocion de vida 3x)");
-                            System.out.println("3. Habilidad unica");
 
-                        case 5:
-                            System.out.println("Habilidades");
-                            System.out.println("1. Ataque basico");
-                            System.out.println("2. Usar pocion de vida 5x)");
-                            System.out.println("3. Habilidad unica");
+                    }
+                }
+                else {
+                    System.out.println();
+                    System.out.println();
+
+                    System.out.println("Turno del jugador 2");
+                    System.out.println("Utiliza tu turno");
+                    System.out.println("Habilidades");
+                    System.out.println("1. Ataque basico.");
+                    System.out.println("2. Usar poción de vida (3x)");
+                    System.out.println("3. Habilidad única (1x)");
+                    turn = scan.nextInt();
+                    switch (turn) {
+                        case 1:
+                            System.out.println("1. Ataque basico.");
+                            danyobase = CaballeroATQ - player1DEF;
+                            player1HP = player1HP - danyobase;
+                            System.out.println("El daño base es " + danyobase + " puntos de vida, el enemigo tiene ahora "+ player1HP);
+                            break;
+                        case 2:
+                            System.out.println("2. Usar poción de vida");
+                            break;
+                        case 3:
+                            System.out.println("3. Habilidad única");
+                            break;
                     }
 
                 }
