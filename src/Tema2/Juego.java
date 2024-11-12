@@ -30,8 +30,11 @@ public class Juego {
         int player1ABIL = 0;
         int player2ABIL = 0;
 
+        String player1ABILs = "";
+        String player2ABILs = "";
+
         int player1ABILcab = 0;
-        String player1ABILarq = "Flecha punzante";
+        int player1ABILarq = 0;
         int player1ABILmag = 0;
         int player1ABILase = 0;
         int player1ABILalq = 0;
@@ -42,9 +45,13 @@ public class Juego {
         int player2ABILase = 0;
         int player2ABILalq = 0;
 
+        String CabABIL = "Muro de Hierro";
+        String ArqABIL = "Disparo Preciso";
+        String MagABIL = "Explosión Arcana";
+        String AseABIL = "Sombra Letal";
+        String AlqABIL = "Pocion Mortal";
 
-
-
+        
         // Stats del jugador (se otorgan al elegir clase)
         int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1DEF = 0;
         int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2DEF = 0;
@@ -209,52 +216,62 @@ public class Juego {
             player1PJelection = scan.nextInt();
             switch (player1PJelection) {
                 case 1:
-                    System.out.println("El jugador 1 ha elegido al caballero!");
+                    System.out.println("El jugador 1 ha elegido al caballero!, tu habilidad única es " + CabABIL);
                     player1ATQ = CaballeroATQ;
                     player1VEL = CaballeroVEL;
                     player1DEF = CaballeroDEF;
                     player1HP = CaballeroHP;
                     potimaxPlayer1 = potiPlayer1 = 3;
                     player1ABIL = player1ABILcab;
+                    player1ABILs = CabABIL;
+
                     break;
                 case 2:
-                    System.out.println("El jugador 1 ha elegido al arquero!");
+                    System.out.println("El jugador 1 ha elegido al arquero!, tu habilidad única es " + ArqABIL);
                     player1ATQ = ArqueroATQ;
                     player1VEL = ArqueroVEL;
                     player1DEF = ArqueroDEF;
                     player1HP = ArqueroHP;
                     potimaxPlayer1 = potiPlayer1 = 4;
                     player1ABIL = player1ABILarq;
+                    player1ABILs = ArqABIL;
+
 
                     break;
                 case 3:
-                    System.out.println("El jugador 1 ha elegido al mago!");
+                    System.out.println("El jugador 1 ha elegido al mago!, tu habilidad única es " + MagABIL);
                     player1ATQ = MagoATQ;
                     player1VEL = MagoVEL;
                     player1DEF = MagoDEF;
                     player1HP = MagoHP;
                     potimaxPlayer1 = potiPlayer1 = 5;
                     player1ABIL = player1ABILmag;
+                    player1ABILs = MagABIL;
+
 
                     break;
                 case 4:
-                    System.out.println("El jugador 1 ha elegido al asesino!");
+                    System.out.println("El jugador 1 ha elegido al asesino!, tu habilidad única es " + AseABIL);
                     player1ATQ = AsesinoATQ;
                     player1VEL = AsesinoVEL;
                     player1DEF = AsesinoDEF;
                     player1HP = AsesinoHP;
                     potimaxPlayer1 = potiPlayer1 = 3;
                     player1ABIL = player1ABILase;
+                    player1ABILs = AseABIL;
+
 
                     break;
                 case 5:
-                    System.out.println("El jugador 1 ha elegido al alquimista!");
+                    System.out.println("El jugador 1 ha elegido al alquimista, tu habilidad única es " + AlqABIL);
                     player1ATQ = AlquimistaATQ;
                     player1VEL = AlquimistaVEL;
                     player1DEF = AlquimistaDEF;
                     player1HP = AlquimistaHP;
                     potimaxPlayer1 = potiPlayer1 = 5;
                     player1ABIL = player1ABILalq;
+                    player1ABILs = AlqABIL;
+
 
                     break;
             }
@@ -263,53 +280,63 @@ public class Juego {
             player2PJelection = scan.nextInt();
             switch (player2PJelection) {
                 case 1:
-                    System.out.println("El jugador 2 ha elegido al caballero!");
+                    System.out.println("El jugador 2 ha elegido al caballero!, tu habilidad única es " + CabABIL);
                     player2ATQ = CaballeroATQ;
                     player2VEL = CaballeroVEL;
                     player2DEF = CaballeroDEF;
                     player2HP = CaballeroHP;
                     potimaxPlayer2 = potiPlayer2 = 3;
-                    player1ABIL = player1ABILcab;
+                    player2ABIL = player1ABILcab;
+                    player2ABILs = CabABIL;
+
 
                     break;
                 case 2:
-                    System.out.println("El jugador 2 ha elegido al arquero!");
+                    System.out.println("El jugador 2 ha elegido al arquero!, tu habilidad única es " + ArqABIL);
                     player2ATQ = ArqueroATQ;
                     player2VEL = ArqueroVEL;
                     player2DEF = ArqueroDEF;
                     player2HP = ArqueroHP;
                     potimaxPlayer2 = potiPlayer2 = 4;
-                    player1ABIL = player1ABILarq;
+                    player2ABIL = player1ABILarq;
+                    player2ABILs = ArqABIL;
+
 
                     break;
                 case 3:
-                    System.out.println("El jugador 2 ha elegido al mago!");
+                    System.out.println("El jugador 2 ha elegido al mago!, tu habilidad única es " + MagABIL);
                     player2ATQ = MagoATQ;
                     player2VEL = MagoVEL;
                     player2DEF = MagoDEF;
                     player2HP = MagoHP;
                     potimaxPlayer2 = potiPlayer2 = 5;
-                    player1ABIL = player1ABILmag;
+                    player2ABIL = player1ABILmag;
+                    player2ABILs = ArqABIL;
+
 
                     break;
                 case 4:
-                    System.out.println("El jugador 2 ha elegido al asesino!");
+                    System.out.println("El jugador 2 ha elegido al asesino!, tu habilidad única es " + AseABIL);
                     player2ATQ = AsesinoATQ;
                     player2VEL = AsesinoVEL;
                     player2DEF = AsesinoDEF;
                     player2HP = AsesinoHP;
                     potimaxPlayer2 = potiPlayer2 = 3;
-                    player1ABIL = player1ABILase;
+                    player2ABIL = player1ABILase;
+                    player2ABILs = AseABIL;
+
 
                     break;
                 case 5:
-                    System.out.println("El jugador 2 ha elegido al alquimista!");
+                    System.out.println("El jugador 2 ha elegido al alquimista!, tu habilidad única es " + AlqABIL);
                     player2ATQ = AlquimistaATQ;
                     player2VEL = AlquimistaVEL;
                     player2DEF = AlquimistaDEF;
                     player2HP = AlquimistaHP;
                     potimaxPlayer2 = potiPlayer2 = 5;
-                    player1ABIL = player1ABILalq;
+                    player2ABIL = player1ABILalq;
+                    player2ABILs = AlqABIL;
+
 
                     break;
             }
@@ -340,7 +367,7 @@ public class Juego {
                                 potiPlayer1--;
                                 System.out.println();
                                 System.out.println("Te quedan " + potimaxPlayer1 + "pociones");
-                                System.out.println("Jugador 1 se curó 15HP, ahora tiene " + player1HP + "HP.");
+                                System.out.println("Jugador 1 se curó 40HP, ahora tiene " + player1HP + "HP.");
                             } else {
                                 System.out.println("Jugador 1 no tiene más pociones.");
                             }
@@ -348,7 +375,8 @@ public class Juego {
                             System.out.println();
                             break;
                         case 3:
-                            System.out.println("Has utilizado la habilidad" + player1ABIL);
+                            System.out.println("Has utilizado la habilidad " + player1ABILs);
+
 
 
                     }
@@ -373,13 +401,13 @@ public class Juego {
                                 potiPlayer2--;
                                 System.out.println();
                                 System.out.println("Te quedan " + potimaxPlayer2 + "pociones");
-                                System.out.println("Jugador 2 se curó 15HP, ahora tiene " + player2HP + "HP.");
+                                System.out.println("Jugador 2 se curó 40HP, ahora tiene " + player2HP + "HP.");
                             } else {
                                 System.out.println("Jugador 2 no tiene más pociones.");
                             }
                             break;
                         case 3:
-                            System.out.println("Has utilizado la habilidad" + player2ABIL);
+                            System.out.println("Has utilizado la habilidad " + player2ABILs);
 
                     }
                 }
