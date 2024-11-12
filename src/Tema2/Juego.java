@@ -6,83 +6,177 @@ public class Juego {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        int player1PJ, player2PJ;
+        // player input eleccion Personajes //
         int player1PJelection, player2PJelection;
-        int turn = 0;
-        int turn1, turn2, turn3, danyobase;
 
-        /*Existen las clases Caballero, Arquero, Mago, Asesino, Alquimista
-        Los stats son VEL, ATQ, HP, DEF*/
-
-        int Caballero = 1, Arquero = 2, Mago = 3, Asesino = 4, Alquimista = 5;
-
-        int CaballeroVEL = 50, CaballeroATQ = 50, CaballeroHP = 100, CaballeroDEF = 30;
-        int ArqueroVEL = 80, ArqueroATQ = 55, ArqueroHP = 70, ArqueroDEF = 20;
-        int MagoVEL = 60, MagoATQ = 40, MagoHP = 80, MagoDEF = 20;
-        int AsesinoVEL = 90, AsesinoATQ = 45, AsesinoHP = 70, AsesinoDEF = 20;
-        int AlquimistaVEL = 65, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 10;
-
-       int player1VEL = 0, player1ATQ, player1HP = 0, player1DEF = 0;
-       int player2VEL = 0, player2ATQ, player2HP = 0, player2DEF = 0;
+        // Rondas y operaciones //
+        int turn, danyobase;
 
 
+        // Stats Clases//
+        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroDEF = 30;
+        int ArqueroVEL = 85, ArqueroATQ = 60, ArqueroHP = 65, ArqueroDEF = 15;
+        int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20;
+        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60, AsesinoDEF = 15;
+        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 15;
 
-        String inputJugar;
 
-        System.out.println("Introduzca si para empezar");
-        inputJugar = scan.next();
+        // Pociones //
+        int potimaxPlayer1 = 0, potimaxPlayer2 = 0;
+        int potiPlayer1 = 0, potiPlayer2 = 0;
+        final int potiheal = 40;
 
-        if (inputJugar.equals("Si")) {
-            System.out.println("BIENVENIDOS A ESTE DUELO A MUERTE, A CONTINUACIÓN SE OS PRESENTARÁ LOS PERSONAJES DISPONIBLES");
+        // Habilidades //
+        int player1ABIL;
+        int player2ABIL;
+
+        int player1ABILcab;
+        int player1ABILarq;
+        int player1ABILmag;
+        int player1ABILase;
+        int player1ABILalq;
+
+        int player2ABILcab;
+        int player2ABILarq;
+        int player2ABILmag;
+        int player2ABILase;
+        int player2ABILalq;
+
+
+
+
+        // Stats del jugador (se otorgan al elegir clase)
+        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1DEF = 0;
+        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2DEF = 0;
+
+
+        System.out.println("Introduzca 'Si' para empezar");
+        String inputJugar = scan.next();
+
+        if (inputJugar.equalsIgnoreCase("Si")) {
+            System.out.println(" ____  _                            \n" +
+                    "| __ )(_) ___ _ ____   _____ _ __ (_) __| | ___  ___| |\n" +
+                    "|  _ \\| |/ _ \\ '_ \\ \\ / / _ \\ '_ \\| |/ _` |/ _ \\/ __| |\n" +
+                    "| |_) | |  __/ | | \\ V /  __/ | | | | (_| | (_) \\__ \\_|\n" +
+                    "|____/|_|\\___|_| |_|\\_/ \\___|_| |_|_|\\__,_|\\___/|___(_)");
             System.out.println();
+            System.out.println();
+            System.out.println("El combate está a punto de empezar, a continuación se presentara los personajes disponibles");
             System.out.println();
             System.out.println();
             System.out.println("Caballero");
-            System.out.println("Estadisticas");
-            System.out.println("VEL: 50 HP: 100 ATQ: 20 DEF: 50 ");
+            System.out.println("  \n" +
+                    "             .--.\n" +
+                    "            /.--.\\\n" +
+                    "            |====|\n" +
+                    "            |`::`|\n" +
+                    "        .-;`\\..../`;_.-^-._\n" +
+                    " /\\\\   /  |...::..|`   :   `|\n" +
+                    " |:'\\ |   /'''::''|   .:.   |\n" +
+                    "@|\\ /\\;-,/\\   ::  |..:::::..|\n" +
+                    "`||\\ <` >  >._::_.| ':::::' |\n" +
+                    " || `\"\"`  /   ^^  |   ':'   |\n" +
+                    " ||       |       \\    :    /\n" +
+                    " ||       |        \\   :   /\n" +
+                    " ||       |___/\\___|`-.:.-`\n" +
+                    " ||        \\_ || _/    `\n" +
+                    " ||        |  ||  |\n");
+
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico.");
             System.out.println("2. Usar poción de vida (3x)");
             System.out.println("3. Habilidad única (1x)");
             System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+
             System.out.println("Arquero");
-            System.out.println("Estadisticas");
-            System.out.println("VEL: 80 HP: 70 ATQ: 35 DEF: 30 ");
+            System.out.println(
+                            "           4   \".                                        \n" +
+                            "           4    ^.                                       \n" +
+                            "           4     $                                       \n" +
+                            "           4     'b                                      \n" +
+                            "           4      \"b.                                    \n" +
+                            "           4        $                                    \n" +
+                            "           4        $r                                   \n" +
+                            "           4        $F                                   \n" +
+                            "-$b========4========$b====*P=-                           \n" +
+                            "           4       *$$F                                  \n" +
+                            "           4        $$\"                                  \n" +
+                            "           4       .$F                                   \n" +
+                            "           4       dP                                    \n" +
+                            "           4      F                                      \n" +
+                            "           4     @                                       \n" +
+                            "           4    .                                        \n" +
+                            "           J.                                            \n");
+
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
             System.out.println("2. Usar pocion de vida (4x)");
             System.out.println("3. Habilidad unica");
             System.out.println();
-            System.out.println();
-            System.out.println();
+
             System.out.println("Mago");
-            System.out.println("Estadisticas");
-            System.out.println("VEL: 60 HP: 80 ATQ: 30 DEF: 40 ");
+            System.out.println("                    ____ " +
+                    "                  .'* *.'\n" +
+                    "               __/_*_*(_\n" +
+                    "              / _______ \\\n" +
+                    "             _\\_)/___\\(_/_ \n" +
+                    "            / _((\\- -/))_ \\\n" +
+                    "            \\ \\())(-)(()/ /\n" +
+                    "             ' \\(((()))/ '\n" +
+                    "            / ' \\)).))/ ' \\\n" +
+                    "           / _ \\ - | - /_  \\\n" +
+                    "          (   ( .;''';. .'  )\n" +
+                    "          _\\\"__ /    )\\ __\"/_\n" +
+                    "            \\/  \\   ' /  \\/\n" +
+                    "             .'  '...' ' )\n" +
+                    "         .'   /    b    '.  '.\n" +
+                    "     _.-'    /     Bb     '-. '-._ \n" +
+                    " _.-'       |      BBb       '-.  '-. \n" +
+                    "(________mrf\\____.dBBBb.________)____)\n");
+
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
             System.out.println("2. Usar pocion de vida 5x)");
             System.out.println("3. Habilidad unica");
             System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
 
             System.out.println("Asesino");
-            System.out.println("Estadisticas");
-            System.out.println("VEL: 90 HP: 70 ATQ: 45 DEF: 30 ");
+            System.out.println(
+                    "⠀⠀⠳⡀⠁⠀⠀⢈⠓⠴⠾⣻⣒⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠙⢆⠠⡄⠀⠑⠒⠤⣀⡉⠙⠛⠓⠲⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠈⢦⡈⠉⠒⠢⢄⡀⠈⠑⠢⠤⠤⡤⠤⣙⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠈⠛⠑⠲⣄⠈⠒⢄⡀⠀⠀⠉⠲⢠⡭⢾⣒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣈⠑⠦⡀⠑⢀⠀⠀⠀⠈⢆⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⣓⠦⣉⡳⣄⠱⡀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⡧⣈⠙⠻⠧⠀⠀⠀⠀⠀⠙⣦⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢬⡑⢤⣀⠀⠀⠀⠀⠀⣠⠊⡰⠃⢉⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⡉⠲⢄⣠⠞⣡⡾⠓⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡱⠊⣡⠞⠃⢀⣾⣿⣿⣿⣿⣶⣤⣀⣀⡤⠦⢤⡀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢯⡐⢀⡴⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⡄⡗⣒⠒⢆⡀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⢰⠃⡗⠒⠒⢢⠙⢤\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢟⢃⡾⢴⡃⠀⢀⣠⠴⠞\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠋⠈⠛⠋⠀⠀⠀");
+
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
             System.out.println("2. Usar pocion de vida 3x)");
             System.out.println("3. Habilidad unica");
             System.out.println();
-            System.out.println();
-            System.out.println();
+
             System.out.println("Alquimista");
-            System.out.println("Estadisticas");
-            System.out.println("VEL: 65 HP: 80 ATQ: 35 DEF: 50 ");
+            System.out.println(
+                    "      (___)\n" +
+                    "      <   >\n" +
+                    "       ) (\n" +
+                    "      /`-.\\\n" +
+                    "     /     \\\n" +
+                    "    / _    _\\\n" +
+                    "   :,' `-.' `:\n" +
+                    "   |         |\n" +
+                    "   :         ;\n" +
+                    "    \\       /\n" +
+                    "     `.___.'");
+
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
             System.out.println("2. Usar pocion de vida 5x)");
@@ -90,179 +184,190 @@ public class Juego {
             System.out.println();
             System.out.println();
             System.out.println();
+
+
+            System.out.println(" ____       _               _                   _      \n" +
+                    "/ ___|  ___| | ___  ___ ___(_) ___  _ __     __| | ___ \n" +
+                    "\\___ \\ / _ \\ |/ _ \\/ __/ __| |/ _ \\| '_ \\   / _` |/ _ \\\n" +
+                    " ___) |  __/ |  __/ (_| (__| | (_) | | | | | (_| |  __/\n" +
+                    "|____/ \\___|_|\\___|\\___\\___|_|\\___/|_| |_|  \\__,_|\\___|\n" +
+                    " _ __   ___ _ __ ___  ___  _ __   __ _ (_) ___  ___    \n" +
+                    "| '_ \\ / _ \\ '__/ __|/ _ \\| '_ \\ / _` || |/ _ \\/ __|   \n" +
+                    "| |_) |  __/ |  \\__ \\ (_) | | | | (_| || |  __/\\__ \\   \n" +
+                    "| .__/ \\___|_|  |___/\\___/|_| |_|\\__,_|/ |\\___||___/   \n" +
+                    "|_|                                  |__/              ");
             System.out.println();
-            System.out.println("Es hora de elegir personajes. Introduce el numero del personaje que desees");
+            System.out.println();
             System.out.println("1. Caballero");
             System.out.println("2. Arquero");
             System.out.println("3. Mago");
             System.out.println("4. Asesino");
             System.out.println("5. Alquimista");
             System.out.println();
-            System.out.println();
-            System.out.println();
+
             System.out.println("Jugador 1 elige tu personaje");
             player1PJelection = scan.nextInt();
             switch (player1PJelection) {
                 case 1:
-                    System.out.println("Has elegido al caballero!");
-                    player1PJ = Caballero;
-
+                    System.out.println("El jugador 1 ha elegido al caballero!");
                     player1ATQ = CaballeroATQ;
                     player1VEL = CaballeroVEL;
                     player1DEF = CaballeroDEF;
                     player1HP = CaballeroHP;
+                    potimaxPlayer1 = potiPlayer1 = 3;
                     break;
                 case 2:
-                    System.out.println("Has elegido al arquero!");
-                    player1PJ = Arquero;
-
+                    System.out.println("El jugador 1 ha elegido al arquero!");
                     player1ATQ = ArqueroATQ;
                     player1VEL = ArqueroVEL;
                     player1DEF = ArqueroDEF;
                     player1HP = ArqueroHP;
+                    potimaxPlayer1 = potiPlayer1 = 4;
                     break;
                 case 3:
-                    System.out.println("Has elegido al mago!");
-                    player1PJ = Mago;
-
+                    System.out.println("El jugador 1 ha elegido al mago!");
                     player1ATQ = MagoATQ;
                     player1VEL = MagoVEL;
                     player1DEF = MagoDEF;
                     player1HP = MagoHP;
+                    potimaxPlayer1 = potiPlayer1 = 5;
                     break;
                 case 4:
-                    System.out.println("Has elegido al asesino!");
-                    player1PJ = Asesino;
-
+                    System.out.println("El jugador 1 ha elegido al asesino!");
                     player1ATQ = AsesinoATQ;
                     player1VEL = AsesinoVEL;
                     player1DEF = AsesinoDEF;
                     player1HP = AsesinoHP;
+                    potimaxPlayer1 = potiPlayer1 = 3;
                     break;
                 case 5:
-                    System.out.println("Has elegido al alquimista!");
-                    player1PJ = Alquimista;
-
+                    System.out.println("El jugador 1 ha elegido al alquimista!");
                     player1ATQ = AlquimistaATQ;
                     player1VEL = AlquimistaVEL;
                     player1DEF = AlquimistaDEF;
                     player1HP = AlquimistaHP;
+                    potimaxPlayer1 = potiPlayer1 = 5;
                     break;
             }
-
+            System.out.println();
             System.out.println("Jugador 2 elige tu personaje");
             player2PJelection = scan.nextInt();
             switch (player2PJelection) {
                 case 1:
-                    System.out.println("Has elegido al caballero!");
-                    player2PJ = Caballero;
-
+                    System.out.println("El jugador 2 ha elegido al caballero!");
                     player2ATQ = CaballeroATQ;
                     player2VEL = CaballeroVEL;
                     player2DEF = CaballeroDEF;
                     player2HP = CaballeroHP;
+                    potimaxPlayer2 = potiPlayer2 = 3;
                     break;
                 case 2:
-                    System.out.println("Has elegido al arquero!");
-                    player2PJ = Arquero;
-
+                    System.out.println("El jugador 2 ha elegido al arquero!");
                     player2ATQ = ArqueroATQ;
                     player2VEL = ArqueroVEL;
                     player2DEF = ArqueroDEF;
                     player2HP = ArqueroHP;
+                    potimaxPlayer2 = potiPlayer2 = 4;
                     break;
                 case 3:
-                    System.out.println("Has elegido al mago!");
-                    player2PJ = Mago;
-
+                    System.out.println("El jugador 2 ha elegido al mago!");
                     player2ATQ = MagoATQ;
                     player2VEL = MagoVEL;
                     player2DEF = MagoDEF;
                     player2HP = MagoHP;
+                    potimaxPlayer2 = potiPlayer2 = 5;
                     break;
                 case 4:
-                    System.out.println("Has elegido al asesino!");
-                    player2PJ = Asesino;
-
+                    System.out.println("El jugador 2 ha elegido al asesino!");
                     player2ATQ = AsesinoATQ;
                     player2VEL = AsesinoVEL;
                     player2DEF = AsesinoDEF;
                     player2HP = AsesinoHP;
+                    potimaxPlayer2 = potiPlayer2 = 3;
                     break;
                 case 5:
-                    System.out.println("Has elegido al arquero!");
-                    player2PJ = Alquimista;
-
+                    System.out.println("El jugador 2 ha elegido al alquimista!");
                     player2ATQ = AlquimistaATQ;
                     player2VEL = AlquimistaVEL;
                     player2DEF = AlquimistaDEF;
                     player2HP = AlquimistaHP;
+                    potimaxPlayer2 = potiPlayer2 = 5;
                     break;
             }
 
-            System.out.println("Hora del combate!");
+            // Este booleano comprueba de quien es el turno comparando la stat VEL //
+            boolean turnoJugador1 = player1VEL >= player2VEL;
 
-            while ( player1HP > 0 && player2HP > 0) {
+            while (player1HP > 0 && player2HP > 0) {
+                if (turnoJugador1) {
+                    System.out.println();
+                    System.out.println();
 
-                if (player1VEL > player2VEL) {
-                    System.out.println("Turno del jugador 1)");
-                    System.out.println("Utiliza tu turno");
-                    System.out.println("Habilidades");
-                    System.out.println("1. Ataque basico.");
-                    System.out.println("2. Usar poción de vida (3x)");
-                    System.out.println("3. Habilidad única (1x)");
-
+                    System.out.println("Turno del jugador 1");
+                    System.out.println("1. Ataque básico.");
+                    System.out.println("2. Usar pocion de vida.");
+                    System.out.println("3. Habilidad unica");
                     turn = scan.nextInt();
                     switch (turn) {
                         case 1:
-                            System.out.println("1. Ataque basico.");
-                            danyobase = CaballeroATQ - player2DEF;
+                            danyobase = player1ATQ - player2DEF;
                             player2HP = player2HP - danyobase;
-                            System.out.println("El daño base es " + danyobase + " puntos de vida, el enemigo tiene ahora "+ player2HP);
+                            System.out.println();
+                            System.out.println("Jugador 1 hizo " + danyobase + " de daño, enemigo ahora tiene " + player2HP + "HP.");
                             break;
                         case 2:
-                            System.out.println("2. Usar poción de vida");
+                            if (potiPlayer1 > 0) {
+                                player1HP += potiheal;
+                                potiPlayer1--;
+                                System.out.println();
+                                System.out.println("Te quedan " + potimaxPlayer1 + "pociones");
+                                System.out.println("Jugador 1 se curó 15HP, ahora tiene " + player1HP + "HP.");
+                            } else {
+                                System.out.println("Jugador 1 no tiene más pociones.");
+                            }
+                            System.out.println();
+                            System.out.println();
                             break;
                         case 3:
-                            System.out.println("3. Habilidad única");
-                            break;
-
+                            player1ABIL = player1PJelection;
 
                     }
-                }
-                else {
+                } else {
                     System.out.println();
                     System.out.println();
-
                     System.out.println("Turno del jugador 2");
-                    System.out.println("Utiliza tu turno");
-                    System.out.println("Habilidades");
-                    System.out.println("1. Ataque basico.");
-                    System.out.println("2. Usar poción de vida (3x)");
-                    System.out.println("3. Habilidad única (1x)");
+                    System.out.println("1. Ataque básico.");
+                    System.out.println("2. Usar pocion de vida. ");
+                    System.out.println("3. Habilidad unica");
                     turn = scan.nextInt();
                     switch (turn) {
                         case 1:
-                            System.out.println("1. Ataque basico.");
-                            danyobase = CaballeroATQ - player1DEF;
+                            danyobase = player2ATQ - player1DEF;
                             player1HP = player1HP - danyobase;
-                            System.out.println("El daño base es " + danyobase + " puntos de vida, el enemigo tiene ahora "+ player1HP);
+                            System.out.println();
+                            System.out.println("Jugador 2 hizo " + danyobase + " de daño, enemigo ahora tiene " + player1HP + "HP.");
                             break;
                         case 2:
-                            System.out.println("2. Usar poción de vida");
-                            break;
-                        case 3:
-                            System.out.println("3. Habilidad única");
+                            if (potiPlayer2 > 0) {
+                                player2HP += potiheal;
+                                potiPlayer2--;
+                                System.out.println();
+                                System.out.println("Te quedan " + potimaxPlayer2 + "pociones");
+                                System.out.println("Jugador 2 se curó 15HP, ahora tiene " + player2HP + "HP.");
+                            } else {
+                                System.out.println("Jugador 2 no tiene más pociones.");
+                            }
                             break;
                     }
-
                 }
+                turnoJugador1 = !turnoJugador1;
+                // Aqui se le otorga el turno al otro jugador //
             }
-
-
+            System.out.println();
+            System.out.println();
+            System.out.println(player1HP > 0 ? "Jugador 1 gana!" : "Jugador 2 gana!");
         } else {
             System.out.println("Una pena que no quieras jugar.");
         }
     }
 }
-
