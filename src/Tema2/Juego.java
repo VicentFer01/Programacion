@@ -7,33 +7,49 @@ public class Juego {
         Scanner scan = new Scanner(System.in);
 
         // player input eleccion Personajes //
-        int player1PJelection, player2PJelection;
+        int player1PJelection = 0, player2PJelection = 0;
 
         // Rondas y operaciones //
-        int roundcounter = 1,turn, danyobase;
+        int turn, danyobase;
 
 
         // Stats Clases//
-        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroDEF = 30, CaballeroHPregen = 10;
+        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroHPmax = 120, CaballeroDEF = 30, CaballeroHPregen = 15;
         double CaballeroCritChance = 0.35, CaballeroArmorPen = 10;
 
-        int ArqueroVEL = 85, ArqueroATQ = 60, ArqueroHP = 65, ArqueroDEF = 15, ArqueroHPregen = 5;
+        int ArqueroVEL = 85, ArqueroATQ = 50, ArqueroHP = 65, ArqueroHPmax = 65, ArqueroDEF = 15, ArqueroHPregen = 10;
         double ArqueroCritChance = 0.35, ArqueroArmorPen = 10;
 
-        int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20, MagoHPregen = 5;
+        int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoHPmax = 80, MagoDEF = 20, MagoHPregen = 100;
         double MagoCritChance = 0.35, MagArmorPen = 10;
 
-        int AsesinoVEL = 95, AsesinoATQ = 55, AsesinoHP = 60, AsesinoDEF = 15, AsesinoHPregen = 5;
-        double AsesinoCritChance = 0.35, AsesinoArmorPen = 35;
+        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60,  AsesinoHPmax = 60, AsesinoDEF = 15, AsesinoHPregen = 15;
+        double AsesinoCritChance = 0.35, AsesinoArmorPen = 10;
 
-        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 15, AlquimistaHPregen = 5;
+        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaHPmax = 80, AlquimistaDEF = 15, AlquimistaHPregen = 15;
         double AlquimistaCritChance = 0.35, AlquimistaArmorPen = 10;
 
 
+        // Frases Atacar //
+        String CabFrase = "Por el honor y la justicia!";
+        String ArqFrase = "¡No escaparás de mis flechas!";
+        String MagFrase = "¡Que el poder arcano te consuma!";
+        String AseFrase = "No verás el próximo amanecer";
+        String AlqFrase = "¡Mis fórmulas nunca fallan!";
+
+        String frasePlayer1 = "";
+        String frasePlayer2 = "";
+
 
         // Pociones //
+        int potimaxCab = 3;
+        int potimaxArq = 4;
+        int potimaxMag = 4;
+        int potimaxAse = 3;
+        int potimaxAlq = 5;
+
         int potimaxPlayer1 = 0, potimaxPlayer2 = 0;
-        int potiPlayer1 = 0, potiPlayer2 = 0;
+        int potiPlayer1 = 0, potiPlayer2 = 0; //Esto es el counter de pociones//
         final int potiheal = 40;
 
         // Habilidades //
@@ -43,17 +59,8 @@ public class Juego {
         String player1ABILs = "";
         String player2ABILs = "";
 
-        int player1ABILcab = 0;
-        int player1ABILarq = 0;
-        int player1ABILmag = 0;
-        int player1ABILase = 0;
-        int player1ABILalq = 0;
-
-        int player2ABILcab = 0;
-        int player2ABILarq = 0;
-        int player2ABILmag = 0;
-        int player2ABILase = 0;
-        int player2ABILalq = 0;
+        int player1ABILcab = 0, player1ABILarq = 0, player1ABILmag = 0, player1ABILase = 0, player1ABILalq = 0;
+        int player2ABILcab = 0, player2ABILarq = 0, player2ABILmag = 0, player2ABILase = 0, player2ABILalq = 0;
 
         String CabABIL = "Muro de Hierro";
         String ArqABIL = "Disparo Preciso";
@@ -61,12 +68,12 @@ public class Juego {
         String AseABIL = "Sombra Letal";
         String AlqABIL = "Pocion Mortal";
 
-        
+
         // Stats del jugador (se otorgan al elegir clase)
-        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1DEF = 0, player1HPregen = 0;
+        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1HPmax = 0, player1DEF = 0, player1HPregen = 0;
         double player1PEN = 0, player1Crit = 0;
 
-        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2DEF = 0,player2HPregen = 0;
+        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2HPmax = 0, player2DEF = 0,player2HPregen = 0;
         double player2PEN = 0, player2Crit = 0;
 
 
@@ -234,12 +241,14 @@ public class Juego {
                     player1VEL = CaballeroVEL;
                     player1DEF = CaballeroDEF;
                     player1HP = CaballeroHP;
+                    player1HPmax = CaballeroHPmax;
                     player1HPregen = CaballeroHPregen;
                     player1Crit = CaballeroCritChance;
                     player1PEN = CaballeroArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 3;
-                    player1ABIL = player1ABILcab;
-                    player1ABILs = CabABIL;
+
+                    potimaxPlayer1 = potimaxCab;
+
+                    frasePlayer1 = CabFrase;
 
                     break;
                 case 2:
@@ -248,12 +257,14 @@ public class Juego {
                     player1VEL = ArqueroVEL;
                     player1DEF = ArqueroDEF;
                     player1HP = ArqueroHP;
+                    player1HPmax = ArqueroHPmax;
                     player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 4;
-                    player1ABIL = player1ABILarq;
-                    player1ABILs = ArqABIL;
+
+                    potimaxPlayer1 =  potimaxArq;
+
+                    frasePlayer1 = ArqFrase;
 
 
                     break;
@@ -263,14 +274,14 @@ public class Juego {
                     player1VEL = MagoVEL;
                     player1DEF = MagoDEF;
                     player1HP = MagoHP;
+                    player1HPmax = MagoHPmax;
                     player1HPregen = MagoHPregen;
                     player1Crit = MagoCritChance;
                     player1PEN = MagArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 5;
-                    player1ABIL = player1ABILmag;
-                    player1ABILs = MagABIL;
 
+                    potimaxPlayer1 = potimaxMag;
 
+                    frasePlayer1 = MagFrase;
                     break;
                 case 4:
                     System.out.println("El jugador 1 ha elegido al asesino!, tu habilidad única es " + AseABIL);
@@ -278,14 +289,14 @@ public class Juego {
                     player1VEL = AsesinoVEL;
                     player1DEF = AsesinoDEF;
                     player1HP = AsesinoHP;
+                    player1HPmax = AsesinoHPmax;
                     player1HPregen = AsesinoHPregen;
                     player1Crit = AsesinoCritChance;
                     player1PEN = AsesinoArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 3;
-                    player1ABIL = player1ABILase;
-                    player1ABILs = AseABIL;
 
+                    potimaxPlayer1 = potimaxAse;
 
+                    frasePlayer1 = AseFrase;
                     break;
                 case 5:
                     System.out.println("El jugador 1 ha elegido al alquimista, tu habilidad única es " + AlqABIL);
@@ -293,15 +304,17 @@ public class Juego {
                     player1VEL = AlquimistaVEL;
                     player1DEF = AlquimistaDEF;
                     player1HP = AlquimistaHP;
+                    player1HPmax = AlquimistaHPmax;
                     player1HPregen = AlquimistaHPregen;
                     player1Crit = AlquimistaCritChance;
                     player1PEN = AlquimistaArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 5;
-                    player1ABIL = player1ABILalq;
-                    player1ABILs = AlqABIL;
 
+                    potimaxPlayer1 = potimaxAlq;
 
+                    frasePlayer1 = AlqFrase;
                     break;
+                default:
+                    System.out.println("No has elegido un personaje disponible (1-5)");
             }
             System.out.println();
             System.out.println("Jugador 2 elige tu personaje");
@@ -313,13 +326,14 @@ public class Juego {
                     player2VEL = CaballeroVEL;
                     player2DEF = CaballeroDEF;
                     player2HP = CaballeroHP;
-                    player1HPregen = CaballeroHPregen;
-                    player1Crit = CaballeroCritChance;
-                    player1PEN = CaballeroArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 3;
-                    player2ABIL = player1ABILcab;
-                    player2ABILs = CabABIL;
+                    player2HPmax = CaballeroHPmax;
+                    player2HPregen = CaballeroHPregen;
+                    player2Crit = CaballeroCritChance;
+                    player2PEN = CaballeroArmorPen;
+                    potimaxPlayer2 = potimaxCab;
 
+
+                    frasePlayer2 = CabFrase;
 
                     break;
                 case 2:
@@ -328,13 +342,13 @@ public class Juego {
                     player2VEL = ArqueroVEL;
                     player2DEF = ArqueroDEF;
                     player2HP = ArqueroHP;
+                    player2HPmax = ArqueroHPmax;
                     player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 4;
-                    player2ABIL = player1ABILarq;
-                    player2ABILs = ArqABIL;
+                    potimaxPlayer2 =  potimaxArq;
 
+                    frasePlayer2 = ArqFrase;
 
                     break;
                 case 3:
@@ -343,14 +357,14 @@ public class Juego {
                     player2VEL = MagoVEL;
                     player2DEF = MagoDEF;
                     player2HP = MagoHP;
+                    player2HPmax = MagoHPmax;
                     player2HPregen = MagoHPregen;
                     player2Crit = MagoCritChance;
                     player2PEN = MagArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 5;
-                    player2ABIL = player1ABILmag;
-                    player2ABILs = ArqABIL;
 
+                    potimaxPlayer1 = potimaxMag;
 
+                    frasePlayer2 = MagFrase;
                     break;
                 case 4:
                     System.out.println("El jugador 2 ha elegido al asesino!, tu habilidad única es " + AseABIL);
@@ -358,13 +372,15 @@ public class Juego {
                     player2VEL = AsesinoVEL;
                     player2DEF = AsesinoDEF;
                     player2HP = AsesinoHP;
+                    player2HPmax = AsesinoHPmax;
                     player2HPregen = AsesinoHPregen;
                     player2Crit = AsesinoCritChance;
                     player2PEN = AsesinoArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 3;
-                    player2ABIL = player1ABILase;
-                    player2ABILs = AseABIL;
 
+                    potimaxPlayer2 = potimaxAse;
+
+
+                    frasePlayer2 = AseFrase;
 
                     break;
                 case 5:
@@ -373,27 +389,30 @@ public class Juego {
                     player2VEL = AlquimistaVEL;
                     player2DEF = AlquimistaDEF;
                     player2HP = AlquimistaHP;
+                    player2HPmax = AlquimistaHPmax;
                     player2HPregen = AlquimistaHPregen;
                     player2Crit = AlquimistaCritChance;
                     player2PEN = AlquimistaArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 5;
-                    player2ABIL = player1ABILalq;
-                    player2ABILs = AlqABIL;
 
+                    potimaxPlayer2= potimaxAlq;
+
+                    frasePlayer2 = AlqFrase;
 
                     break;
+                default:
+                    System.out.println("No has elegido un personaje disponible (1-5)");
             }
 
-            // Este booleano comprueba de quien es el turno comparando la stat VEL //
+            // Este booleano comprueba de quien es el primer turno comparando la stat VEL //
             boolean turnoJugador1 = player1VEL >= player2VEL;
+
 
             while (player1HP > 0 && player2HP > 0) {
                 System.out.println();
-                System.out.println("Comienza la ronda numero " + roundcounter );
-                if (turnoJugador1) {
-                    System.out.println();
-                    System.out.println();
+                System.out.println();
+                System.out.println();
 
+                if (turnoJugador1) {
                     System.out.println("Turno del jugador 1");
                     System.out.println("1. Ataque básico.");
                     System.out.println("2. Usar pocion de vida.");
@@ -405,67 +424,80 @@ public class Juego {
                             danyobase = player1ATQ - player2DEF;
                             player2HP = player2HP - danyobase;
                             System.out.println();
-                            System.out.println("Jugador 1 hizo " + danyobase + " de daño, El enemigo ahora tiene " + player2HP + "HP.");
+                            System.out.println(frasePlayer1);
+                            System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
                             break;
                         case 2:
-                            if (potiPlayer1 > 0) {
+                            if (potiPlayer1 < potimaxPlayer1) {
                                 player1HP += potiheal;
-                                potiPlayer1--;
-                                System.out.println();
-                                System.out.println("Te quedan " + potimaxPlayer1 + "pociones");
-                                System.out.println("Jugador 1 se curó 40HP, ahora tiene " + player1HP + "HP.");
+                                potimaxPlayer1--;
+
+                                if ( player1HP > player1HPmax ) {
+                                    System.out.println();
+                                    System.out.println("No te puedes curar por encima de la vida maxima, has perdido una poción");
+                                    player1HP = player1HPmax;
+                                } else {
+                                    System.out.println();
+                                    System.out.println("Te quedan " + potimaxPlayer1 + "pociones");
+                                    System.out.println("Jugador 2 se curó " + potiheal + " HP, ahora tiene " + player1HP + "HP.");
+                                }
+
                             } else {
                                 System.out.println("Jugador 1 no tiene más pociones.");
                             }
-                            System.out.println();
-                            System.out.println();
                             break;
                         case 3:
                             System.out.println("Has utilizado la habilidad " + player1ABILs);
-
-
-
-                    }
-                } else {
-                    System.out.println();
-                    System.out.println();
-                    System.out.println("Turno del jugador 2");
-                    System.out.println("1. Ataque básico.");
-                    System.out.println("2. Usar pocion de vida. ");
-                    System.out.println("3. Habilidad unica");
-                    turn = scan.nextInt();
-                    switch (turn) {
-                        case 1:
-                            player1DEF = (int) (player1DEF - player2PEN);
-
-                            danyobase = player2ATQ - player1DEF;
-                            player1HP = player1HP - danyobase;
-                            System.out.println();
-                            System.out.println("Jugador 2 hizo " + danyobase + " de daño, El enemigo ahora tiene " + player1HP + "HP.");
                             break;
-                        case 2:
-                            if (potiPlayer2 > 0) {
-                                player2HP += potiheal;
-                                potiPlayer2--;
+                    }
+            } else {
+                    System.out.println("Turno del jugador 2");
+                System.out.println("1. Ataque básico.");
+                System.out.println("2. Usar pocion de vida. ");
+                System.out.println("3. Habilidad unica");
+                turn = scan.nextInt();
+                switch (turn) {
+                    case 1:
+                        player1DEF = (int) (player1DEF - player2PEN);
+                        danyobase = player2ATQ - player1DEF;
+                        player1HP = player1HP - danyobase;
+                        System.out.println();
+                        System.out.println(frasePlayer2);
+                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, El jugador 1 ahora tiene " + player1HP + "HP.");
+                        break;
+                    case 2:
+                        if (potiPlayer2 < potimaxPlayer2) {
+                            player2HP += potiheal;
+                            potimaxPlayer2--;
+
+                            if ( player2HP > player2HPmax ) {
+                                System.out.println();
+                                System.out.println("No te puedes curar por encima de la vida maxima, has perdido una poción");
+                                player2HP = player2HPmax;
+                            } else {
                                 System.out.println();
                                 System.out.println("Te quedan " + potimaxPlayer2 + "pociones");
-                                System.out.println("Jugador 2 se curó 40HP, ahora tiene " + player2HP + "HP.");
-                            } else {
-                                System.out.println("Jugador 2 no tiene más pociones.");
+                                System.out.println("Jugador 2 se curó " + potiheal + " HP, ahora tiene " + player2HP + "HP.");
                             }
-                            break;
+
+                        } else {
+                            System.out.println("Jugador 2 no tiene más pociones.");
+                        }
+                        break;
                         case 3:
-                            System.out.println("Has utilizado la habilidad " + player2ABILs);
-
-
-                    }
-                }
-                    roundcounter = roundcounter + 1;
-                roundcounter = roundcounter - 1;
+                        System.out.println("Has utilizado la habilidad " + player2ABILs);
+                        break;
+                        }
+                // Al acabar la ronda se curan un poco dependiendo del stat HPregen //
+                    player1HP = player1HP + player1HPregen;
+                    player2HP = player2HP + player2HPregen;
+            }
+                // Aqui se le otorga el turno al otro jugador //
                 turnoJugador1 = !turnoJugador1;
 
 
-                // Aqui se le otorga el turno al otro jugador //
+
+
             }
             System.out.println();
             System.out.println();
