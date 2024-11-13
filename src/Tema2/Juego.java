@@ -23,8 +23,8 @@ public class Juego {
         int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20, MagoHPregen = 5;
         double MagoCritChance = 0.35, MagArmorPen = 10;
 
-        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60, AsesinoDEF = 15, AsesinoHPregen = 5;
-        double AsesinoCritChance = 0.35, AsesinoArmorPen = 10;
+        int AsesinoVEL = 95, AsesinoATQ = 55, AsesinoHP = 60, AsesinoDEF = 15, AsesinoHPregen = 5;
+        double AsesinoCritChance = 0.35, AsesinoArmorPen = 35;
 
         int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaDEF = 15, AlquimistaHPregen = 5;
         double AlquimistaCritChance = 0.35, AlquimistaArmorPen = 10;
