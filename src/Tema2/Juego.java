@@ -10,14 +10,14 @@ public class Juego {
         int player1PJelection, player2PJelection;
 
         // Rondas y operaciones //
-        int roundcounter = 1,turn, danyobase;
+        int turn, danyobase;
 
 
         // Stats Clases//
         int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 120, CaballeroDEF = 30, CaballeroHPregen = 15;
         double CaballeroCritChance = 0.35, CaballeroArmorPen = 10;
 
-        int ArqueroVEL = 85, ArqueroATQ = 50, ArqueroHP = 65, ArqueroDEF = 15, ArqueroHPregen = 100;
+        int ArqueroVEL = 85, ArqueroATQ = 50, ArqueroHP = 65, ArqueroDEF = 15, ArqueroHPregen = 10;
         double ArqueroCritChance = 0.35, ArqueroArmorPen = 10;
 
         int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoDEF = 20, MagoHPregen = 100;
@@ -30,8 +30,24 @@ public class Juego {
         double AlquimistaCritChance = 0.35, AlquimistaArmorPen = 10;
 
 
+        // Frases Atacar //
+        String CabFrase = "Por el honor y la justicia!";
+        String ArqFrase = "¡No escaparás de mis flechas!";
+        String MagFrase = "¡Que el poder arcano te consuma!";
+        String AseFrase = "No verás el próximo amanecer";
+        String AlqFrase = "¡Mis fórmulas nunca fallan!";
+
+        String frasePlayer1 = "";
+        String frasePlayer2 = "";
+
 
         // Pociones //
+        int potimaxCab = 3;
+        int potimaxArq = 4;
+        int potimaxMag = 4;
+        int potimaxAse = 3;
+        int potimaxAlq = 5;
+
         int potimaxPlayer1 = 0, potimaxPlayer2 = 0;
         int potiPlayer1 = 0, potiPlayer2 = 0;
         final int potiheal = 40;
@@ -43,17 +59,8 @@ public class Juego {
         String player1ABILs = "";
         String player2ABILs = "";
 
-        int player1ABILcab = 0;
-        int player1ABILarq = 0;
-        int player1ABILmag = 0;
-        int player1ABILase = 0;
-        int player1ABILalq = 0;
-
-        int player2ABILcab = 0;
-        int player2ABILarq = 0;
-        int player2ABILmag = 0;
-        int player2ABILase = 0;
-        int player2ABILalq = 0;
+        int player1ABILcab = 0, player1ABILarq = 0, player1ABILmag = 0, player1ABILase = 0, player1ABILalq = 0;
+        int player2ABILcab = 0, player2ABILarq = 0, player2ABILmag = 0, player2ABILase = 0, player2ABILalq = 0;
 
         String CabABIL = "Muro de Hierro";
         String ArqABIL = "Disparo Preciso";
@@ -237,9 +244,10 @@ public class Juego {
                     player1HPregen = CaballeroHPregen;
                     player1Crit = CaballeroCritChance;
                     player1PEN = CaballeroArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 3;
-                    player1ABIL = player1ABILcab;
-                    player1ABILs = CabABIL;
+
+                    potimaxPlayer1 = potimaxCab;
+
+                    frasePlayer1 = CabFrase;
 
                     break;
                 case 2:
@@ -251,9 +259,10 @@ public class Juego {
                     player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 4;
-                    player1ABIL = player1ABILarq;
-                    player1ABILs = ArqABIL;
+
+                    potimaxPlayer1 =  potimaxArq;
+
+                    frasePlayer1 = ArqFrase;
 
 
                     break;
@@ -266,11 +275,10 @@ public class Juego {
                     player1HPregen = MagoHPregen;
                     player1Crit = MagoCritChance;
                     player1PEN = MagArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 5;
-                    player1ABIL = player1ABILmag;
-                    player1ABILs = MagABIL;
 
+                    potimaxPlayer1 = potimaxMag;
 
+                    frasePlayer1 = MagFrase;
                     break;
                 case 4:
                     System.out.println("El jugador 1 ha elegido al asesino!, tu habilidad única es " + AseABIL);
@@ -281,11 +289,10 @@ public class Juego {
                     player1HPregen = AsesinoHPregen;
                     player1Crit = AsesinoCritChance;
                     player1PEN = AsesinoArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 3;
-                    player1ABIL = player1ABILase;
-                    player1ABILs = AseABIL;
 
+                    potimaxPlayer1 = potimaxAse;
 
+                    frasePlayer1 = AseFrase;
                     break;
                 case 5:
                     System.out.println("El jugador 1 ha elegido al alquimista, tu habilidad única es " + AlqABIL);
@@ -296,11 +303,10 @@ public class Juego {
                     player1HPregen = AlquimistaHPregen;
                     player1Crit = AlquimistaCritChance;
                     player1PEN = AlquimistaArmorPen;
-                    potimaxPlayer1 = potiPlayer1 = 5;
-                    player1ABIL = player1ABILalq;
-                    player1ABILs = AlqABIL;
 
+                    potimaxPlayer1 = potimaxAlq;
 
+                    frasePlayer1 = AlqFrase;
                     break;
             }
             System.out.println();
@@ -316,10 +322,10 @@ public class Juego {
                     player1HPregen = CaballeroHPregen;
                     player1Crit = CaballeroCritChance;
                     player1PEN = CaballeroArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 3;
-                    player2ABIL = player1ABILcab;
-                    player2ABILs = CabABIL;
+                    potimaxPlayer1 = potimaxCab;
 
+
+                    frasePlayer2 = CabFrase;
 
                     break;
                 case 2:
@@ -331,10 +337,9 @@ public class Juego {
                     player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 4;
-                    player2ABIL = player1ABILarq;
-                    player2ABILs = ArqABIL;
+                    potimaxPlayer2 =  potimaxArq;
 
+                    frasePlayer2 = ArqFrase;
 
                     break;
                 case 3:
@@ -346,11 +351,10 @@ public class Juego {
                     player2HPregen = MagoHPregen;
                     player2Crit = MagoCritChance;
                     player2PEN = MagArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 5;
-                    player2ABIL = player1ABILmag;
-                    player2ABILs = ArqABIL;
 
+                    potimaxPlayer1 = potimaxMag;
 
+                    frasePlayer2 = MagFrase;
                     break;
                 case 4:
                     System.out.println("El jugador 2 ha elegido al asesino!, tu habilidad única es " + AseABIL);
@@ -361,10 +365,11 @@ public class Juego {
                     player2HPregen = AsesinoHPregen;
                     player2Crit = AsesinoCritChance;
                     player2PEN = AsesinoArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 3;
-                    player2ABIL = player1ABILase;
-                    player2ABILs = AseABIL;
 
+                    potimaxPlayer2 = potimaxAse;
+
+
+                    frasePlayer2 = AseFrase;
 
                     break;
                 case 5:
@@ -376,10 +381,10 @@ public class Juego {
                     player2HPregen = AlquimistaHPregen;
                     player2Crit = AlquimistaCritChance;
                     player2PEN = AlquimistaArmorPen;
-                    potimaxPlayer2 = potiPlayer2 = 5;
-                    player2ABIL = player2ABILalq;
-                    player2ABILs = AlqABIL;
 
+                    potimaxPlayer2= potimaxAlq;
+
+                    frasePlayer2 = AlqFrase;
 
                     break;
             }
@@ -405,15 +410,16 @@ public class Juego {
                             danyobase = player1ATQ - player2DEF;
                             player2HP = player2HP - danyobase;
                             System.out.println();
+                            System.out.println(frasePlayer1);
                             System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
                             break;
                         case 2:
-                            if (potiPlayer1 > 0) {
+                            if (potiPlayer1 > potimaxPlayer1) {
                                 player1HP += potiheal;
                                 potiPlayer1--;
                                 System.out.println();
                                 System.out.println("Te quedan " + potimaxPlayer1 + " pociones");
-                                System.out.println("Jugador 1 se curó 40HP, ahora tiene " + player1HP + "HP.");
+                                System.out.println("Jugador 1 se curó " + potiheal + "HP, ahora tiene " + player1HP + "HP.");
                             } else {
                                 System.out.println("Jugador 1 no tiene más pociones.");
                             }
@@ -437,6 +443,7 @@ public class Juego {
                         danyobase = player2ATQ - player1DEF;
                         player1HP = player1HP - danyobase;
                         System.out.println();
+                        System.out.println(frasePlayer2);
                         System.out.println("Jugador 2 hizo " + danyobase + " de daño, El jugador 1 ahora tiene " + player1HP + "HP.");
                         break;
                     case 2:
@@ -455,7 +462,7 @@ public class Juego {
 
 
                 }
-                    // Al acabar la ronda se curan un poco dependiendo del stat HPregen //
+                // Al acabar la ronda se curan un poco dependiendo del stat HPregen //
                     player1HP = player1HP + player1HPregen;
                     player2HP = player2HP + player2HPregen;
             }
