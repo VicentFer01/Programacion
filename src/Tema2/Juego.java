@@ -62,6 +62,7 @@ public class Juego {
         final int potiheal = 40;
 
         // Habilidades //
+        boolean ABILup = true;
         int player1ABIL = 0;
         int player2ABIL = 0;
 
@@ -384,7 +385,7 @@ public class Juego {
                     player2Crit = MagoCritChance;
                     player2PEN = MagArmorPen;
 
-                    potimaxPlayer1 = potimaxMag;
+                    potimaxPlayer2 = potimaxMag;
 
                     frasePlayer2 = MagFrase;
                     break;
@@ -546,21 +547,24 @@ public class Juego {
                         case 3:
                             switch (player2PJ) {
                                 case 1:
-                                    System.out.println();
-                                    System.out.println(CabABILfrase);
+                                    if (ABILup == true) {
+                                        System.out.println();
+                                        System.out.println(CabABILfrase);
 
-                                    player1DEF = (int) (player1DEF - player2PEN);
-                                    danyobase = 20 + player2ATQ - player1DEF;
+                                        player1DEF = (int) (player1DEF - player2PEN);
+                                        danyobase = 20 + player2ATQ - player1DEF;
 
 
-                                    if (randomNumber2 < player2Crit) {
-                                        danyobase = (int) (danyobase * danyocrit);
-                                        System.out.println("¡Golpe crítico!");
-                                    }
-                                    System.out.println();
-                                    System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
+                                        if (randomNumber2 < player2Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
 
-                                    player1HP -= danyobase;
+                                        player1HP -= danyobase;
+                                        ABILup = false;
+                                    } else { System.out.println("Ya has utilizado tu habilidad unica"); }
                                     break;
                                 case 2:
                                     System.out.println();
@@ -614,10 +618,6 @@ public class Juego {
                                     System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
 
                                     player1HP -= danyobase;
-
-
-
-
 
                                     break;
                                 case 5:
