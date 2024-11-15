@@ -1,6 +1,5 @@
 package Tema2;
 
-import java.util.Random;
 import java.util.Scanner;
 
 
@@ -8,7 +7,12 @@ public class Juego {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        // player input eleccion Personajes //
+        int gamemode;
+
+        // JUEGO POR CLASES //
+
+
+        // player input eleccion Personajes
         int player1PJelection = 0, player2PJelection = 0;
         int player1PJ = 0, player2PJ = 0;
         int Caballero = 1, Arquero = 2, Mago = 3, Asesino = 4, Alquimista = 5;
@@ -16,26 +20,26 @@ public class Juego {
         // Rondas y operaciones //
         int turn, danyobase = 0;
         boolean turnoJugador1;
-        double danyocrit = 1.6;
+        double danyocrit = 1.5;
         double randomNumber = Math.random();
         double randomNumber2 = Math.random();
 
 
 
         // Stats Clases//
-        int CaballeroVEL = 45, CaballeroATQ = 50, CaballeroHP = 130, CaballeroHPmax = CaballeroHP, CaballeroDEF = 20, CaballeroHPregen = 5;
-        double CaballeroCritChance = 0.3, CaballeroArmorPen = 10;
+        int CaballeroVEL = 45, CaballeroATQ = 45, CaballeroHP = 130, CaballeroHPmax = 130, CaballeroDEF = 20, CaballeroDEFmax = 20;
+        double CaballeroCritChance = 0.2, CaballeroArmorPen = 5;
 
-        int ArqueroVEL = 85, ArqueroATQ = 50, ArqueroHP = 90, ArqueroHPmax = ArqueroHP, ArqueroDEF = 15, ArqueroHPregen = 5;
-        double ArqueroCritChance = 0.6, ArqueroArmorPen = 10;
+        int ArqueroVEL = 85, ArqueroATQ = 50, ArqueroHP = 120, ArqueroHPmax = 120, ArqueroDEF = 20, ArqueroDEFmax = 20;
+        double ArqueroCritChance = 0.4, ArqueroArmorPen = 10;
 
-        int MagoVEL = 55, MagoATQ = 45, MagoHP = 95, MagoHPmax = MagoHP, MagoDEF = 20, MagoHPregen = 5;
+        int MagoVEL = 55, MagoATQ = 45, MagoHP = 115, MagoHPmax = 115, MagoDEF = 20, MagoDEFmax = 20;
         double MagoCritChance = 0.4, MagArmorPen = 10;
 
-        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60,  AsesinoHPmax = AsesinoHP, AsesinoDEF = 15, AsesinoHPregen = 10;
-        double AsesinoCritChance = 0.3, AsesinoArmorPen = 10;
+        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 100,  AsesinoHPmax = 100, AsesinoDEF = 15, AsesinoDEFmax = 15;
+        double AsesinoCritChance = 0.3, AsesinoArmorPen = 15;
 
-        int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaHPmax = AlquimistaHP, AlquimistaDEF = 15, AlquimistaHPregen = 15;
+        int AlquimistaVEL = 70, AlquimistaATQ = 40, AlquimistaHP = 120, AlquimistaHPmax = 120, AlquimistaDEF = 15, AlquimistaDEFmax = 15;
         double AlquimistaCritChance = 0.4, AlquimistaArmorPen = 10;
 
 
@@ -63,6 +67,7 @@ public class Juego {
 
         // Habilidades //
         boolean ABILup = true;
+        boolean ABILup2 = true;
         int player1ABIL = 0;
         int player2ABIL = 0;
 
@@ -79,53 +84,76 @@ public class Juego {
         String AlqABIL = "Pocion Mortal";
 
         String CabABILfrase = "El caballero afila su espada y obtiene +20ATK adicional";
-        String ArqABILfrase = "El arquero apunta con su flecha más punzante y el ataque inflinge 15% de HPs adicionales";
+        String ArqABILfrase = "El arquero dispara su flecha más punzante y el ataque inflinge 15% del HP enemigo adicionales";
         String MagABILfrase = "El mago hace un hechizo que convoca un dragón que lanza fuego que inflinge 60HPs";
         String AseABILfrase = "El asesino utiliza su cuchillo especial y obtiene +20 letalidad";
-        String AlqABILfrase = "El alquimista utiliza sus pociones y inflinge 30 HP, y se cura al máximo";
+        String AlqABILfrase = "El alquimista utiliza sus pociones y inflinge 40 HP, y se cura 30HP";
 
 
         // Stats del jugador (se otorgan al elegir clase)
-        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1HPmax = 0, player1DEF = 0, player1HPregen = 0;
+        int player1VEL = 0, player1ATQ = 0, player1HP = 0, player1HPmax = 0, player1DEF = 0, player1DEFmax = 0, player1HPregen = 0;
         double player1PEN = 0, player1Crit = 0;
         String player1HPbar = "";
 
-        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2HPmax = 0, player2DEF = 0,player2HPregen = 0;
+        int player2VEL = 0, player2ATQ = 0, player2HP = 0, player2HPmax = 0, player2DEF = 0, player2DEFmax = 0, player2HPregen = 0;
         double player2PEN = 0, player2Crit = 0;
         String player2HPbar = "";
 
+
+
+        // JUEGO POR PERSONAJES PROPIOS //
+
+
+
+        System.out.println("Como quieres jugar la partida?");
+        System.out.println("1. Personajes por defecto (clases)");
+        System.out.println("2. Crea tu propio personaje");
+
+        gamemode = scan.nextInt();
+        switch (gamemode) {
+            case 1:
+
+
+
+
+
+            case 2:
+        }
 
         System.out.println("Introduzca 'Si' para empezar");
         String inputJugar = scan.next();
 
         if (inputJugar.equalsIgnoreCase("Si")) {
-            System.out.println(" ____  _                            \n" +
-                    "| __ )(_) ___ _ ____   _____ _ __ (_) __| | ___  ___| |\n" +
-                    "|  _ \\| |/ _ \\ '_ \\ \\ / / _ \\ '_ \\| |/ _` |/ _ \\/ __| |\n" +
-                    "| |_) | |  __/ | | \\ V /  __/ | | | | (_| | (_) \\__ \\_|\n" +
-                    "|____/|_|\\___|_| |_|\\_/ \\___|_| |_|_|\\__,_|\\___/|___(_)");
+            System.out.println("""
+                     ____  _                           \s
+                    | __ )(_) ___ _ ____   _____ _ __ (_) __| | ___  ___| |
+                    |  _ \\| |/ _ \\ '_ \\ \\ / / _ \\ '_ \\| |/ _` |/ _ \\/ __| |
+                    | |_) | |  __/ | | \\ V /  __/ | | | | (_| | (_) \\__ \\_|
+                    |____/|_|\\___|_| |_|\\_/ \\___|_| |_|_|\\__,_|\\___/|___(_)""");
             System.out.println();
             System.out.println();
             System.out.println("El combate está a punto de empezar, a continuación se presentara los personajes disponibles");
             System.out.println();
             System.out.println();
             System.out.println("Caballero");
-            System.out.println("  \n" +
-                    "             .--.\n" +
-                    "            /.--.\\\n" +
-                    "            |====|\n" +
-                    "            |`::`|\n" +
-                    "        .-;`\\..../`;_.-^-._\n" +
-                    " /\\\\   /  |...::..|`   :   `|\n" +
-                    " |:'\\ |   /'''::''|   .:.   |\n" +
-                    "@|\\ /\\;-,/\\   ::  |..:::::..|\n" +
-                    "`||\\ <` >  >._::_.| ':::::' |\n" +
-                    " || `\"\"`  /   ^^  |   ':'   |\n" +
-                    " ||       |       \\    :    /\n" +
-                    " ||       |        \\   :   /\n" +
-                    " ||       |___/\\___|`-.:.-`\n" +
-                    " ||        \\_ || _/    `\n" +
-                    " ||        |  ||  |\n");
+            System.out.println("""
+                     \s
+                                 .--.
+                                /.--.\\
+                                |====|
+                                |`::`|
+                            .-;`\\..../`;_.-^-._
+                     /\\\\   /  |...::..|`   :   `|
+                     |:'\\ |   /'''::''|   .:.   |
+                    @|\\ /\\;-,/\\   ::  |..:::::..|
+                    `||\\ <` >  >._::_.| ':::::' |
+                     || `""`  /   ^^  |   ':'   |
+                     ||       |       \\    :    /
+                     ||       |        \\   :   /
+                     ||       |___/\\___|`-.:.-`
+                     ||        \\_ || _/    `
+                     ||        |  ||  |
+                    """);
 
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico.");
@@ -135,23 +163,25 @@ public class Juego {
 
             System.out.println("Arquero");
             System.out.println(
-                            "           4   \".                                        \n" +
-                            "           4    ^.                                       \n" +
-                            "           4     $                                       \n" +
-                            "           4     'b                                      \n" +
-                            "           4      \"b.                                    \n" +
-                            "           4        $                                    \n" +
-                            "           4        $r                                   \n" +
-                            "           4        $F                                   \n" +
-                            "-$b========4========$b====*P=-                           \n" +
-                            "           4       *$$F                                  \n" +
-                            "           4        $$\"                                  \n" +
-                            "           4       .$F                                   \n" +
-                            "           4       dP                                    \n" +
-                            "           4      F                                      \n" +
-                            "           4     @                                       \n" +
-                            "           4    .                                        \n" +
-                            "           J.                                            \n");
+                    """
+                                       4   ".                                       \s
+                                       4    ^.                                      \s
+                                       4     $                                      \s
+                                       4     'b                                     \s
+                                       4      "b.                                   \s
+                                       4        $                                   \s
+                                       4        $r                                  \s
+                                       4        $F                                  \s
+                            -$b========4========$b====*P=-                          \s
+                                       4       *$$F                                 \s
+                                       4        $$"                                 \s
+                                       4       .$F                                  \s
+                                       4       dP                                   \s
+                                       4      F                                     \s
+                                       4     @                                      \s
+                                       4    .                                       \s
+                                       J.                                           \s
+                            """);
 
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
@@ -160,24 +190,26 @@ public class Juego {
             System.out.println();
 
             System.out.println("Mago");
-            System.out.println("                    ____ " +
-                    "                  .'* *.'\n" +
-                    "               __/_*_*(_\n" +
-                    "              / _______ \\\n" +
-                    "             _\\_)/___\\(_/_ \n" +
-                    "            / _((\\- -/))_ \\\n" +
-                    "            \\ \\())(-)(()/ /\n" +
-                    "             ' \\(((()))/ '\n" +
-                    "            / ' \\)).))/ ' \\\n" +
-                    "           / _ \\ - | - /_  \\\n" +
-                    "          (   ( .;''';. .'  )\n" +
-                    "          _\\\"__ /    )\\ __\"/_\n" +
-                    "            \\/  \\   ' /  \\/\n" +
-                    "             .'  '...' ' )\n" +
-                    "         .'   /    b    '.  '.\n" +
-                    "     _.-'    /     Bb     '-. '-._ \n" +
-                    " _.-'       |      BBb       '-.  '-. \n" +
-                    "(________mrf\\____.dBBBb.________)____)\n");
+            System.out.println("""
+                                        ____ \
+                                      .'* *.'
+                                   __/_*_*(_
+                                  / _______ \\
+                                 _\\_)/___\\(_/_\s
+                                / _((\\- -/))_ \\
+                                \\ \\())(-)(()/ /
+                                 ' \\(((()))/ '
+                                / ' \\)).))/ ' \\
+                               / _ \\ - | - /_  \\
+                              (   ( .;''';. .'  )
+                              _\\"__ /    )\\ __"/_
+                                \\/  \\   ' /  \\/
+                                 .'  '...' ' )
+                             .'   /    b    '.  '.
+                         _.-'    /     Bb     '-. '-._\s
+                     _.-'       |      BBb       '-.  '-.\s
+                    (________mrf\\____.dBBBb.________)____)
+                    """);
 
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
@@ -187,20 +219,21 @@ public class Juego {
 
             System.out.println("Asesino");
             System.out.println(
-                    "⠀⠀⠳⡀⠁⠀⠀⢈⠓⠴⠾⣻⣒⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠙⢆⠠⡄⠀⠑⠒⠤⣀⡉⠙⠛⠓⠲⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠈⢦⡈⠉⠒⠢⢄⡀⠈⠑⠢⠤⠤⡤⠤⣙⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠈⠛⠑⠲⣄⠈⠒⢄⡀⠀⠀⠉⠲⢠⡭⢾⣒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣈⠑⠦⡀⠑⢀⠀⠀⠀⠈⢆⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⣓⠦⣉⡳⣄⠱⡀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⡧⣈⠙⠻⠧⠀⠀⠀⠀⠀⠙⣦⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢬⡑⢤⣀⠀⠀⠀⠀⠀⣠⠊⡰⠃⢉⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⡉⠲⢄⣠⠞⣡⡾⠓⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡱⠊⣡⠞⠃⢀⣾⣿⣿⣿⣿⣶⣤⣀⣀⡤⠦⢤⡀⠀⠀⠀⠀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢯⡐⢀⡴⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⡄⡗⣒⠒⢆⡀⠀\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⢰⠃⡗⠒⠒⢢⠙⢤\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢟⢃⡾⢴⡃⠀⢀⣠⠴⠞\n" +
-                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠋⠈⠛⠋⠀⠀⠀");
+                    """
+                            ⠀⠀⠳⡀⠁⠀⠀⢈⠓⠴⠾⣻⣒⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠙⢆⠠⡄⠀⠑⠒⠤⣀⡉⠙⠛⠓⠲⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠈⢦⡈⠉⠒⠢⢄⡀⠈⠑⠢⠤⠤⡤⠤⣙⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠈⠛⠑⠲⣄⠈⠒⢄⡀⠀⠀⠉⠲⢠⡭⢾⣒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣈⠑⠦⡀⠑⢀⠀⠀⠀⠈⢆⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⣓⠦⣉⡳⣄⠱⡀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⡧⣈⠙⠻⠧⠀⠀⠀⠀⠀⠙⣦⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢬⡑⢤⣀⠀⠀⠀⠀⠀⣠⠊⡰⠃⢉⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⡉⠲⢄⣠⠞⣡⡾⠓⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡱⠊⣡⠞⠃⢀⣾⣿⣿⣿⣿⣶⣤⣀⣀⡤⠦⢤⡀⠀⠀⠀⠀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢯⡐⢀⡴⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⡄⡗⣒⠒⢆⡀⠀
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⢰⠃⡗⠒⠒⢢⠙⢤
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢟⢃⡾⢴⡃⠀⢀⣠⠴⠞
+                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠋⠈⠛⠋⠀⠀⠀""");
 
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
@@ -210,17 +243,19 @@ public class Juego {
 
             System.out.println("Alquimista");
             System.out.println(
-                    "      (___)\n" +
-                    "      <   >\n" +
-                    "       ) (\n" +
-                    "      /`-.\\\n" +
-                    "     /     \\\n" +
-                    "    / _    _\\\n" +
-                    "   :,' `-.' `:\n" +
-                    "   |         |\n" +
-                    "   :         ;\n" +
-                    "    \\       /\n" +
-                    "     `.___.'");
+                    """
+                                  (___)
+                                  <   >
+                                   ) (
+                                  /`-.\\
+                                 /     \\
+                                / _    _\\
+                               :,' `-.' `:
+                               |         |
+                               :         ;
+                                \\       /
+                                 `.___.'\
+                            """);
 
             System.out.println("Habilidades");
             System.out.println("1. Ataque basico");
@@ -231,16 +266,13 @@ public class Juego {
             System.out.println();
 
 
-            System.out.println(" ____       _               _                   _     " +
-                    "/ ___|  ___| | ___  ___ ___(_) ___  _ __     __| | ___ \n" +
-                    "\\___ \\ / _ \\ |/ _ \\/ __/ __| |/ _ \\| '_ \\   / _` |/ _ \\\n" +
-                    " ___) |  __/ |  __/ (_| (__| | (_) | | | | | (_| |  __/\n" +
-                    "|____/ \\___|_|\\___|\\___\\___|_|\\___/|_| |_|  \\__,_|\\___|\n" +
-                    " _ __   ___ _ __ ___  ___  _ __   __ _ (_) ___  ___    \n" +
-                    "| '_ \\ / _ \\ '__/ __|/ _ \\| '_ \\ / _` || |/ _ \\/ __|   \n" +
-                    "| |_) |  __/ |  \\__ \\ (_) | | | | (_| || |  __/\\__ \\   \n" +
-                    "| .__/ \\___|_|  |___/\\___/|_| |_|\\__,_|/ |\\___||___/   \n" +
-                    "|_|                                  |__/              ");
+            System.out.println("""
+                     ____       _               _                   _        ____                                  _          \s
+                    / ___|  ___| | ___  ___ ___(_) ___  _ __     __| | ___  |  _ \\ ___ _ __ ___  ___  _ __   __ _ (_) ___  ___\s
+                    \\___ \\ / _ \\ |/ _ \\/ __/ __| |/ _ \\| '_ \\   / _` |/ _ \\ | |_) / _ \\ '__/ __|/ _ \\| '_ \\ / _` || |/ _ \\/ __|
+                     ___) |  __/ |  __/ (_| (__| | (_) | | | | | (_| |  __/ |  __/  __/ |  \\__ \\ (_) | | | | (_| || |  __/\\__ \\
+                    |____/ \\___|_|\\___|\\___\\___|_|\\___/|_| |_|  \\__,_|\\___| |_|   \\___|_|  |___/\\___/|_| |_|\\__,_|/ |\\___||___/
+                                                                                                                |__/          \s""");
             System.out.println();
             System.out.println();
             System.out.println("1. Caballero");
@@ -259,11 +291,12 @@ public class Juego {
                     player1ATQ = CaballeroATQ;
                     player1VEL = CaballeroVEL;
                     player1DEF = CaballeroDEF;
+                    player1DEFmax = CaballeroDEFmax;
                     player1HP = CaballeroHP;
                     player1HPmax = CaballeroHPmax;
-                    player1HPregen = CaballeroHPregen;
                     player1Crit = CaballeroCritChance;
                     player1PEN = CaballeroArmorPen;
+
 
                     potimaxPlayer1 = potimaxCab;
 
@@ -275,9 +308,9 @@ public class Juego {
                     player1ATQ = ArqueroATQ;
                     player1VEL = ArqueroVEL;
                     player1DEF = ArqueroDEF;
+                    player1DEFmax = ArqueroDEFmax;
                     player1HP = ArqueroHP;
                     player1HPmax = ArqueroHPmax;
-                    player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
 
@@ -291,9 +324,9 @@ public class Juego {
                     player1ATQ = MagoATQ;
                     player1VEL = MagoVEL;
                     player1DEF = MagoDEF;
+                    player1DEFmax = MagoDEFmax;
                     player1HP = MagoHP;
                     player1HPmax = MagoHPmax;
-                    player1HPregen = MagoHPregen;
                     player1Crit = MagoCritChance;
                     player1PEN = MagArmorPen;
 
@@ -307,9 +340,9 @@ public class Juego {
                     player1ATQ = AsesinoATQ;
                     player1VEL = AsesinoVEL;
                     player1DEF = AsesinoDEF;
+                    player1DEFmax = AsesinoDEFmax;
                     player1HP = AsesinoHP;
                     player1HPmax = AsesinoHPmax;
-                    player1HPregen = AsesinoHPregen;
                     player1Crit = AsesinoCritChance;
                     player1PEN = AsesinoArmorPen;
 
@@ -323,9 +356,9 @@ public class Juego {
                     player1ATQ = AlquimistaATQ;
                     player1VEL = AlquimistaVEL;
                     player1DEF = AlquimistaDEF;
+                    player1DEFmax = AlquimistaDEFmax;
                     player1HP = AlquimistaHP;
                     player1HPmax = AlquimistaHPmax;
-                    player1HPregen = AlquimistaHPregen;
                     player1Crit = AlquimistaCritChance;
                     player1PEN = AlquimistaArmorPen;
 
@@ -346,9 +379,9 @@ public class Juego {
                     player2ATQ = CaballeroATQ;
                     player2VEL = CaballeroVEL;
                     player2DEF = CaballeroDEF;
+                    player2DEFmax = CaballeroDEFmax;
                     player2HP = CaballeroHP;
                     player2HPmax = CaballeroHPmax;
-                    player2HPregen = CaballeroHPregen;
                     player2Crit = CaballeroCritChance;
                     player2PEN = CaballeroArmorPen;
 
@@ -363,9 +396,9 @@ public class Juego {
                     player2ATQ = ArqueroATQ;
                     player2VEL = ArqueroVEL;
                     player2DEF = ArqueroDEF;
+                    player2DEFmax = ArqueroDEFmax;
                     player2HP = ArqueroHP;
                     player2HPmax = ArqueroHPmax;
-                    player1HPregen = ArqueroHPregen;
                     player1Crit = ArqueroCritChance;
                     player1PEN = ArqueroArmorPen;
                     potimaxPlayer2 =  potimaxArq;
@@ -379,9 +412,9 @@ public class Juego {
                     player2ATQ = MagoATQ;
                     player2VEL = MagoVEL;
                     player2DEF = MagoDEF;
+                    player2DEFmax = MagoDEFmax;
                     player2HP = MagoHP;
                     player2HPmax = MagoHPmax;
-                    player2HPregen = MagoHPregen;
                     player2Crit = MagoCritChance;
                     player2PEN = MagArmorPen;
 
@@ -395,9 +428,9 @@ public class Juego {
                     player2ATQ = AsesinoATQ;
                     player2VEL = AsesinoVEL;
                     player2DEF = AsesinoDEF;
+                    player2DEFmax = AsesinoDEFmax;
                     player2HP = AsesinoHP;
                     player2HPmax = AsesinoHPmax;
-                    player2HPregen = AsesinoHPregen;
                     player2Crit = AsesinoCritChance;
                     player2PEN = AsesinoArmorPen;
 
@@ -413,9 +446,9 @@ public class Juego {
                     player2ATQ = AlquimistaATQ;
                     player2VEL = AlquimistaVEL;
                     player2DEF = AlquimistaDEF;
+                    player2DEFmax = AlquimistaDEFmax;
                     player2HP = AlquimistaHP;
                     player2HPmax = AlquimistaHPmax;
-                    player2HPregen = AlquimistaHPregen;
                     player2Crit = AlquimistaCritChance;
                     player2PEN = AlquimistaArmorPen;
 
@@ -446,15 +479,15 @@ public class Juego {
 
                     switch (turn) {
                         case 1:
-                            player2DEF = (int) (player2DEF - player1PEN);
+                            player2DEF = (int) (player2DEFmax - player1PEN);
                             danyobase = player1ATQ - player2DEF;
-
+                            System.out.println(randomNumber);
                             if (randomNumber < player1Crit) {
                                 danyobase = (int) (danyobase * danyocrit);
                                 System.out.println("Golpe crítico!");
                             }
 
-                            player2HP -= danyobase;
+                            player2HP = player2HP - danyobase;
 
                             System.out.println();
                             System.out.println(frasePlayer1);
@@ -473,7 +506,7 @@ public class Juego {
                                     player1HP = player1HPmax;
                                 } else {
                                     System.out.println();
-                                    System.out.println("Te quedan " + potimaxPlayer1 + "pociones");
+                                    System.out.println("Al jugador 1 le quedan " + potimaxPlayer1 + " pociones");
                                     System.out.println("Jugador 2 se curó " + potiheal + " HP, ahora tiene " + player1HP + "HP.");
                                 }
 
@@ -484,19 +517,105 @@ public class Juego {
                         case 3:
                             switch (player1PJ) {
                                 case 1:
-                                    System.out.println(CabABILfrase);
+                                    if (ABILup) {
+                                        System.out.println();
+                                        System.out.println(CabABILfrase);
+
+                                        player2DEF = (int) (player2DEFmax - player1PEN);
+                                        danyobase = 20 + player1ATQ - player2DEF;
+
+                                        if (randomNumber < player1Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player2HP -= danyobase;
+
+                                        System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
+
+                                        ABILup = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
                                     break;
                                 case 2:
-                                    System.out.println(ArqABILfrase);
+                                    if (ABILup) {
+                                        System.out.println();
+                                        System.out.println(ArqABILfrase);
+
+                                        player2DEF = (int) (player2DEF - player1PEN);
+                                        danyobase = (int) (((player2HPmax * 0.15) + player1ATQ) - player2DEF);
+
+                                        if (randomNumber < player1Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player2HP -= danyobase;
+                                        System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
+
+                                        ABILup = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
                                     break;
                                 case 3:
-                                    System.out.println(MagABILfrase);
+                                    if (ABILup) {
+                                        System.out.println();
+                                        System.out.println(MagABILfrase);
+
+                                        player2DEF = (int) (player2DEF - player1PEN);
+                                        danyobase = 80 - player2DEF;
+
+                                        if (randomNumber < player1Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player2HP -= danyobase;
+                                        System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
+                                    ABILup = false;
                                     break;
                                 case 4:
-                                    System.out.println(AseABILfrase);
+                                    if (ABILup) {
+                                        System.out.println();
+                                        System.out.println(AseABILfrase);
+
+                                        player2DEF = (int) (player2DEF - player1PEN + 30);
+                                        danyobase = player1ATQ - player2DEF;
+
+                                        if (randomNumber < player1Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player2HP -= danyobase;
+                                        System.out.println("Jugador 1 hizo " + danyobase + " de daño, el Jugador 2 ahora tiene " + player2HP + "HP.");
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
+                                    ABILup = false;
                                     break;
                                 case 5:
-                                    System.out.println(AlqABILfrase);
+                                    if (ABILup) {
+                                        System.out.println();
+                                        System.out.println(AlqABILfrase);
+                                        player2HP = player2HP - 40;
+                                        player1HP += 30;
+                                        System.out.println("Jugador 1 tiene " + player1HP + "y el Jugador 2 tiene " + player2HP);
+
+                                        ABILup = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
                                     break;
                             }
                             break;
@@ -509,7 +628,7 @@ public class Juego {
                 turn = scan.nextInt();
                 switch (turn) {
                     case 1:
-                        player1DEF = (int) (player1DEF - player2PEN);
+                        player1DEF = (int) (player1DEFmax - player2PEN);
                         danyobase = player2ATQ - player1DEF;
 
 
@@ -536,7 +655,7 @@ public class Juego {
                                 player2HP = player2HPmax;
                             } else {
                                 System.out.println();
-                                System.out.println("Te quedan " + potimaxPlayer2 + "pociones");
+                                System.out.println("Al jugador 2 le quedan " + potimaxPlayer2 + " pociones");
                                 System.out.println("Jugador 2 se curó " + potiheal + " HP, ahora tiene " + player2HP + "HP.");
                             }
 
@@ -547,113 +666,134 @@ public class Juego {
                         case 3:
                             switch (player2PJ) {
                                 case 1:
-                                    if (ABILup == true) {
+                                    if (ABILup2) {
                                         System.out.println();
                                         System.out.println(CabABILfrase);
 
                                         player1DEF = (int) (player1DEF - player2PEN);
                                         danyobase = 20 + player2ATQ - player1DEF;
 
+                                        if (randomNumber2 < player2Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player1HP -= danyobase;
+
+                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player2HP + "HP.");
+
+                                        ABILup2 = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
+                                    break;
+                                case 2:
+                                    if (ABILup2) {
+                                        System.out.println();
+                                        System.out.println(ArqABILfrase);
+
+                                        player1DEF = (int) (player1DEF - player2PEN);
+                                        danyobase = (int) (((player1HPmax * 0.3) + player2ATQ) - player1DEF);
 
                                         if (randomNumber2 < player2Crit) {
                                             danyobase = (int) (danyobase * danyocrit);
                                             System.out.println("¡Golpe crítico!");
                                         }
                                         System.out.println();
-                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
-
                                         player1HP -= danyobase;
-                                        ABILup = false;
-                                    } else { System.out.println("Ya has utilizado tu habilidad unica"); }
-                                    break;
-                                case 2:
-                                    System.out.println();
-                                    System.out.println(ArqABILfrase);
+                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player2HP + "HP.");
 
-                                    player1DEF = (int) (player1DEF - player2PEN);
-                                    danyobase = (int) ((player1HPmax  * 0.15) + player2ATQ - player1DEF);
-
-
-                                    if (randomNumber2 < player2Crit) {
-                                        danyobase = (int) (danyobase * danyocrit);
-                                        System.out.println("¡Golpe crítico!");
+                                        ABILup2 = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
                                     }
-                                    System.out.println();
-                                    System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
-
-                                    player1HP -= danyobase;
-
-
                                     break;
                                 case 3:
-                                    System.out.println();
-                                    System.out.println(MagABILfrase);
+                                    if (ABILup2) {
+                                        System.out.println();
+                                        System.out.println(MagABILfrase);
+                                        danyobase = 80;
 
-                                    player1DEF = (int) (player1DEF - player2PEN);
-                                    danyobase = 80 - player1DEF;
-
-
-                                    if (randomNumber2 < player2Crit) {
-                                        danyobase = (int) (danyobase * danyocrit);
-                                        System.out.println("¡Golpe crítico!");
+                                        if (randomNumber2 < player2Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player1HP -= danyobase;
+                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player2HP + "HP.");
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
                                     }
-                                    System.out.println();
-                                    System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
-
-                                    player1HP -= danyobase;
+                                    ABILup2 = false;
                                     break;
                                 case 4:
-                                    System.out.println();
-                                    System.out.println(AseABILfrase);
+                                    if (ABILup2) {
+                                        System.out.println();
+                                        System.out.println(AseABILfrase);
 
-                                    player1DEF = (int) (player1DEF - player2PEN + 20);
-                                    danyobase = player2ATQ - player1DEF;
+                                        player1DEF = (int) (player1DEF - player2PEN + 30);
+                                        danyobase = player2ATQ - player1DEF;
 
-
-                                    if (randomNumber2 < player2Crit) {
-                                        danyobase = (int) (danyobase * danyocrit);
-                                        System.out.println("¡Golpe crítico!");
+                                        if (randomNumber2 < player2Crit) {
+                                            danyobase = (int) (danyobase * danyocrit);
+                                            System.out.println("¡Golpe crítico!");
+                                        }
+                                        System.out.println();
+                                        player1HP -= danyobase;
+                                        System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
                                     }
-                                    System.out.println();
-                                    System.out.println("Jugador 2 hizo " + danyobase + " de daño, el Jugador 1 ahora tiene " + player1HP + "HP.");
-
-                                    player1HP -= danyobase;
-
+                                    ABILup2 = false;
                                     break;
                                 case 5:
-                                    System.out.println();
-                                    System.out.println(AlqABILfrase);
+                                    if (ABILup2) {
+                                        System.out.println();
+                                        System.out.println(AlqABILfrase);
+                                        player1HP = player2HP - 40;
+                                        player2HP += 30;
+                                        System.out.println("Jugador 2 tiene " + player2HP + "y el Jugador 1 tiene " + player1HP);
+
+
+                                        ABILup2 = false;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println("Ya has utilizado tu habilidad única");
+                                    }
                                     break;
                             }
-                        break;
+
+                            break;
                         }
-                // Al acabar la ronda se curan un poco dependiendo del stat HPregen //
-                    player1HP = player1HP + player1HPregen;
-                    player2HP = player2HP + player2HPregen;
+
             }
                 // Aqui se le otorga el turno al otro jugador //
                 turnoJugador1 = !turnoJugador1;
 
 
-
-
             }
             System.out.println();
             System.out.println();
-            System.out.println(player1HP > 0 ? " _____ _     _                       _              _                           \n" +
-                    "| ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  / |   __ _  __ _ _ __   __ _ \n" +
-                    "|  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__| | |  / _` |/ _` | '_ \\ / _` |\n" +
-                    "| |___| |   | | |_| | (_| | (_| | (_| | (_) | |    | | | (_| | (_| | | | | (_| |\n" +
-                    "|_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_|  \\__, |\\__,_|_| |_|\\__,_|\n" +
-                    "          |__/       |___/                              |___/                   " :
+            System.out.println(player1HP > 0 ? """
+                     _____ _     _                       _              _                          \s
+                    | ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  / |   __ _  __ _ _ __   __ _\s
+                    |  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__| | |  / _` |/ _` | '_ \\ / _` |
+                    | |___| |   | | |_| | (_| | (_| | (_| | (_) | |    | | | (_| | (_| | | | | (_| |
+                    |_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_|  \\__, |\\__,_|_| |_|\\__,_|
+                              |__/       |___/                              |___/                  \s""" :
 
 
-                    " _____ _     _                       _              ____                            \n" +
-                            "| ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  |___ \\    __ _  __ _ _ __   __ _ \n" +
-                            "|  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__|   __) |  / _` |/ _` | '_ \\ / _` |\n" +
-                            "| |___| |   | | |_| | (_| | (_| | (_| | (_) | |     / __/  | (_| | (_| | | | | (_| |\n" +
-                            "|_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_____|  \\__, |\\__,_|_| |_|\\__,_|\n" +
-                            "          |__/       |___/                                  |___/                   ");
+                    """
+                             _____ _     _                       _              ____                           \s
+                            | ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  |___ \\    __ _  __ _ _ __   __ _\s
+                            |  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__|   __) |  / _` |/ _` | '_ \\ / _` |
+                            | |___| |   | | |_| | (_| | (_| | (_| | (_) | |     / __/  | (_| | (_| | | | | (_| |
+                            |_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_____|  \\__, |\\__,_|_| |_|\\__,_|
+                                      |__/       |___/                                  |___/                  \s""");
         } else {
             System.out.println("Una pena que no quieras jugar.");
         }
