@@ -23,7 +23,7 @@ public class Juego {
         int MagoVEL = 55, MagoATQ = 45, MagoHP = 80, MagoHPmax = 80, MagoDEF = 20, MagoHPregen = 100;
         double MagoCritChance = 0.35, MagArmorPen = 10;
 
-        int AsesinoVEL = 95, AsesinoATQ = 45, AsesinoHP = 60,  AsesinoHPmax = 60, AsesinoDEF = 15, AsesinoHPregen = 15;
+        int AsesinoVEL = 95, AsesinoATQ = 55, AsesinoHP = 60,  AsesinoHPmax = 60, AsesinoDEF = 15, AsesinoHPregen = 15;
         double AsesinoCritChance = 0.35, AsesinoArmorPen = 10;
 
         int AlquimistaVEL = 70, AlquimistaATQ = 35, AlquimistaHP = 80, AlquimistaHPmax = 80, AlquimistaDEF = 15, AlquimistaHPregen = 15;
@@ -45,7 +45,7 @@ public class Juego {
         int potimaxCab = 3;
         int potimaxArq = 4;
         int potimaxMag = 4;
-        int potimaxAse = 3;
+        int potimaxAse = 4;
         int potimaxAlq = 5;
 
         int potimaxPlayer1 = 0, potimaxPlayer2 = 0;
