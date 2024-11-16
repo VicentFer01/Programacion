@@ -7,9 +7,9 @@ public class Juego {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        int gamemode;
+        int gamemode; // modo de juego //
 
-        // JUEGO POR CLASES //
+        // JUEGO POR CLASES (he intentado reutilizar el maximo de variables posibles para los dos gamemodes //
 
 
         // player input eleccion Personajes
@@ -18,7 +18,7 @@ public class Juego {
         int Caballero = 1, Arquero = 2, Mago = 3, Asesino = 4, Alquimista = 5;
 
         // Rondas y operaciones //
-        int turn, danyobase = 0;
+        int turn = 0, danyobase = 0;
         boolean turnoJugador1;
         double danyocrit = 1.5;
         double randomNumber = Math.random();
@@ -60,12 +60,12 @@ public class Juego {
         int potimaxAse = 3;
         int potimaxAlq = 5;
 
-        int potimaxPlayer1 = 0, potimaxPlayer2 = 0;
+        int potimaxPlayer1 = 0, potimaxPlayer2 = 0; //Maximo de pociones//
         int potiPlayer1 = 0, potiPlayer2 = 0; //Esto es el counter de pociones//
         final int potiheal = 40;
 
         // Habilidades //
-        boolean ABILup = true;
+        boolean ABILup = true;  // La habilidad solo se puede utilizar una vez asi que al utilizarse esto se vuelve false //
         boolean ABILup2 = true;
         int player1ABIL = 0;
         int player2ABIL = 0;
@@ -84,7 +84,7 @@ public class Juego {
 
         String CabABILfrase = "El caballero afila su espada y obtiene +20ATK adicional";
         String ArqABILfrase = "El arquero dispara su flecha más punzante y el ataque inflinge 15% del HP enemigo adicionales";
-        String MagABILfrase = "El mago hace un hechizo que convoca un dragón que lanza fuego que inflinge 60HPs";
+        String MagABILfrase = "El mago hace un hechizo que convoca un dragón que lanza fuego que inflinge 80HPs";
         String AseABILfrase = "El asesino utiliza su cuchillo especial y obtiene +20 letalidad";
         String AlqABILfrase = "El alquimista utiliza sus pociones y inflinge 40 HP, y se cura 30HP";
 
@@ -99,8 +99,7 @@ public class Juego {
         String player2HPbar = "";
 
 
-        // JUEGO POR PERSONAJES PROPIOS //
-
+        // Seleccionar gamemode //
 
         System.out.println("Como quieres jugar la partida?");
         System.out.println("1. Personajes por defecto (clases)");
@@ -470,7 +469,6 @@ public class Juego {
                                 case 1:
                                     player2DEF = (int) (player2DEFmax - player1PEN);
                                     danyobase = player1ATQ - player2DEF;
-                                    System.out.println(randomNumber);
                                     if (randomNumber < player1Crit) {
                                         danyobase = (int) (danyobase * danyocrit);
                                         System.out.println("Golpe crítico!");
@@ -793,35 +791,158 @@ public class Juego {
                 System.out.println("Bienvenido al duelo de personajes propios!");
                 System.out.println();
                 System.out.println("Reglas para la creación de personajes");
-                System.out.println("El total de las 4 estadísticas no puede ser superior a 500, además cada estadística no puede superar 200.");
+                System.out.println();
+                System.out.println("El total de las 4 estadísticas no puede ser superior a 500, además cada estadística no puede superar 200 (excepto DEF > 50.");
                 System.out.println();
 
-                int maxStats = 500;
-                int maxIndividualStat = 200;
 
                 int player1Total;
+                int player2Total;
+
+
                 do {
+                    System.out.println();
                     System.out.println("Jugador 1, introduce tus estadísticas:");
                     System.out.println();
 
-                    System.out.println("Introduce tu ataque :");
+                    System.out.print("Introduce tu ataque (0-200): ");
                     player1ATQ = scan.nextInt();
 
-                    System.out.println("Introduce tu defensa :");
+                    System.out.print("Introduce tu defensa (0-50): ");
                     player1DEF = scan.nextInt();
 
-                    System.out.println("Introduce tu velocidad:");
+                    System.out.print("Introduce tu velocidad (0-200): ");
                     player1VEL = scan.nextInt();
 
-                    System.out.println("Introduce tus puntos de vida :");
+                    System.out.print("Introduce tus puntos de vida (0-200): ");
                     player1HP = scan.nextInt();
 
                     player1Total = player1ATQ + player1DEF + player1VEL + player1HP;
+
+                    if (player1Total > 500) {
+                        System.out.println();
+                        System.out.println("El total de tus estadísticas supera el máximo permitido (500)");
+                    }
+
+                    if (player1ATQ > 200 || player1DEF > 200 || player1VEL > 200 || player1HP > 200) {
+                        System.out.println();
+                        System.out.println("Ninguna estadística individual puede superar 200. Intenta de nuevo.");
+                    }
+
+                } while (player1Total > 500 || player1ATQ > 200 || player1DEF > 50 || player1VEL > 200 || player1HP > 200);
+
+                do {
+                    System.out.println();
+                    System.out.println("Jugador 2, introduce tus estadísticas:");
+                    System.out.println();
+
+                    System.out.print("Introduce tu ataque (0-200): ");
+                    player2ATQ = scan.nextInt();
+
+                    System.out.print("Introduce tu defensa (0-50): ");
+                    player2DEF = scan.nextInt();
+
+                    System.out.print("Introduce tu velocidad (0-200): ");
+                    player2VEL = scan.nextInt();
+
+                    System.out.print("Introduce tus puntos de vida (0-200): ");
+                    player2HP = scan.nextInt();
+
+                    player2Total = player2ATQ + player2DEF + player2VEL + player2HP;
+
+                    if (player2Total > 500) {
+                        System.out.println();
+                        System.out.println("El total de tus estadísticas supera el máximo permitido (500). Intenta de nuevo.");
+                    }
+
+                    if (player2ATQ > 200 || player2DEF > 50 || player2VEL > 200 || player2HP > 200) {
+                        System.out.println();
+                        System.out.println("Ninguna estadística individual puede superar 200. Intenta de nuevo.");
+                    }
+
+                } while (player2Total > 500);
+
+                turnoJugador1 = player1VEL >= player2VEL;
+
+                while (player1HP > 0 && player2HP > 0) {
+                    System.out.println();
+                    System.out.println();
+
+                    if (turnoJugador1) {
+                        System.out.println("Turno del Jugador 1");
+                        System.out.println("1. Ataque básico.");
+                        System.out.println("2. Usar poción de vida.");
+                        System.out.println("3. Habilidad única.");
+                        turn = scan.nextInt();
+
+                        switch (turn) {
+                            case 1:
+                                danyobase = player1ATQ - player2DEF;
+                                player2HP -= danyobase;
+                                System.out.println("El Jugador 1 hizo " + danyobase + " de daño. Jugador 2 ahora tiene " + player2HP + " puntos de vida.");
+                                break;
+
+                            case 2:
+                                player1HP += 50;
+                                System.out.println("El Jugador se ha curado 50 de HP y ahora tiene " + player1HP + " puntos de vida.");
+                                break;
+
+                            default:
+                                System.out.println("Acción no válida. Pierdes el turno.");
+                                break;
+                        }
+
+                        turnoJugador1 = false;
+
+                    } else {
+                        System.out.println("Turno del Jugador 2");
+                        System.out.println("1. Ataque básico.");
+                        System.out.println("2. Usar poción de vida.");
+                        System.out.println("3. Habilidad única.");
+                        turn = scan.nextInt();
+
+                        switch (turn) {
+                            case 1:
+                                danyobase = player2ATQ - player1DEF;
+                                player1HP -= danyobase;
+                                System.out.println("El Jugador 2 hizo " + danyobase + " de daño. Jugador 1 ahora tiene " + player1HP + " puntos de vida.");
+                                break;
+
+                            case 2:
+                                player2HP += 50;
+                                System.out.println("El Jugador 2 usó una poción que ha curado 50 y ahora tiene " + player2HP + " puntos de vida.");
+                                break;
+
+                            default:
+                                System.out.println("Acción no válida. Pierdes el turno.");
+                                break;
+                        }
+
+                        turnoJugador1 = true;
+                    }
                 }
 
-                while (player1Total > maxStats);
-        }
+                System.out.println(player1HP > 0 ? """
+                             _____ _     _                       _              _                          \s
+                            | ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  / |   __ _  __ _ _ __   __ _\s
+                            |  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__| | |  / _` |/ _` | '_ \\ / _` |
+                            | |___| |   | | |_| | (_| | (_| | (_| | (_) | |    | | | (_| | (_| | | | | (_| |
+                            |_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_|  \\__, |\\__,_|_| |_|\\__,_|
+                                      |__/       |___/                              |___/                  \s""" :
+
+
+                        """
+                                 _____ _     _                       _              ____                           \s
+                                | ____| |   (_)_   _  __ _  __ _  __| | ___  _ __  |___ \\    __ _  __ _ _ __   __ _\s
+                                |  _| | |   | | | | |/ _` |/ _` |/ _` |/ _ \\| '__|   __) |  / _` |/ _` | '_ \\ / _` |
+                                | |___| |   | | |_| | (_| | (_| | (_| | (_) | |     / __/  | (_| | (_| | | | | (_| |
+                                |_____|_|  _/ |\\__,_|\\__, |\\__,_|\\__,_|\\___/|_|    |_____|  \\__, |\\__,_|_| |_|\\__,_|
+                                          |__/       |___/                                  |___/                  \s""");
+
+                scan.close();
         }
     }
+}
+
 
 
