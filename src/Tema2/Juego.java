@@ -502,7 +502,7 @@ public class Juego {
                                             } else {
                                                 System.out.println();
                                                 System.out.println("Al jugador 1 le quedan " + potimaxPlayer1 + " pociones");
-                                                System.out.println("Jugador 2 se curó " + potiheal + " HP, ahora tiene " + player1HP + "HP.");
+                                                System.out.println("Jugador 1 se curó " + potiheal + " HP, ahora tiene " + player1HP + "HP.");
                                             }
 
                                         } else {
