@@ -12,10 +12,13 @@ public class Libreria {
                 return 0;
             }
         }
-        public  static boolean isAdult(int edad) {
+
+        public static boolean isAdult(int edad) {
             if (edad > 18) {
                 return true;
-            } else  {return false; }
+            } else {
+                return false;
+            }
         }
 
 
@@ -31,7 +34,7 @@ public class Libreria {
             return 2 * 3.14 * radio;
         }
 
-        public static double calculateCircleArea( double radio) {
+        public static double calculateCircleArea(double radio) {
             return 3.14 * (radio * radio);
         }
 
@@ -59,6 +62,7 @@ public class Libreria {
 
     // Ej 5
     public static void tabla1() {
+        System.out.println("Tabla del 1");
         System.out.println("1 * 1 = 1");
         System.out.println("1 * 2 = 2");
         System.out.println("1 * 3 = 3");
@@ -69,9 +73,11 @@ public class Libreria {
         System.out.println("1 * 8 = 8");
         System.out.println("1 * 9 = 9");
         System.out.println("1 * 10 = 10");
+        System.out.println();
     }
 
     public static void tabla2() {
+        System.out.println("Tabla del 2");
         System.out.println("2 * 1 = 2");
         System.out.println("2 * 2 = 4");
         System.out.println("2 * 3 = 6");
@@ -82,9 +88,11 @@ public class Libreria {
         System.out.println("2 * 8 = 16");
         System.out.println("2 * 9 = 18");
         System.out.println("2 * 10 = 20");
+        System.out.println();
     }
 
     public static void tabla3() {
+        System.out.println("Tabla del 3");
         System.out.println("3 * 1 = 3");
         System.out.println("3 * 2 = 6");
         System.out.println("3 * 3 = 9");
@@ -95,9 +103,11 @@ public class Libreria {
         System.out.println("3 * 8 = 24");
         System.out.println("3 * 9 = 27");
         System.out.println("3 * 10 = 30");
+        System.out.println();
     }
 
     public static void tabla4() {
+        System.out.println("Tabla del 4");
         System.out.println("4 * 1 = 4");
         System.out.println("4 * 2 = 8");
         System.out.println("4 * 3 = 12");
@@ -108,8 +118,11 @@ public class Libreria {
         System.out.println("4 * 8 = 32");
         System.out.println("4 * 9 = 36");
         System.out.println("4 * 10 = 40");
+        System.out.println();
     }
+
     public static void tabla5() {
+        System.out.println("Tabla del 5");
         System.out.println("5 * 1 = 5");
         System.out.println("5 * 2 = 10");
         System.out.println("5 * 3 = 15");
@@ -120,8 +133,32 @@ public class Libreria {
         System.out.println("5 * 8 = 40");
         System.out.println("5 * 9 = 45");
         System.out.println("5 * 10 = 50");
+        System.out.println();
     }
 
+    // Ejercicio 7
 
-}
+        public static boolean esPrimo(int num) {
+            if (num <= 1) {
+                return false;
+            }
+            if (num == 2) {
+                return true;
+            }
+            if (num % 2 == 0) {
+                return false;
+            }
+
+            int raiz = (int) Math.sqrt(num);
+            for (int i = 3; i <= raiz; i += 2) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+
+
+        }
+    }
+
 
