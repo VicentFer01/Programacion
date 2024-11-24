@@ -28,9 +28,7 @@ public class Tema3Ejercicio4 {
                     totaldolares = scan.nextInt();
                     result = dollar2euro(totaldolares);
                     System.out.println(result);
-
                     break;
-
             }
         } while (option != 3);
     }
