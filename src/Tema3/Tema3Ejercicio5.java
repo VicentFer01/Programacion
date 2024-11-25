@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static Tema3.Libreria.*;
 
-public class Tema3Ejercicio5 {
+public class    Tema3Ejercicio5 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int tabla, result = 0;
