@@ -10,15 +10,18 @@ public class Tema3Ejercicio9 {
         System.out.println("Introduce el caracter");
         char caracter = scan.next().charAt(0);
 
-        System.out.println("Introduce la longitud");
+        System.out.println("Introduce cuantas filas quieres");
         int leng = scan.nextInt();
 
         triangle(caracter, leng);
     }
 
 
-    public static void triangle(char caracter, int numLineas) {
-        for ( int counter = 0; counter <= long; counter++)
+    public static void triangle(char caracter, int leng) {
+        for ( int i = 0; i < leng; i++) {
+            System.out.println(caracter);
+
+        }
 
     }
 }

@@ -63,80 +63,110 @@ public class Libreria {
 
 
     // Ej 5
-    public static void tabla1() {
-        System.out.println("Tabla del 1");
-        System.out.println("1 * 1 = 1");
-        System.out.println("1 * 2 = 2");
-        System.out.println("1 * 3 = 3");
-        System.out.println("1 * 4 = 4");
-        System.out.println("1 * 5 = 5");
-        System.out.println("1 * 6 = 6");
-        System.out.println("1 * 7 = 7");
-        System.out.println("1 * 8 = 8");
-        System.out.println("1 * 9 = 9");
-        System.out.println("1 * 10 = 10");
-        System.out.println();
+    public static int tabla1(int tabla) {
+        int counter, result = 0;
+       for (counter = 1; counter < 10; counter++) {
+           result = 1 * counter;
+       }
+       return result;
     }
 
-    public static void tabla2() {
-        System.out.println("Tabla del 2");
-        System.out.println("2 * 1 = 2");
-        System.out.println("2 * 2 = 4");
-        System.out.println("2 * 3 = 6");
-        System.out.println("2 * 4 = 9");
-        System.out.println("2 * 5 = 10");
-        System.out.println("2 * 6 = 12");
-        System.out.println("2 * 7 = 14");
-        System.out.println("2 * 8 = 16");
-        System.out.println("2 * 9 = 18");
-        System.out.println("2 * 10 = 20");
-        System.out.println();
+    public static int tabla2(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 2 * counter;
+        }
+        return result;
     }
 
-    public static void tabla3() {
-        System.out.println("Tabla del 3");
-        System.out.println("3 * 1 = 3");
-        System.out.println("3 * 2 = 6");
-        System.out.println("3 * 3 = 9");
-        System.out.println("3 * 4 = 12");
-        System.out.println("3 * 5 = 15");
-        System.out.println("3 * 6 = 18");
-        System.out.println("3 * 7 = 21");
-        System.out.println("3 * 8 = 24");
-        System.out.println("3 * 9 = 27");
-        System.out.println("3 * 10 = 30");
-        System.out.println();
+    public static int tabla3(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 3 * counter;
+        }
+        return result;
     }
 
-    public static void tabla4() {
-        System.out.println("Tabla del 4");
-        System.out.println("4 * 1 = 4");
-        System.out.println("4 * 2 = 8");
-        System.out.println("4 * 3 = 12");
-        System.out.println("4 * 4 = 16");
-        System.out.println("4 * 5 = 20");
-        System.out.println("4 * 6 = 24");
-        System.out.println("4 * 7 = 28");
-        System.out.println("4 * 8 = 32");
-        System.out.println("4 * 9 = 36");
-        System.out.println("4 * 10 = 40");
-        System.out.println();
+    public static int tabla4(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 4 * counter;
+        }
+        return result;
     }
 
-    public static void tabla5() {
-        System.out.println("Tabla del 5");
-        System.out.println("5 * 1 = 5");
-        System.out.println("5 * 2 = 10");
-        System.out.println("5 * 3 = 15");
-        System.out.println("5 * 4 = 20");
-        System.out.println("5 * 5 = 25");
-        System.out.println("5 * 6 = 30");
-        System.out.println("5 * 7 = 35");
-        System.out.println("5 * 8 = 40");
-        System.out.println("5 * 9 = 45");
-        System.out.println("5 * 10 = 50");
-        System.out.println();
+    public static int tabla5(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 1 * counter;
+        }
+        return result;
     }
+
+    public static int tabla6(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 6 * counter;
+        }
+        return result;
+    }
+
+    public static int tabla7(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 7 * counter;
+        }
+        return result;
+    }
+
+    public static int tabla8(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 8 * counter;
+        }
+        return result;
+    }
+
+    public static int tabla9(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 9 * counter;
+        }
+        return result;
+    }
+
+    public static int tabla10(int tabla) {
+        int counter, result = 0;
+        for (counter = 1; counter < 10; counter++) {
+            result = 10 * counter;
+        }
+        return result;
+    }
+
+
+
+    public static void mostrarTablasDel1Al10() {
+        for (int counter = 1; counter <= 10; counter++) {
+            System.out.println("Tabla del " + counter + ":");
+            for (int num = 1; num <= 10; num++) {
+                System.out.println(counter + " x " + num + " = " + (counter * num));
+            }
+            System.out.println(); // Espacio entre tablas
+        }
+    }
+
+
+
+    public static boolean esBisiesto(int anyo, int mes, int dia) {
+
+        if ((anyo % 4 == 0 && anyo % 100 != 0) || (anyo % 400 == 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
     // Ejercicio 7
 

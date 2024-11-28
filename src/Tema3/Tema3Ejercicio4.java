@@ -5,7 +5,7 @@ import java.util.Scanner;
 import static Tema3.Libreria.Libreria1.*;
 
 
-public class Tema3Ejercicio4 {
+public class -Tema3Ejercicio4 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int option;
