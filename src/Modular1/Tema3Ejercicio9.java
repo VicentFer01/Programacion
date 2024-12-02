@@ -1,4 +1,4 @@
-package Tema3;
+package Modular1;
 
 import java.util.Scanner;
 

@@ -1,8 +1,8 @@
-package Tema3;
-import static Tema3.Libreria.*;
-import static Tema3.Libreria.Libreria1.*;
-import static Tema3.Libreria.Libreria1.calculateCirclePerimeter;
-import static Tema3.Tema3Ejercicio8.validDate;
+package Modular1;
+import static Modular1.Libreria.*;
+import static Modular1.Libreria.Libreria1.*;
+import static Modular1.Libreria.Libreria1.calculateCirclePerimeter;
+import static Modular1.Tema3Ejercicio8.validDate;
 
 
 import java.util.Scanner;

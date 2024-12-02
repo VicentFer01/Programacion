@@ -1,9 +1,8 @@
-package Tema3;
+package Modular1;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.Scanner;
 
-import static Tema3.Libreria.esBisiesto;
+import static Modular1.Libreria.esBisiesto;
 
 public class Tema3Ejercicio8 {
     public static void main(String[] args) {

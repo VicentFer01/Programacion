@@ -1,7 +1,6 @@
-package Tema3;
-import java.util.Scanner;
+package Modular1;
 
-import static Tema3.Libreria.*;
+import static Modular1.Libreria.*;
 
 public class Tema3Ejercicio6 {
     public static void main(String[] args) {

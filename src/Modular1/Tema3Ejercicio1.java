@@ -1,9 +1,9 @@
-package Tema3;
+package Modular1;
 
 import java.util.Scanner;
 
-import static Tema3.Libreria.Libreria1.isAdult;
-import static Tema3.Libreria.Libreria1.numberSign;
+import static Modular1.Libreria.Libreria1.isAdult;
+import static Modular1.Libreria.Libreria1.numberSign;
 
 
 public class Tema3Ejercicio1 {
