@@ -18,18 +18,7 @@ public class Tema3Ejercicio9 {
 
 
     public static void triangle(char caracter, int leng) {
-        for ( int i = 0; i <= leng; i++) {
 
-            for (int j = 0; j <= leng -i -1; j++)  {
-            System.out.println(" ");
-            }
-
-            for (int z = 0; z < i; z++){
-                System.out.println(caracter + " ");
-            }
-            System.out.println();
 
         }
-
-    }
 }

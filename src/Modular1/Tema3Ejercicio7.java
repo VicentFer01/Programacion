@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import static Modular1.Libreria.esPrimo;
 
-public class Tema3Ejercicio7 {
+public class
+
+Tema3Ejercicio7 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int num;

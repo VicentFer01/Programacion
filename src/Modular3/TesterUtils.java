@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class TesterUtils {
     public static void main(String[] args) {
-    System.out.println("Introduce euros");
-    Scanner scan = new Scanner(System.in);
-    double euros = scan.nextDouble();
-    double tax = scan.nextDouble();
+        Scanner scan = new Scanner(System.in);
+        int dni = scan.nextInt();
+        char letraDNI = Utils.getLetraDNI(dni);
+        System.out.println(letraDNI);
 
-    double total = Utils.getNetPrice(euros, tax);
-    System.out.println(total);
+        boolean validNIF = Utils.isValidNIF(dni);
+        if (validNIF == true) { System.out.println("El DNI es valido"); }
+            else {
+                System.out.println("El DNI no es valido");
+
+            }
+        }
     }
 
-}

@@ -151,7 +151,7 @@ public class Libreria {
             for (int num = 1; num <= 10; num++) {
                 System.out.println(counter + " x " + num + " = " + (counter * num));
             }
-            System.out.println(); // Espacio entre tablas
+            System.out.println();
         }
     }
 
