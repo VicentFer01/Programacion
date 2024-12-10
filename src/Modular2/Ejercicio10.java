@@ -39,7 +39,7 @@ public class Ejercicio10 {
 
                 System.out.println("Perimetro del cuadrado " + perimetroCuadrado + " Perimetro del circulo " + perimetroCirculo + " Perimetro del rectangulo " + perimetroRectangulo);
                 System.out.println("Area del cuadrado " + areaCuadrado + " Area del circulo " + areaCirculo + " Area del rectangulo " + areaRectangulo);
-
+                break;
             case 2:
                 System.out.println("Introduce un numero");
                 int num = scan.nextInt();
@@ -49,6 +49,7 @@ public class Ejercicio10 {
                 } else {
                     System.out.println("No es primo");
                 }
+                break;
             case 3:
                 System.out.println("Introduce un numero");
                 num = scan.nextInt();
@@ -58,26 +59,31 @@ public class Ejercicio10 {
                 } else {
                     System.out.println("Es primo");
                 }
+                break;
             case 4:
                 System.out.println("Introduce un numero");
                 num = scan.nextInt();
                 int pares = MyMath.enteroParReader(num);
                 System.out.println(pares);
+                break;
             case 5:
                 System.out.println("Introduce un numero");
                 num = scan.nextInt();
                 int impares = MyMath.enteroImparReader(num);
                 System.out.println(impares);
+                break;
             case 6:
                 System.out.println("Introduce un numero");
                 num = scan.nextInt();
                 int factorial = MyMath.calcularFactorial(num);
                 System.out.println(factorial);
+                break;
             case 7:
                 System.out.println("Introduce un numero");
                 num = scan.nextInt();
                 int factorial2 = MyMath.calcularFactorial2(num);
                 System.out.println(factorial2);
+                break;
             case 8:
                 System.out.println("Introduce el primer coeficiente");
                 int num1 = scan.nextInt();
@@ -87,6 +93,7 @@ public class Ejercicio10 {
                 int num3 = scan.nextInt();
                 int discriminante = MyMath.calcularDiscriminante(num1, num2, num3);
                 System.out.println(discriminante);
+                break;
             case 9:
                 System.out.println("Introduce el entero");
                 num = scan.nextInt();

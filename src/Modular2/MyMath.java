@@ -39,9 +39,12 @@ public class MyMath {
         if (num == 2) {
             return true;
         }
+        /*
         if (num % 2 == 0) {
             return false;
         }
+
+         */
 
         int raiz = (int) Math.sqrt(num);
         for (int i = 3; i <= raiz; i += 2) {

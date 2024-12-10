@@ -65,80 +65,99 @@ public class Libreria {
     // Ej 5
     public static int tabla1(int tabla) {
         int counter, result = 0;
-       for (counter = 1; counter < 10; counter++) {
+       for (counter = 1; counter <= 10; counter++) {
            result = 1 * counter;
+           System.out.println(result);
        }
        return result;
     }
 
     public static int tabla2(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 2 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla3(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 3 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla4(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 4 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla5(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
-            result = 1 * counter;
+        for (counter = 1; counter <= 10; counter++) {
+            result = 5 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla6(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 6 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla7(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 7 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla8(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 8 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla9(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 9 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
 
     public static int tabla10(int tabla) {
         int counter, result = 0;
-        for (counter = 1; counter < 10; counter++) {
+        for (counter = 1; counter <= 10; counter++) {
             result = 10 * counter;
+            System.out.println(result);
+
         }
         return result;
     }
@@ -177,9 +196,12 @@ public class Libreria {
             if (num == 2) {
                 return true;
             }
+            /*
             if (num % 2 == 0) {
                 return false;
             }
+
+             */
 
             int raiz = (int) Math.sqrt(num);
             for (int i = 3; i <= raiz; i += 2) {
