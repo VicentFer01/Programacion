@@ -2,6 +2,8 @@ package Tema2;
 
 import java.util.Scanner;
 
+import static Tema2.JuegoFunctions.*;
+
 
 public class Juego {
     public static void main(String[] args) {
@@ -9,7 +11,6 @@ public class Juego {
 
         int gamemode; // modo de juego //
 
-        // JUEGO POR CLASES (he intentado reutilizar el maximo de variables posibles para los dos gamemodes //
 
 
         // player input eleccion Personajes
@@ -107,147 +108,9 @@ public class Juego {
             gamemode = scan.nextInt();
             switch (gamemode) {
                 case 1:
+                    personajes();
 
-                        System.out.println("""
-                                 ____  _                           \s
-                                | __ )(_) ___ _ ____   _____ _ __ (_) __| | ___  ___| |
-                                |  _ \\| |/ _ \\ '_ \\ \\ / / _ \\ '_ \\| |/ _` |/ _ \\/ __| |
-                                | |_) | |  __/ | | \\ V /  __/ | | | | (_| | (_) \\__ \\_|
-                                |____/|_|\\___|_| |_|\\_/ \\___|_| |_|_|\\__,_|\\___/|___(_)""");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println("El combate está a punto de empezar, a continuación se presentara los personajes disponibles");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println("Caballero");
-                        System.out.println("""
-                                 \s
-                                             .--.
-                                            /.--.\\
-                                            |====|
-                                            |`::`|
-                                        .-;`\\..../`;_.-^-._
-                                 /\\\\   /  |...::..|`   :   `|
-                                 |:'\\ |   /'''::''|   .:.   |
-                                @|\\ /\\;-,/\\   ::  |..:::::..|
-                                `||\\ <` >  >._::_.| ':::::' |
-                                 || `""`  /   ^^  |   ':'   |
-                                 ||       |       \\    :    /
-                                 ||       |        \\   :   /
-                                 ||       |___/\\___|`-.:.-`
-                                 ||        \\_ || _/    `
-                                 ||        |  ||  |
-                                """);
 
-                        System.out.println("Habilidades");
-                        System.out.println("1. Ataque basico.");
-                        System.out.println("2. Usar poción de vida (3x)");
-                        System.out.println("3. Habilidad única (1x)");
-                        System.out.println();
-
-                        System.out.println("Arquero");
-                        System.out.println(
-                                """
-                                                   4   ".                                       \s
-                                                   4    ^.                                      \s
-                                                   4     $                                      \s
-                                                   4     'b                                     \s
-                                                   4      "b.                                   \s
-                                                   4        $                                   \s
-                                                   4        $r                                  \s
-                                                   4        $F                                  \s
-                                        -$b========4========$b====*P=-                          \s
-                                                   4       *$$F                                 \s
-                                                   4        $$"                                 \s
-                                                   4       .$F                                  \s
-                                                   4       dP                                   \s
-                                                   4      F                                     \s
-                                                   4     @                                      \s
-                                                   4    .                                       \s
-                                                   J.                                           \s
-                                        """);
-
-                        System.out.println("Habilidades");
-                        System.out.println("1. Ataque basico");
-                        System.out.println("2. Usar pocion de vida (4x)");
-                        System.out.println("3. Habilidad unica");
-                        System.out.println();
-
-                        System.out.println("Mago");
-                        System.out.println("""
-                                                    ____ \
-                                                  .'* *.'
-                                               __/_*_*(_
-                                              / _______ \\
-                                             _\\_)/___\\(_/_\s
-                                            / _((\\- -/))_ \\
-                                            \\ \\())(-)(()/ /
-                                             ' \\(((()))/ '
-                                            / ' \\)).))/ ' \\
-                                           / _ \\ - | - /_  \\
-                                          (   ( .;''';. .'  )
-                                          _\\"__ /    )\\ __"/_
-                                            \\/  \\   ' /  \\/
-                                             .'  '...' ' )
-                                         .'   /    b    '.  '.
-                                     _.-'    /     Bb     '-. '-._\s
-                                 _.-'       |      BBb       '-.  '-.\s
-                                (________mrf\\____.dBBBb.________)____)
-                                """);
-
-                        System.out.println("Habilidades");
-                        System.out.println("1. Ataque basico");
-                        System.out.println("2. Usar pocion de vida 5x)");
-                        System.out.println("3. Habilidad unica");
-                        System.out.println();
-
-                        System.out.println("Asesino");
-                        System.out.println(
-                                """
-                                        ⠀⠀⠳⡀⠁⠀⠀⢈⠓⠴⠾⣻⣒⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠙⢆⠠⡄⠀⠑⠒⠤⣀⡉⠙⠛⠓⠲⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠈⢦⡈⠉⠒⠢⢄⡀⠈⠑⠢⠤⠤⡤⠤⣙⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠈⠛⠑⠲⣄⠈⠒⢄⡀⠀⠀⠉⠲⢠⡭⢾⣒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣈⠑⠦⡀⠑⢀⠀⠀⠀⠈⢆⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⣓⠦⣉⡳⣄⠱⡀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⡧⣈⠙⠻⠧⠀⠀⠀⠀⠀⠙⣦⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢬⡑⢤⣀⠀⠀⠀⠀⠀⣠⠊⡰⠃⢉⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⡉⠲⢄⣠⠞⣡⡾⠓⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡱⠊⣡⠞⠃⢀⣾⣿⣿⣿⣿⣶⣤⣀⣀⡤⠦⢤⡀⠀⠀⠀⠀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢯⡐⢀⡴⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⡄⡗⣒⠒⢆⡀⠀
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⢰⠃⡗⠒⠒⢢⠙⢤
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢟⢃⡾⢴⡃⠀⢀⣠⠴⠞
-                                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠋⠈⠛⠋⠀⠀⠀""");
-
-                        System.out.println("Habilidades");
-                        System.out.println("1. Ataque basico");
-                        System.out.println("2. Usar pocion de vida 3x)");
-                        System.out.println("3. Habilidad unica");
-                        System.out.println();
-
-                        System.out.println("Alquimista");
-                        System.out.println(
-                                """
-                                              (___)
-                                              <   >
-                                               ) (
-                                              /`-.\\
-                                             /     \\
-                                            / _    _\\
-                                           :,' `-.' `:
-                                           |         |
-                                           :         ;
-                                            \\       /
-                                             `.___.'\
-                                        """);
-
-                        System.out.println("Habilidades");
-                        System.out.println("1. Ataque basico");
-                        System.out.println("2. Usar pocion de vida 5x)");
-                        System.out.println("3. Habilidad unica");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
 
 
                         System.out.println("""
@@ -473,15 +336,19 @@ public class Juego {
 
                                 switch (turn) {
                                     case 1:
-                                        player2DEF = (int) (player2DEFmax - player1PEN);
-                                        danyobase = player1ATQ - player2DEF;
+                                        player2DEF = calculateP2Defense((int) player1PEN, player2DEF);
+
+                                        danyobase = (int) calculateP1Danyobase(player1ATQ, player2DEF);
+
+
+
                                         if (randomNumber < player1Crit) {
                                             danyobase = (int) (danyobase * danyocrit);
                                             System.out.println("Golpe crítico!");
                                         }
 
 
-                                        player2HP = player2HP - danyobase;
+                                        player2HP = calculateP2HP(player2HP, danyobase);
 
                                         System.out.println();
                                         System.out.println(frasePlayer1);
@@ -623,8 +490,9 @@ public class Juego {
                                 turn = scan.nextInt();
                                 switch (turn) {
                                     case 1:
-                                        player1DEF = (int) (player1DEFmax - player2PEN);
-                                        danyobase = player2ATQ - player1DEF;
+                                        player1DEF = calculateP1Defense((int) player2PEN, player1DEF);
+
+                                        danyobase = (int) calculateP2Danyobase(player2ATQ, player1DEF);
 
 
                                         if (randomNumber2 < player2Crit) {
@@ -981,6 +849,177 @@ public class Juego {
                     break;
             }
         } while (gamemode != 1 && gamemode != 2);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void personajes() {
+        System.out.println("""
+                                 ____  _                           \s
+                                | __ )(_) ___ _ ____   _____ _ __ (_) __| | ___  ___| |
+                                |  _ \\| |/ _ \\ '_ \\ \\ / / _ \\ '_ \\| |/ _` |/ _ \\/ __| |
+                                | |_) | |  __/ | | \\ V /  __/ | | | | (_| | (_) \\__ \\_|
+                                |____/|_|\\___|_| |_|\\_/ \\___|_| |_|_|\\__,_|\\___/|___(_)""");
+        System.out.println();
+        System.out.println();
+        System.out.println("El combate está a punto de empezar, a continuación se presentara los personajes disponibles");
+        System.out.println();
+        System.out.println();
+        System.out.println("Caballero");
+        System.out.println("""
+                                 \s
+                                             .--.
+                                            /.--.\\
+                                            |====|
+                                            |`::`|
+                                        .-;`\\..../`;_.-^-._
+                                 /\\\\   /  |...::..|`   :   `|
+                                 |:'\\ |   /'''::''|   .:.   |
+                                @|\\ /\\;-,/\\   ::  |..:::::..|
+                                `||\\ <` >  >._::_.| ':::::' |
+                                 || `""`  /   ^^  |   ':'   |
+                                 ||       |       \\    :    /
+                                 ||       |        \\   :   /
+                                 ||       |___/\\___|`-.:.-`
+                                 ||        \\_ || _/    `
+                                 ||        |  ||  |
+                                """);
+
+        System.out.println("Habilidades");
+        System.out.println("1. Ataque basico.");
+        System.out.println("2. Usar poción de vida (3x)");
+        System.out.println("3. Habilidad única (1x)");
+        System.out.println();
+
+        System.out.println("Arquero");
+        System.out.println(
+                """
+                                   4   ".                                       \s
+                                   4    ^.                                      \s
+                                   4     $                                      \s
+                                   4     'b                                     \s
+                                   4      "b.                                   \s
+                                   4        $                                   \s
+                                   4        $r                                  \s
+                                   4        $F                                  \s
+                        -$b========4========$b====*P=-                          \s
+                                   4       *$$F                                 \s
+                                   4        $$"                                 \s
+                                   4       .$F                                  \s
+                                   4       dP                                   \s
+                                   4      F                                     \s
+                                   4     @                                      \s
+                                   4    .                                       \s
+                                   J.                                           \s
+                        """);
+
+        System.out.println("Habilidades");
+        System.out.println("1. Ataque basico");
+        System.out.println("2. Usar pocion de vida (4x)");
+        System.out.println("3. Habilidad unica");
+        System.out.println();
+
+        System.out.println("Mago");
+        System.out.println("""
+                                                    ____ \
+                                                  .'* *.'
+                                               __/_*_*(_
+                                              / _______ \\
+                                             _\\_)/___\\(_/_\s
+                                            / _((\\- -/))_ \\
+                                            \\ \\())(-)(()/ /
+                                             ' \\(((()))/ '
+                                            / ' \\)).))/ ' \\
+                                           / _ \\ - | - /_  \\
+                                          (   ( .;''';. .'  )
+                                          _\\"__ /    )\\ __"/_
+                                            \\/  \\   ' /  \\/
+                                             .'  '...' ' )
+                                         .'   /    b    '.  '.
+                                     _.-'    /     Bb     '-. '-._\s
+                                 _.-'       |      BBb       '-.  '-.\s
+                                (________mrf\\____.dBBBb.________)____)
+                                """);
+
+        System.out.println("Habilidades");
+        System.out.println("1. Ataque basico");
+        System.out.println("2. Usar pocion de vida 5x)");
+        System.out.println("3. Habilidad unica");
+        System.out.println();
+
+        System.out.println("Asesino");
+        System.out.println(
+                """
+                        ⠀⠀⠳⡀⠁⠀⠀⢈⠓⠴⠾⣻⣒⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠙⢆⠠⡄⠀⠑⠒⠤⣀⡉⠙⠛⠓⠲⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠈⢦⡈⠉⠒⠢⢄⡀⠈⠑⠢⠤⠤⡤⠤⣙⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠈⠛⠑⠲⣄⠈⠒⢄⡀⠀⠀⠉⠲⢠⡭⢾⣒⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣈⠑⠦⡀⠑⢀⠀⠀⠀⠈⢆⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢯⣓⠦⣉⡳⣄⠱⡀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⡧⣈⠙⠻⠧⠀⠀⠀⠀⠀⠙⣦⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢬⡑⢤⣀⠀⠀⠀⠀⠀⣠⠊⡰⠃⢉⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⡉⠲⢄⣠⠞⣡⡾⠓⣠⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡱⠊⣡⠞⠃⢀⣾⣿⣿⣿⣿⣶⣤⣀⣀⡤⠦⢤⡀⠀⠀⠀⠀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢯⡐⢀⡴⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⡄⡗⣒⠒⢆⡀⠀
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠉⠛⠻⢿⣿⣿⣿⣿⣿⢰⠃⡗⠒⠒⢢⠙⢤
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⢟⢃⡾⢴⡃⠀⢀⣠⠴⠞
+                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠓⠋⠈⠛⠋⠀⠀⠀""");
+
+        System.out.println("Habilidades");
+        System.out.println("1. Ataque basico");
+        System.out.println("2. Usar pocion de vida 3x)");
+        System.out.println("3. Habilidad unica");
+        System.out.println();
+
+        System.out.println("Alquimista");
+        System.out.println(
+                """
+                              (___)
+                              <   >
+                               ) (
+                              /`-.\\
+                             /     \\
+                            / _    _\\
+                           :,' `-.' `:
+                           |         |
+                           :         ;
+                            \\       /
+                             `.___.'\
+                        """);
+
+        System.out.println("Habilidades");
+        System.out.println("1. Ataque basico");
+        System.out.println("2. Usar pocion de vida 5x)");
+        System.out.println("3. Habilidad unica");
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 }
 
