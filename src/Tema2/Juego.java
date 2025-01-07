@@ -341,8 +341,8 @@ public class Juego {
                                         danyobase = (int) calculateP1Danyobase(player1ATQ, player2DEF);
 
 
-
-                                        if (randomNumber < player1Crit) {
+                                        boolean boolCritico = esCritico(randomNumber, player1Crit);
+                                        if (boolCritico) {
                                             danyobase = (int) (danyobase * danyocrit);
                                             System.out.println("Golpe crítico!");
                                         }
@@ -850,31 +850,6 @@ public class Juego {
             }
         } while (gamemode != 1 && gamemode != 2);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
