@@ -51,4 +51,17 @@ public class JuegoFunctions {
         return false;
     }
 
+    public static double danyocriticoP1(double danyobase, double danyocritico) {
+        return danyobase * danyocritico;
+
+    }
+
+    public static double danyocriticoP2(double danyobase, double danyocritico) {
+        return danyobase * danyocritico;
+
+    }
+
+
+
+
 }

@@ -341,7 +341,7 @@ public class Juego {
                                         danyobase = (int) calculateP1Danyobase(player1ATQ, player2DEF);
 
 
-                                        boolean boolCritico = esCritico(randomNumber, player1Crit);
+                                        boolean boolCritico = esCriticoP1(randomNumber, player1Crit);
                                         if (boolCritico) {
                                             danyobase = (int) (danyobase * danyocrit);
                                             System.out.println("Golpe crítico!");
@@ -495,10 +495,13 @@ public class Juego {
                                         danyobase = (int) calculateP2Danyobase(player2ATQ, player1DEF);
 
 
-                                        if (randomNumber2 < player2Crit) {
-                                            danyobase = (int) (danyobase * danyocrit);
-                                            System.out.println("¡Golpe crítico!");
+                                        boolean boolCritico = esCriticoP2(randomNumber, player2Crit);
+                                        if (boolCritico) {
+                                            danyobase = (int) danyocriticoP2(danyobase, danyocrit);
+                                            System.out.println("Golpe crítico!");
+
                                         }
+
 
                                         player1HP -= danyobase;
 
@@ -534,8 +537,8 @@ public class Juego {
                                                     System.out.println();
                                                     System.out.println(CabABILfrase);
 
-                                                    player1DEF = (int) (player1DEF - player2PEN);
-                                                    danyobase = 20 + player2ATQ - player1DEF;
+                                                    player1DEF = calculateP1Defense((int) player2PEN, player1DEF);
+                                                    danyobase = (int) calculateP2Danyobase(player2ATQ, player1DEF);
 
                                                     if (randomNumber2 < player2Crit) {
                                                         danyobase = (int) (danyobase * danyocrit);
