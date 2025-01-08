@@ -54,4 +54,14 @@ public class MyArray {
         return false;
     }
 
+
+    public static int[] sumaArrays(int[] array, int[] array2) {
+        int[] arraysumada = new int[0];
+
+        for (int i = 0; i < array.length; i++) {
+            arraysumada[i] = array[i] + array2[i];
+        }
+        return arraysumada;
+    }
+
 }
