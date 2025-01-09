@@ -1,5 +1,8 @@
 package Tema3;
 
+import java.util.Arrays;
+import java.util.IllegalFormatCodePointException;
+
 public class MyArray {
     public static void imprimirArray(int[] Array) {
         for (int i = 0; i < Array.length; i++) {
@@ -54,14 +57,83 @@ public class MyArray {
         return false;
     }
 
-
     public static int[] sumaArrays(int[] array, int[] array2) {
-        int[] arraysumada = new int[0];
+
+        int[] arrayfinal = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
-            arraysumada[i] = array[i] + array2[i];
+            arrayfinal[i] = array[i] + array2[i];
         }
-        return arraysumada;
+        return arrayfinal;
+
     }
+
+    public static int[] restaArrays(int[] array, int[] array2) {
+
+        int[] arrayfinal = new int[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            arrayfinal[i] = array[i] - array2[i];
+        }
+        return arrayfinal;
+
+    }
+
+    public static int[] productoArrays(int[] array, int[] array2) {
+        int[] arrayfinal = new int[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            arrayfinal[i] = array[i] * array2[i];
+        }
+        return arrayfinal;
+    }
+
+    public static int[] arrayInvertida(int[] array) {
+        int[] arrayInvertida = new int[array.length];
+
+        for (int i = 0; i < array.length; i++ ) {
+
+            arrayInvertida[i] = array[array.length -1 -i];
+
+        }
+        return arrayInvertida;
+    }
+    public static void procInvertida(int[] array) {
+        int[] arrayInvertida2 = new int[array.length];
+
+        for (int i = 0; i < array.length; i++ ) {
+
+            arrayInvertida2[i] = array[array.length -1 -i];
+
+        }
+        System.out.println(Arrays.toString(arrayInvertida2));
+
+    }
+
+   /* public static boolean arrayApicua(int[] array) {
+        int counter = 0;
+        if (array.length % 2 == 0) {
+            for (int i = 0; i < array.length; i++, counter--) {
+               if (array[i] == array[array.length + counter]) {
+                   return true;
+               } else return false;
+
+
+            }
+            return false;
+        }
+        return false;
+    } */
+
+    public static boolean arrayApicua(int[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            if (array[i] != array[array.length - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
 }
