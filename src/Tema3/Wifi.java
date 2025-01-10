@@ -14,5 +14,9 @@ public class Wifi {
         int senyal = scan.nextInt();
 
         int[] array = new int[20];
+
+        for (int i = 0; i < array.length; i++) {
+            
+        }
     }
 }
