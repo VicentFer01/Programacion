@@ -1,5 +1,6 @@
 package Tema3;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -20,6 +21,7 @@ public class Mosca {
         do {
             System.out.println("Introduce una posicion (1-15)");
             int pos = scan.nextInt();
+            System.out.println(Arrays.toString(array));
 
         if (pos == moscaPos) {
             System.out.println("¡Has atrapado a la mosca!");
