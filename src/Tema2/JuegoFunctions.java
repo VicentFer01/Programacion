@@ -19,7 +19,6 @@ public class JuegoFunctions {
     }
 
     public static double calculateP2Danyobase(int player2ATQ, int player1DEF) {
-
         return player2ATQ - player1DEF;
     }
 

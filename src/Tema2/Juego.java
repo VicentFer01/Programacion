@@ -343,7 +343,7 @@ public class Juego {
 
                                         boolean boolCritico = esCriticoP1(randomNumber, player1Crit);
                                         if (boolCritico) {
-                                            danyobase = (int) (danyobase * danyocrit);
+                                            danyobase = (int) danyocriticoP1(danyobase, danyocrit);
                                             System.out.println("Golpe crítico!");
                                         }
 
