@@ -1,9 +1,9 @@
-package Tema3;
+package Tema3.Arrays;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static Tema3.MyArray.*;
+import static Tema3.Arrays.MyArray.*;
 
 public class Array {
 

@@ -1,4 +1,4 @@
-package Tema3;
+package Tema3.Arrays;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class buscaminas {
             tablero[i] = minasAdyacentes;
         }
 
-        boolean[] descubiertas = new boolean[size]; // Para saber qué casillas han sido descubiertas
+        boolean[] descubiertas = new boolean[size];
         boolean juegoTerminado = false;
 
         while (!juegoTerminado) {

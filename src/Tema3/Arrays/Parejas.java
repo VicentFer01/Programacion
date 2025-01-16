@@ -1,4 +1,4 @@
-package Tema3;
+package Tema3.Arrays;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,9 +62,9 @@ public class Parejas {
     private static void mostrarTablero(String[] array, boolean[] visible) {
         for (int i = 0; i < 20; i++) {
             if (visible[i]) {
-                System.out.print(array[i] + " "); // Mostrar el animal si está visible
+                System.out.print(array[i] + " ");
             } else {
-                System.out.print("X "); // Mostrar "X" si está oculto
+                System.out.print("X ");
             }
         }
         System.out.println();

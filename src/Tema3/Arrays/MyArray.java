@@ -1,7 +1,6 @@
-package Tema3;
+package Tema3.Arrays;
 
 import java.util.Arrays;
-import java.util.IllegalFormatCodePointException;
 
 public class MyArray {
     public static void imprimirArray(int[] Array) {
