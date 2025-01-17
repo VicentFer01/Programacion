@@ -1,0 +1,62 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Random random = new Random();
+        int columnaR = random.nextInt(3);
+        int filaR = random.nextInt(3);
+
+
+
+        boolean moscaEncontrada;
+        do {
+            moscaEncontrada = false;
+
+            System.out.println("Introduce la fila");
+            int filaUser = scan.nextInt();
+
+            System.out.println("Intrdouce la columna");
+            int columnaUser = scan.nextInt();
+
+            int[][] matriz = new int[4][4];
+
+            matriz = moverPosicion(matriz, filaR, columnaR);
+
+
+            if (filaUser == filaR && columnaUser == columnaR) {
+                moscaEncontrada == true;
+
+            } else if (filaUser == filaR + 1 || filaUser == filaR - 1 && columnaUser == columnaR + 1 || columnaUser == columnaR - 1) {
+                matriz = moverPosicion(matriz, filaR, columnaR);
+                System.out.println("La mosca estaba en una posicion adyacente");
+
+            } else {
+                System.out.println();
+
+
+            }
+        } while (moscaEncontrada == false);
+
+    }
+
+
+
+
+
+
+    public static int[][] moverPosicion(int[][] matriz, int filaR, int columnaR) {
+
+
+        for (int i = 0; i < matriz.length; i++){
+            for (int j = 0; j < matriz[i].length; j++){
+                matriz[i][j] = 0;
+            }
+        }
+        matriz[filaR][columnaR] = 1;
+        return matriz;
+    }
+
+}
