@@ -1,8 +1,5 @@
 package Tema3.Arrays;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class Parejas {
@@ -15,17 +12,20 @@ public class Parejas {
 
         String[] array = new String[20];
 
+        // Duplicar cada animal en el array
         for (int i = 0; i < 10; i++) {
             array[i * 2] = animales[i];
             array[i * 2 + 1] = animales[i];
         }
 
-        List<String> list = Arrays.asList(array);
-        Collections.shuffle(list);
-        list.toArray(array);
+        // Barajar el array manualmente
+        barajarArray(array);
 
+        // Array para controlar las posiciones visibles
         boolean[] visible = new boolean[20];
-        Arrays.fill(visible, false);
+        for (int i = 0; i < visible.length; i++) {
+            visible[i] = false;
+        }
 
         int parejasEncontradas = 0;
 
@@ -50,13 +50,20 @@ public class Parejas {
                 System.out.println("¡Pareja encontrada!");
             } else {
                 System.out.println("No coinciden, intenta de nuevo.");
-                mostrarTablero(array, visible);
-                visible[pos1] = false;
-                visible[pos2] = false;
             }
         }
 
         System.out.println("¡Felicidades! Has encontrado todas las parejas.");
+    }
+
+    private static void barajarArray(String[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int randomIndex = (int) (Math.random() * array.length);
+            // Intercambiar elementos
+            String temp = array[i];
+            array[i] = array[randomIndex];
+            array[randomIndex] = temp;
+        }
     }
 
     private static void mostrarTablero(String[] array, boolean[] visible) {
