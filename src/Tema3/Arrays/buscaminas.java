@@ -27,7 +27,7 @@ public class buscaminas {
         }
 
         for (int i = 0; i < size; i++) {
-            if (tablero[i] == -1) continue; // Si es una mina, no hacer nada
+            if (tablero[i] == -1); // Si es una mina, no hacer nada
 
             int minasAdyacentes = 0;
             for (int j = i - 1; j <= i + 1; j++) {
@@ -66,7 +66,7 @@ public class buscaminas {
             }
         }
 
-        scan.close();
+        
     }
 
     private static void mostrarTablero(int[] tablero, boolean[] descubiertas) {
