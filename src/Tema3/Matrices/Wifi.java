@@ -20,7 +20,6 @@ public class Wifi {
 
 
 
-        // Calcular la cobertura (invertir el eje de plantas)
         calculateCovertura(hotel, rows - routerX, routerY - 1, power);
 
         imprimirMatriz(hotel);
