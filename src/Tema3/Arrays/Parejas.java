@@ -18,10 +18,9 @@ public class Parejas {
             array[i * 2 + 1] = animales[i];
         }
 
-        // Barajar el array manualmente
+        // Barajar
         barajarArray(array);
 
-        // Array para controlar las posiciones visibles
         boolean[] visible = new boolean[20];
         for (int i = 0; i < visible.length; i++) {
             visible[i] = false;
@@ -38,10 +37,7 @@ public class Parejas {
             System.out.println("Selecciona la segunda posición (0-19): ");
             int pos2 = scan.nextInt();
 
-            if (pos1 == pos2) {
-                System.out.println("Las posiciones no pueden ser iguales, intenta de nuevo.");
-                continue;
-            }
+
 
             if (array[pos1].equals(array[pos2])) {
                 visible[pos1] = true;
@@ -59,7 +55,6 @@ public class Parejas {
     private static void barajarArray(String[] array) {
         for (int i = 0; i < array.length; i++) {
             int randomIndex = (int) (Math.random() * array.length);
-            // Intercambiar elementos
             String temp = array[i];
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
