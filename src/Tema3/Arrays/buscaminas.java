@@ -22,12 +22,12 @@ public class buscaminas {
             int posicion = rand.nextInt(size);
             if (tablero[posicion] != -1) {
                 tablero[posicion] = -1;
-                minasColocadas++;
+                minasColocadas++; //COlocar mina
             }
         }
 
         for (int i = 0; i < size; i++) {
-            if (tablero[i] == -1); // si es una mina no hacer nada
+            if (tablero[i] == -1); // Si es una mina no hacer nada
 
             int minasAdyacentes = 0;
             for (int j = i - 1; j <= i + 1; j++) {
@@ -48,10 +48,7 @@ public class buscaminas {
             System.out.print("Selecciona una casilla (0-19): ");
             int seleccion = scan.nextInt();
 
-            if (seleccion < 0 || seleccion >= size) {
-                System.out.println("Selección inválida. Intenta de nuevo.");
-                continue;
-            }
+
 
             if (tablero[seleccion] == -1) {
                 System.out.println("¡Boom! Has explotado una mina. Fin del juego.");
@@ -87,9 +84,9 @@ public class buscaminas {
     private static boolean todasDescubiertas(int[] tablero, boolean[] descubiertas) {
         for (int i = 0; i < tablero.length; i++) {
             if (tablero[i] != -1 && !descubiertas[i]) {
-                return false; // Si hay alguna casilla sin mina que no ha sido descubierta
+                return false;
             }
         }
-        return true; // Todas las casillas sin mina han sido descubiertas
+        return true;
     }
 }
