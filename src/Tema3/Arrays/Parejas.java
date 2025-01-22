@@ -12,16 +12,13 @@ public class Parejas {
 
         String[] array = new String[20];
 
-        // Duplicar cada animal en el array
         for (int i = 0; i < 10; i++) {
             array[i * 2] = animales[i];
             array[i * 2 + 1] = animales[i];
         }
 
-        // Barajar el array manualmente
         barajarArray(array);
 
-        // Array para controlar las posiciones visibles
         boolean[] visible = new boolean[20];
         for (int i = 0; i < visible.length; i++) {
             visible[i] = false;
