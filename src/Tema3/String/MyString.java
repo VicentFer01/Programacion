@@ -45,17 +45,26 @@ public class MyString {
 
     public static int repitePalabra(String string, String string2) {
         int counter = 0;
-        String palabra = "";
         String[] palabras = string.split(" ");
-        /*
-        for (int i = 0; palabra < palabras; i++) {
+
+        for (String palabra : palabras) {
             if (palabra.equalsIgnoreCase(string2)) { counter++;
             } ;
 
         }
 
-         */
-        return 0;
+
+        return counter;
+    }
+
+    public static String arreglarTelefono(String telef) {
+
+
+        return
+    }
+
+    public static void histograma(String string) {
+        String[] cadena =
     }
 
 
