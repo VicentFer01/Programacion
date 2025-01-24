@@ -28,7 +28,6 @@ public class MyString {
     }
 
 
-
     public static String palabraMayor(String string) {
         String[] palabras = string.split(" ");
         String palabraMayor = "";
@@ -48,25 +47,14 @@ public class MyString {
         String[] palabras = string.split(" ");
 
         for (String palabra : palabras) {
-            if (palabra.equalsIgnoreCase(string2)) { counter++;
-            } ;
+            if (palabra.equalsIgnoreCase(string2)) {
+                counter++;
+            }
+            ;
 
         }
 
 
         return counter;
     }
-
-    public static String arreglarTelefono(String telef) {
-
-
-        return
-    }
-
-    public static void histograma(String string) {
-        String[] cadena =
-    }
-
-
-
 }
