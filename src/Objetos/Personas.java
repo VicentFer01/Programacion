@@ -45,7 +45,31 @@ public class Personas {
         this.edad = edad;
     }
 
-    public void print() {
-        System.out.println("");
+
+    public boolean isAdult(int edad) {
+        if (this.edad > 18) return true;
+        else return false;
+    }
+
+    public boolean isRetired(int edad) {
+        if (this.edad > 65) return true;
+        else return false;
+    }
+
+   /* public int ageDiff(int edad, edad2); */
+
+    public static boolean checkDNI(String dni)  {
+        if (dni.length() != 9) return false;
+        else return true;
+    }
+
+
+    public String toString() {
+        return "Personas{" +
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                '}';
     }
 }

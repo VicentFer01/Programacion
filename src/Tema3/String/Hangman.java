@@ -110,7 +110,7 @@ public class Hangman {
                 String solution = scanner.nextLine().toUpperCase();
                 if (solution.equals(word)) {
                     solved = true;
-                    break;
+
                 } else {
                     attempts++;
                 }
