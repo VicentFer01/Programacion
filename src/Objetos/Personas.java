@@ -5,6 +5,9 @@ public class Personas {
     private String nombre;
     private String apellido;
     private int edad;
+    private final static int retiredAge = 65;
+    private final static int adultAge = 18;
+
 
     public Personas(String dni, String nombre, String apellido, int edad) {
         this.dni = dni;
@@ -59,7 +62,9 @@ public class Personas {
    /* public int ageDiff(int edad, edad2); */
 
     public static boolean checkDNI(String dni)  {
-        if (dni.length() != 9) return false;
+        if (dni.length() != 9) {
+            System.out.println("El DNI es invalido");
+                return false; }
         else return true;
     }
 
