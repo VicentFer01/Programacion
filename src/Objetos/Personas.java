@@ -5,8 +5,8 @@ public class Personas {
     private String nombre;
     private String apellido;
     private int edad;
-    private final static int retiredAge = 65;
-    private final static int adultAge = 18;
+    public final static int retiredAge = 65;
+    public final static int adultAge = 18;
 
 
     public Personas(String dni, String nombre, String apellido, int edad) {
@@ -43,7 +43,6 @@ public class Personas {
     public int getEdad() {
         return edad;
     }
-
     public void setEdad(int edad) {
         this.edad = edad;
     }
