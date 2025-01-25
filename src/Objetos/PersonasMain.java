@@ -2,6 +2,7 @@ package Objetos;
 import java.util.Scanner;
 
 import static Objetos.Personas.adultAge;
+import static Objetos.Personas.retiredAge;
 
 public class PersonasMain {
     public static void main(String[] args) {
@@ -46,7 +47,7 @@ public class PersonasMain {
 
             System.out.print("Edad: ");
             edad1 = scan.nextInt();
-            persona1.setDni(String.valueOf(edad1));
+            persona1.setEdad(edad1);
 
             if (!validDatos1) {
                 System.out.println("Has introducido datos invalidos, vuelve a rellenarlos");
@@ -96,30 +97,33 @@ public class PersonasMain {
         System.out.println("Datos de Persona 1:");
         System.out.println(persona1);
 
-        if (persona1.getEdad() < adultAge) {
+        if (persona1.getEdad() > adultAge) {
             System.out.println("La persona 1 es mayor de edad");
         } else {
             System.out.println("La persona 1 no es mayor de edad");
 
-            if (persona1.isRetired(edad1) == true) {
+            if (persona1.getEdad() > retiredAge) {
                 System.out.println("La persona 1 está retirada");
             } else System.out.println("La persona 1 no esta retirada");
 
+            System.out.println();
+            System.out.println();
 
             System.out.println("Datos de Persona 2:");
             System.out.println(persona2);
 
-            if (persona2.isAdult(edad2) == true) {
+            if (persona2.getEdad() > adultAge) {
                 System.out.println("La persona 2 es mayor de edad");
             } else {
-                System.out.println("La persona 1 no es mayor de edad");
+                System.out.println("La persona 2 no es mayor de edad"); }
 
-                if (persona2.isRetired(edad2) == true) {
-                    System.out.println("La persona 2 está retirada");
-                } else System.out.println("La persona 2 no esta retirada");
 
+            if (persona2.getEdad() > retiredAge) {
+                System.out.println("La persona 2 está retirada");
+            } else {
+                System.out.println("La persona 2 no esta retirada");
+            }
 
             }
         }
     }
-}
