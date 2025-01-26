@@ -17,31 +17,7 @@ public class HeroMain {
         String inputName = scan.next();
         heroe1.setName(inputName);
 
-        System.out.println("LVL:");
-        int inputLVL = scan.nextInt();
-        heroe1.setLvl(inputLVL);
-
-        System.out.println("Healthl:");
-        int inputHealth = scan.nextInt();
-        heroe1.setHealth(inputHealth);
-
-        System.out.println("MaxHealth:");
-        int inputMaxHealth = scan.nextInt();
-        heroe1.setMaxHealth(inputMaxHealth);
-
-        System.out.println("Experience:");
-        int inputExperience = scan.nextInt();
-        heroe1.setExperience(inputExperience);
-
-        System.out.println("Attack:");
-        int inputAttack = scan.nextInt();
-        heroe1.setAttack(inputAttack);
-
-        System.out.println("Defense:");
-        int inputDefense = scan.nextInt();
-        heroe1.setDefense(inputDefense);
-
-
+        System.out.println("Estos son los detalles de tu personaje");
         System.out.println(heroe1);
 
 
@@ -49,28 +25,38 @@ public class HeroMain {
         int hordaNumber = random.nextInt(3) + 1;
         String enemyName = "Enemy";
 
+        System.out.println();
+        System.out.println("Llega una horda de " + hordaNumber + " enemigos");
+        System.out.println();
+        System.out.println();
+
+
+
         Hero[] enemigos = new Hero[hordaNumber];
+        int maxHealthEnemy = 300;
+        int maxDefense = 150;
+        int maxAttack = 150;
 
 
         for (int i = 0; i < hordaNumber; i++) {
             Hero enemy = new Hero(enemyName + " " + i);
-            enemy.setHealth(50);
-            enemy.setMaxHealth(50);
-            enemy.setDefense(50);
-            enemy.setAttack(100);
+            enemy.setHealth(maxHealthEnemy / hordaNumber);
+            enemy.setMaxHealth(maxHealthEnemy / hordaNumber);
+            enemy.setDefense(maxDefense / hordaNumber);
+            enemy.setAttack(maxAttack / hordaNumber);
             enemy.setExperience(0);
 
             enemigos[i] = enemy;
+            System.out.println(enemy);
 
         }
-        System.out.println(Arrays.toString(enemigos));
 
 
 
-        System.out.println("Llega una horda de " + hordaNumber + " enemigos");
 
 
         while (heroe1.getHealth() > 0) {
+
 
 
 
