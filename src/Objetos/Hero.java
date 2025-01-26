@@ -8,8 +8,9 @@ public class Hero {
     private int experience;
     private int attack;
     private int defense;
+    private int maxDefense;
 
-    public Hero(String name, int lvl, int health, int maxHealth, int experience, int attack, int defense) {
+    public Hero(String name, int lvl, int health, int maxHealth, int experience, int attack, int defense, int maxDefense) {
         this.name = name;
         this.lvl = lvl;
         this.health = health;
@@ -17,41 +18,34 @@ public class Hero {
         this.experience = experience;
         this.attack = attack;
         this.defense = defense;
+        this.maxDefense = maxDefense;
     }
 
-
-    public Hero(String enemyName) {
-        this.name = enemyName;
+    public Hero(String name) {
+        this(name, 1, 100, 100, 0, 10, 5, 10);
     }
 
-    @Override
-    public String toString() {
-        return "Hero{" +
-                "name='" + name + '\'' +
-                ", lvl=" + lvl +
-                ", health=" + health +
-                ", maxHealth=" + maxHealth +
-                ", experience=" + experience +
-                ", attack=" + attack +
-                ", defense=" + defense +
-                '}';
+    public int heroAttack(Hero enemy) {
+        int damage = this.attack - enemy.getDefense();
+        if (damage < 0) damage = 0; // Evita daño negativo
+        enemy.setHealth(enemy.getHealth() - damage);
+        return damage;
     }
 
-    public void levelUP(int lvl) {
-        health = health + 5;
-        lvl = lvl + 1;
-
+    public int enemyAttack(Hero hero) {
+        int damage = this.attack - hero.getDefense();
+        if (damage < 0) damage = 0; // Evita daño negativo
+        hero.setHealth(hero.getHealth() - damage);
+        return damage;
     }
 
-    public int drinkPotion(int health) {
-        System.out.println("Has bebido una pocion que ha restaurado 10 vida");
-
-        return health + 10;
-    }
-
-    public void rest(int health) {
-        System.out.println("Has descansado y recuperado 50 de vida");
-        health = health + 50;
+    public void levelUP() {
+        this.lvl++;
+        this.attack += 5;
+        this.defense += 3;
+        this.maxHealth += 20;
+        this.health = this.maxHealth;
+        System.out.println(this.name + " ha subido al nivel " + this.lvl + "!");
     }
 
     public String getName() {
@@ -75,7 +69,7 @@ public class Hero {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        this.health = Math.max(0, health); // Asegura que la salud no sea negativa
     }
 
     public int getMaxHealth() {
@@ -83,10 +77,7 @@ public class Hero {
     }
 
     public void setMaxHealth(int maxHealth) {
-        if (health > 0) {
-            this.maxHealth = maxHealth;
-
-        }
+        this.maxHealth = maxHealth;
     }
 
     public int getExperience() {
@@ -97,6 +88,14 @@ public class Hero {
         this.experience = experience;
     }
 
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public int getDefense() {
         return defense;
     }
@@ -105,11 +104,20 @@ public class Hero {
         this.defense = defense;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getMaxDefense() {
+        return maxDefense;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", lvl=" + lvl +
+                ", health=" + health +
+                ", maxHealth=" + maxHealth +
+                ", experience=" + experience +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                '}';
     }
 }
