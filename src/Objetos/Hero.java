@@ -20,9 +20,9 @@ public class Hero {
     }
 
 
-
-
-
+    public Hero(String enemyName) {
+        this.name = enemyName;
+    }
 
     @Override
     public String toString() {
@@ -83,7 +83,10 @@ public class Hero {
     }
 
     public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
+        if (health > 0) {
+            this.maxHealth = maxHealth;
+
+        }
     }
 
     public int getExperience() {

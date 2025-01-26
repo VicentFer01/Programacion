@@ -1,5 +1,6 @@
 package Objetos;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -41,31 +42,38 @@ public class HeroMain {
         heroe1.setDefense(inputDefense);
 
 
+        System.out.println(heroe1);
+
 
         // Generar enemigos
-        int hordaNumber = random.nextInt(3);
+        int hordaNumber = random.nextInt(3) + 1;
         String enemyName = "Enemy";
+
+        Hero[] enemigos = new Hero[hordaNumber];
 
 
         for (int i = 0; i < hordaNumber; i++) {
-            enemyName = "Enemy " + 1;
-            Hero enemy = new Hero(
-                    enemyName,
-                    heroe1.getLvl() / 2,
-                    heroe1.getHealth() / 2,
-                    heroe1.getMaxHealth() / 2,
-                    heroe1.getExperience() / 2,
-                    heroe1.getAttack() / 2,
-                    heroe1.getDefense() / 2
-            );
-            System.out.println(enemy);
+            Hero enemy = new Hero(enemyName + " " + i);
+            enemy.setHealth(50);
+            enemy.setMaxHealth(50);
+            enemy.setDefense(50);
+            enemy.setAttack(100);
+            enemy.setExperience(0);
+
+            enemigos[i] = enemy;
+
         }
+        System.out.println(Arrays.toString(enemigos));
+
+
+
+        System.out.println("Llega una horda de " + hordaNumber + " enemigos");
 
 
         while (heroe1.getHealth() > 0) {
-            System.out.println("Llega una horda de " + hordaNumber + " enemigos");
 
-            int danyo = attack(inputAttack)
+
+
 
 
         }
