@@ -27,14 +27,14 @@ public class Hero {
 
     public int heroAttack(Hero enemy) {
         int damage = this.attack - enemy.getDefense();
-        if (damage < 0) damage = 0; // Evita daño negativo
+        if (damage < 0) damage = 0;
         enemy.setHealth(enemy.getHealth() - damage);
         return damage;
     }
 
     public int enemyAttack(Hero hero) {
         int damage = this.attack - hero.getDefense();
-        if (damage < 0) damage = 0; // Evita daño negativo
+        if (damage < 0) damage = 0;
         hero.setHealth(hero.getHealth() - damage);
         return damage;
     }
