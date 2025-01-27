@@ -47,7 +47,13 @@ public class Hero {
         this.defense += 3;
         this.maxHealth += 20;
         this.health = this.maxHealth;
-        System.out.println(this.name + " ha subido al nivel " + this.lvl + "!");
+        System.out.println("\n" +
+                ".____                      .__     ____ _____________._.\n" +
+                "|    |    _______  __ ____ |  |   |    |   \\______   \\ |\n" +
+                "|    |  _/ __ \\  \\/ // __ \\|  |   |    |   /|     ___/ |\n" +
+                "|    |__\\  ___/\\   /\\  ___/|  |__ |    |  / |    |    \\|\n" +
+                "|_______ \\___  >\\_/  \\___  >____/ |______/  |____|    __\n" +
+                "        \\/   \\/          \\/                           \\/\n");
     }
 
     public String getName() {

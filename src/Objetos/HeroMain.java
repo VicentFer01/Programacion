@@ -10,10 +10,18 @@ public class HeroMain {
 
         Hero heroe1 = new Hero("Placeholder", 1, 200, 200, 0, 30, 5, 5);
 
-        System.out.println("Nombre:");
+        System.out.println("\n" +
+                ".___        __                    .___                      __                 .__        __    \n" +
+                "|   | _____/  |________  ____   __| _/_ __   ____  ____   _/  |_ __ __    ____ |__| ____ |  | __\n" +
+                "|   |/    \\   __\\_  __ \\/  _ \\ / __ |  |  \\_/ ___\\/ __ \\  \\   __\\  |  \\  /    \\|  |/ ___\\|  |/ /\n" +
+                "|   |   |  \\  |  |  | \\(  <_> ) /_/ |  |  /\\  \\__\\  ___/   |  | |  |  / |   |  \\  \\  \\___|    < \n" +
+                "|___|___|  /__|  |__|   \\____/\\____ |____/  \\___  >___  >  |__| |____/  |___|  /__|\\___  >__|_ \\\n" +
+                "         \\/                        \\/           \\/    \\/                     \\/        \\/     \\/\n");
+        System.out.println("Nick:");
         String inputName = scan.next();
         heroe1.setName(inputName);
 
+        System.out.println();
         System.out.println("Estos son los detalles de tu personaje:");
         System.out.println(heroe1);
 
@@ -24,7 +32,13 @@ public class HeroMain {
             int hordaNumber = random.nextInt(3) + 1; // Generar horda de 1 a 3 enemigos
 
             System.out.println();
-            System.out.println("Llega una horda de " + hordaNumber + " enemigos:");
+            System.out.println("\n" +
+                    ".____    .__                                                            .__                     \n" +
+                    "|    |   |  |   ____   _________    ____     ____   ____   ____   _____ |__| ____   ____  ______\n" +
+                    "|    |   |  | _/ __ \\ / ___\\__  \\  /    \\  _/ __ \\ /    \\_/ __ \\ /     \\|  |/ ___\\ /  _ \\/  ___/\n" +
+                    "|    |___|  |_\\  ___// /_/  > __ \\|   |  \\ \\  ___/|   |  \\  ___/|  Y Y  \\  / /_/  >  <_> )___ \\ \n" +
+                    "|_______ \\____/\\___  >___  (____  /___|  /  \\___  >___|  /\\___  >__|_|  /__\\___  / \\____/____  >\n" +
+                    "        \\/         \\/_____/     \\/     \\/       \\/     \\/     \\/      \\/  /_____/            \\/ \n");
             System.out.println();
 
             enemigos = new Hero[hordaNumber];
@@ -45,14 +59,18 @@ public class HeroMain {
             while (hordaViva && heroe1.getHealth() > 0) {
                 hordaViva = false; // Suponemos que no quedan enemigos vivos
 
-                // Mostrar enemigos vivos
+
+                System.out.println();
                 System.out.println("Enemigos disponibles para atacar:");
                 for (int i = 0; i < enemigos.length; i++) {
                     if (enemigos[i].getHealth() > 0) {
-                        System.out.println((i + 1) + ". " + enemigos[i].getName() + " (Vida: " + enemigos[i].getHealth() + ")");
+                        System.out.println((i + 1) + ". " + enemigos[i].getName() + " (Vida: " + enemigos[i].getHealth() + ")");                 // Mostrar enemigos vivos
+
                     }
                 }
-
+                System.out.println();
+                System.out.println(heroe1.getName() + " tiene " + heroe1.getHealth() + "puntos de vida");
+                System.out.println();
                 System.out.println("Selecciona el número del enemigo al que quieres atacar:");
                 int seleccion = scan.nextInt() - 1; // Convertir a índice (de 1-3 a 0-2)
 
@@ -62,14 +80,12 @@ public class HeroMain {
                     // Ataque del héroe
                     int heroDamage = heroe1.heroAttack(enemy);
                     System.out.println(heroe1.getName() + " ataca a " + enemy.getName() + " causando " + heroDamage + " de daño.");
-                    System.out.println(enemy.getName() + " tiene " + enemy.getHealth() + " puntos de vida.");
 
                     if (enemy.getHealth() <= 0) { // Si el enemigo muere
                         System.out.println(enemy.getName() + " ha sido derrotado.");
                     } else { // Si el enemigo sigue vivo, contraataca
                         int enemyDamage = enemy.enemyAttack(heroe1);
                         System.out.println(enemy.getName() + " contraataca causando " + enemyDamage + " de daño.");
-                        System.out.println(heroe1.getName() + " tiene ahora " + heroe1.getHealth() + " puntos de vida.");
 
                         if (heroe1.getHealth() <= 0) { // Si el héroe muere
                             System.out.println(heroe1.getName() + " ha sido derrotado. Fin del juego.");
@@ -89,9 +105,14 @@ public class HeroMain {
             }
 
             if (!hordaViva) {
+                System.out.println();
                 System.out.println("Has derrotado a todos los enemigos de la horda.");
+                System.out.println();
                 heroe1.levelUP();
-                System.out.println("H");
+                System.out.println();
+                System.out.println("Tus estadisticas han mejorado, son las siguientes");
+                System.out.println();
+                System.out.println(heroe1);
             }
         }
     }
