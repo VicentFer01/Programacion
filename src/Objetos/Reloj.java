@@ -59,7 +59,7 @@ public class Reloj {
     }
 
     public  void printearReloj() {
-         String horaFinal = hora + ":" + minutos + ":" + segundos;
+         String horaFinal = this.hora + ":" + this.minutos + ":" + this.segundos;
         System.out.println(horaFinal);
 
     }

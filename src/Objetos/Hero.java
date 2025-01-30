@@ -46,7 +46,7 @@ public class Hero {
         this.attack += 5;
         this.defense += 3;
         this.maxHealth += 20;
-        this.health = this.maxHealth;
+        this.health += 10 ;
         System.out.println("\n" +
                 ".____                      .__     ____ _____________._.\n" +
                 "|    |    _______  __ ____ |  |   |    |   \\______   \\ |\n" +
@@ -128,4 +128,8 @@ public class Hero {
                 ", defense=" + defense +
                 '}';
     }
+
+
 }
+
+
