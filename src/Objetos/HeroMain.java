@@ -102,7 +102,7 @@ public class HeroMain {
                 }
 
                 for (Hero enemy : enemigos) {  // Este for  no lo supe hacer yo
-                    if (enemy.getHealth() > 0) {
+                    if (enemy.getHealth() > 0) { // recorre todos los enemigos de la array de enemigos checkeando si estan vivos
                         hordaViva = true;
 
                     }
