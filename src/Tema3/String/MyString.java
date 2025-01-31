@@ -57,14 +57,39 @@ public class MyString {
     }
 
 
- /*   public static String TelefonoFormatter(int tlf) {
-         String formato = System.out.print("(+"+ prefij)-");
-
-       return
+    public static String formatearTelefono(String numero) {
+        if (!numero.matches("\\d{11}")) { // Asegura que sean 11 dígitos numéricos
+            return "Número inválido";
+        }
+        String codigoPais = numero.substring(0, 2);
+        String parte1 = numero.substring(2, 5);
+        String parte2 = numero.substring(5);
+        return "(+" + codigoPais + ")-" + parte1 + "-" + parte2;
     }
 
-    public static void histograma(String cadena) {
-        String.format()
 
-    } */
-}
+    public static void mostrarHistogramaVocales(String texto) {
+        int[] frecuencias = new int[5];
+        char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+
+        for (char c : texto.toLowerCase().toCharArray()) {
+            switch (c) {
+                case 'a' -> frecuencias[0]++;
+                case 'e' -> frecuencias[1]++;
+                case 'i' -> frecuencias[2]++;
+                case 'o' -> frecuencias[3]++;
+                case 'u' -> frecuencias[4]++;
+            }
+        }
+
+        for (int i = 0; i < vocales.length; i++) {
+            System.out.print(vocales[i] + ": ");
+            for (int j = 0; j < frecuencias[i]; j++) {
+                System.out.print("*");
+            }
+            System.out.println(" (" + frecuencias[i] + ")");
+        }
+    }
+
+    }
+

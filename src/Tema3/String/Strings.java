@@ -21,13 +21,14 @@ public class Strings {
         int counter = repitePalabra(string, string2);
         System.out.println("La cadena 2 se repite " + counter + " veces en la cadena 1");
 
-        System.out.println("Introduce telefono");
-        int tlf = scan.nextInt();
-      //  String formatter = TelefonoFormatter(tlf);
+        System.out.println("Introduce teléfono con prefij: ");
+        String tlf = scan.nextLine();
+        String formatter = formatearTelefono(tlf);
+        System.out.println(formatter);
 
         System.out.println("Introduce una cadena");
         String cadena = scan.next();
-   //     histograma(cadena);
+        mostrarHistogramaVocales(cadena);
 
 
 
