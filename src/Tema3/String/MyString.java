@@ -53,8 +53,18 @@ public class MyString {
             ;
 
         }
-
-
         return counter;
     }
+
+
+ /*   public static String TelefonoFormatter(int tlf) {
+         String formato = System.out.print("(+"+ prefij)-");
+
+       return
+    }
+
+    public static void histograma(String cadena) {
+        String.format()
+
+    } */
 }

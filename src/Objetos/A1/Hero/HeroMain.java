@@ -110,6 +110,8 @@ public class HeroMain {
             }
 
             if (!hordaViva) {
+                heroe1.heroeDescansa();
+                heroe1.encontrarPocion();
                 System.out.println();
                 System.out.println("Has derrotado a todos los enemigos de la horda.");
                 System.out.println("Has superado la ronda " + rondaCounter);

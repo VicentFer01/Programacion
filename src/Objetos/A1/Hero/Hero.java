@@ -1,5 +1,7 @@
 package Objetos.A1.Hero;
 
+import java.util.Random;
+
 public class Hero {
     private String name;
     private int lvl;
@@ -39,6 +41,31 @@ public class Hero {
         if (damage < 0) { damage = 0; }
         hero.setHealth(hero.getHealth() - damage);
         return damage;
+    }
+
+    public void heroeDescansa() {
+        Random rand = new Random();
+        double descansarR = rand.nextInt(101);
+        double probDescansar = 0.1;
+
+        if (descansarR < probDescansar) {
+            setHealth(getHealth() + 80);
+            System.out.println("Has descansado y recuperado vida");
+        }
+
+    }
+
+    public void encontrarPocion() {
+        Random rand = new Random();
+        double encontrarPocionR = rand.nextInt(101);
+        double probEncontrarPocion = 10;
+
+        if (encontrarPocionR < probEncontrarPocion) {
+            setHealth(getHealth() + 50);
+            System.out.println("Has encontrado una pocion y te has curado");
+        }
+
+
     }
 
     public void levelUP() {

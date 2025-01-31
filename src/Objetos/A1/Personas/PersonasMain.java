@@ -44,6 +44,7 @@ public class PersonasMain {
 
             boolean checkearDNI = checkDNI(dniInput1, dniLetraInput1);
             if (checkearDNI == false) { System.out.println("El dni es invalido"); validDatos1 = false;}
+            else persona1.setDni(dniInput1);
 
             System.out.print("Edad: ");
             edad1 = scan.nextInt();
@@ -62,15 +63,20 @@ public class PersonasMain {
         int edad2 = 0;
 
 
+        Personas persona2 = new Personas(dni2, letra2,  nombre2, apellido2, edad2);
+
+
         do {
             validDatos2 = true;
 
             System.out.println("Persona 2 introduce tus datos:");
             System.out.print("Nombre: ");
             nombre2 = scan.next();
+            persona2.setNombre((nombre2));
 
             System.out.print("Apellido: ");
             apellido2 = scan.next();
+            persona2.setApellido(apellido2);
 
 
             System.out.print("DNI (Solo numeros): ");
@@ -82,10 +88,13 @@ public class PersonasMain {
 
             boolean checkearDNI = checkDNI(dniInput2, dniLetraInput2);
             if (checkearDNI == false) { System.out.println("El dni es invalido"); validDatos2 = false;}
+            else persona2.setDni(dniInput2);
+
 
 
             System.out.print("Edad: ");
             edad2 = scan.nextInt();
+            persona2.setEdad(edad2);
 
             if (!validDatos2) {
                 System.out.println("Has introducido datos invalidos, vuelve a rellenarlos");
@@ -93,7 +102,6 @@ public class PersonasMain {
 
         } while (!validDatos2);
 
-        Personas persona2 = new Personas(dni2, letra2,  nombre2, apellido2, edad2);
 
 
         System.out.println("Datos de Persona 1:");

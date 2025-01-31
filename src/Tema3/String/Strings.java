@@ -1,9 +1,12 @@
 package Tema3.String;
 
+import java.util.Scanner;
+
 import static Tema3.String.MyString.*;
 
 public class Strings {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         String string = "Hola quiero irme";
         String string2 = "Hola";
         String str = invertirMayusString(string);
@@ -17,6 +20,16 @@ public class Strings {
 
         int counter = repitePalabra(string, string2);
         System.out.println("La cadena 2 se repite " + counter + " veces en la cadena 1");
+
+        System.out.println("Introduce telefono");
+        int tlf = scan.nextInt();
+      //  String formatter = TelefonoFormatter(tlf);
+
+        System.out.println("Introduce una cadena");
+        String cadena = scan.next();
+   //     histograma(cadena);
+
+
 
 
 
