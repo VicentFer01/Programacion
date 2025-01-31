@@ -1,4 +1,4 @@
-package Objetos;
+package Objetos.A1.Hero;
 
 import java.util.Random;
 import java.util.Scanner;

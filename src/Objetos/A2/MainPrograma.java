@@ -17,7 +17,7 @@ public class MainPrograma {
 
         switch (seleccion) {
             case 1:
-                Persona[]
+               // Persona[]
             case 2:
             case 3:
             case 4:

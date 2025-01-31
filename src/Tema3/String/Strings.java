@@ -4,7 +4,7 @@ import static Tema3.String.MyString.*;
 
 public class Strings {
     public static void main(String[] args) {
-        String string = "Hola quiero irme a ASIR";
+        String string = "Hola quiero irme";
         String string2 = "Hola";
         String str = invertirMayusString(string);
         System.out.println(str);

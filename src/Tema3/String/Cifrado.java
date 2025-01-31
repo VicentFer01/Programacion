@@ -6,7 +6,7 @@ public class Cifrado {
         StringBuilder result = new StringBuilder();
         text = text.toUpperCase();
 
-        for (char c : text.toCharArray()) {
+        for (char c : text.toCharArray()) { // Este no lo he hecho yo
             if (Character.isLetter(c)) {
                 result.append((char) ((c - 'A' + shift) % 26 + 'A'));
             } else if (Character.isDigit(c)) {

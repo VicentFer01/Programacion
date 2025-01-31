@@ -1,7 +1,8 @@
-package Objetos;
+package Objetos.A1.Personas;
 
 public class Personas {
-    private String dni;
+    private int dni;
+    private char letra;
     private String nombre;
     private String apellido;
     private int edad;
@@ -9,8 +10,9 @@ public class Personas {
     public final static int adultAge = 18;
 
 
-    public Personas(String dni, String nombre, String apellido, int edad) {
+    public Personas(int dni, char letra, String nombre, String apellido, int edad) {
         this.dni = dni;
+        this.letra = letra;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -60,12 +62,19 @@ public class Personas {
 
    /* public int ageDiff(int edad, edad2); */
 
-    public static boolean checkDNI(String dni)  {
-        if (dni.length() != 9) {
-            System.out.println("El DNI es invalido");
-                return false; }
-        else return true;
+    public static boolean checkDNI(int dni, char letra) {
+        if (dni < 0 || dni > 99999999) {
+            return false;
+        } else {
+            char[] letras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+            char letraCalculada = letras[dni % 23];
+            return letraCalculada == Character.toUpperCase(letra);
+        }
     }
+
+
+
+
 
 
     public String toString() {

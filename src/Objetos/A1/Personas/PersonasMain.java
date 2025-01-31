@@ -1,24 +1,24 @@
-package Objetos;
+package Objetos.A1.Personas;
 import java.util.Scanner;
 
-import static Objetos.Personas.adultAge;
-import static Objetos.Personas.retiredAge;
+import static Objetos.A1.Personas.Personas.*;
 
 public class PersonasMain {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
 
-        String dni1 = "";
-        String dni2 = "";
+        int dni1 = 0;
+        int dni2 = 0;
 
         String apellido1 = null;
         String nombre1 = null;
+        char letra1 = 0, letra2 = 0;
         int edad1 = 0;
         boolean validDatos1;
 
 
-        Personas persona1 = new Personas(dni1, nombre1, apellido1, edad1);
+        Personas persona1 = new Personas(dni1, letra1,  nombre1, apellido1, edad1);
 
 
         do {
@@ -35,15 +35,15 @@ public class PersonasMain {
             apellido1 = scan.next();
             persona1.setApellido(apellido1);
 
-            System.out.print("DNI: ");
-            String dniInput1 = scan.next();
-            boolean validDNI = Personas.checkDNI(dniInput1);
-            if (validDNI = true) {
-                persona1.setDni(dniInput1);
-            } else {
-                System.out.println("DNI Invalido");
-                validDatos1 = false;
-            }
+            System.out.print("DNI (Solo numeros): ");
+            int dniInput1 = scan.nextInt();
+
+            System.out.println("DNI Letra: ");
+            char dniLetraInput1 = scan.next().charAt(0);
+
+
+            boolean checkearDNI = checkDNI(dniInput1, dniLetraInput1);
+            if (checkearDNI == false) { System.out.println("El dni es invalido"); validDatos1 = false;}
 
             System.out.print("Edad: ");
             edad1 = scan.nextInt();
@@ -72,15 +72,17 @@ public class PersonasMain {
             System.out.print("Apellido: ");
             apellido2 = scan.next();
 
-            System.out.print("DNI: ");
-            String dniInput2 = scan.next();
-            boolean validDNI2 = Personas.checkDNI(dniInput2);
-            if (validDNI2) {
-                dni2 = dniInput2;
-            } else {
-                System.out.println("DNI Invalido");
-                validDatos2 = false;
-            }
+
+            System.out.print("DNI (Solo numeros): ");
+            int dniInput2 = scan.nextInt();
+
+            System.out.println("DNI Letra: ");
+            char dniLetraInput2 = scan.next().charAt(0);
+
+
+            boolean checkearDNI = checkDNI(dniInput2, dniLetraInput2);
+            if (checkearDNI == false) { System.out.println("El dni es invalido"); validDatos2 = false;}
+
 
             System.out.print("Edad: ");
             edad2 = scan.nextInt();
@@ -91,7 +93,7 @@ public class PersonasMain {
 
         } while (!validDatos2);
 
-        Personas persona2 = new Personas(dni2, nombre2, apellido2, edad2);
+        Personas persona2 = new Personas(dni2, letra2,  nombre2, apellido2, edad2);
 
 
         System.out.println("Datos de Persona 1:");
@@ -101,6 +103,7 @@ public class PersonasMain {
             System.out.println("La persona 1 es mayor de edad");
         } else {
             System.out.println("La persona 1 no es mayor de edad");
+        }
 
             if (persona1.getEdad() > retiredAge) {
                 System.out.println("La persona 1 está retirada");
@@ -108,6 +111,8 @@ public class PersonasMain {
 
             System.out.println();
             System.out.println();
+
+
 
             System.out.println("Datos de Persona 2:");
             System.out.println(persona2);
@@ -126,4 +131,4 @@ public class PersonasMain {
 
             }
         }
-    }
+    

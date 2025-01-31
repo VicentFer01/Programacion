@@ -1,4 +1,4 @@
-package Objetos;
+package Objetos.A1.Hero;
 
 public class Hero {
     private String name;
