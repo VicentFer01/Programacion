@@ -70,10 +70,10 @@ public class Hero {
 
     public void levelUP() {
         this.lvl++;
-        this.attack += 5;
+        this.attack += 3;
         this.defense += 3;
-        this.maxHealth += 20;
-        this.health += 10 ;
+        this.maxHealth += 10;
+        this.health += 5 ;
         System.out.println("\n" +
                 ".____                      .__     ____ _____________._.\n" +
                 "|    |    _______  __ ____ |  |   |    |   \\______   \\ |\n" +
@@ -81,6 +81,14 @@ public class Hero {
                 "|    |__\\  ___/\\   /\\  ___/|  |__ |    |  / |    |    \\|\n" +
                 "|_______ \\___  >\\_/  \\___  >____/ |______/  |____|    __\n" +
                 "        \\/   \\/          \\/                           \\/\n");
+    }
+
+    public void enemyLevelUP() {
+        this.lvl++;
+        this.attack += 3;
+        this.defense += 5;
+        this.health += 20;
+        this.maxHealth += 20;
     }
 
     public String getName() {
