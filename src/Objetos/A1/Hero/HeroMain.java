@@ -8,7 +8,7 @@ public class HeroMain {
         Scanner scan = new Scanner(System.in);
         Random random = new Random();
 
-        Hero heroe1 = new Hero("placeholder", 1, 200, 200, 0, 37, 5, 5);
+        Hero heroe1 = new Hero("placeholder", 1, 230, 230, 0, 37, 5, 5);
 
         System.out.println("\n" +
                 ".___        __                    .___                      __                 .__        __    \n" +
@@ -48,7 +48,7 @@ public class HeroMain {
                 Hero enemy = new Hero(enemyName + " " + (i + 1));
                 enemy.setHealth(65 / hordaNumber);
                 enemy.setMaxHealth(65 / hordaNumber);
-                enemy.setAttack(40 / hordaNumber);
+                enemy.setAttack(30 / hordaNumber);
                 enemy.setDefense(15 / hordaNumber);
                 enemy.enemyLevelUP();
                 enemigos[i] = enemy; // Cada indice de la array es un objeto enemigo

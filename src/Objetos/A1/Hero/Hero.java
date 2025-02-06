@@ -29,7 +29,7 @@ public class Hero {
 
     public int heroAttack(Hero enemy) {
         int damage = this.attack - enemy.getDefense();
-        if (damage < 0) damage = 0; // Asegurar que el daño no sea negativo
+        if (damage < 0) damage = 0;
         enemy.setHealth(enemy.getHealth() - damage);
         return damage;
     }
@@ -70,9 +70,9 @@ public class Hero {
 
     public void levelUP() {
         this.lvl++;
-        this.attack += 3;
+        this.attack += 2;
         this.defense += 3;
-        this.maxHealth += 10;
+        this.maxHealth += 5;
         this.health += 5 ;
         System.out.println("\n" +
                 ".____                      .__     ____ _____________._.\n" +
@@ -87,8 +87,8 @@ public class Hero {
         this.lvl++;
         this.attack += 3;
         this.defense += 5;
-        this.health += 20;
-        this.maxHealth += 20;
+        this.health += 30;
+        this.maxHealth += 30;
     }
 
     public String getName() {
