@@ -2,6 +2,8 @@ package Objetos.A2;
 
 import java.util.Scanner;
 
+import static Objetos.A2.Persona.buscarPersonaPorDNI;
+
 public class Cuenta {
     private int numCuenta;
     private int saldo;
@@ -17,8 +19,6 @@ public class Cuenta {
 
         System.out.println("Introduce tu dni");
         int dni = scan.nextInt();
-
-        if (dni)
 
         System.out.println("Introduce cuantas cuentas quieres (Max 3)");
         int numCuentasPersona = scan.nextInt();
@@ -38,11 +38,46 @@ public class Cuenta {
         return cuentas;
     }
 
+    private static void recibirNomina(Persona[] usuarios, Scanner scan) {
+        System.out.print("Ingrese el DNI de la persona: ");
+        int dniBuscado = scan.nextInt();
+        scan.nextLine(); // Limpiar buffer
 
+        // Buscar la persona por su DNI
+        Persona persona = buscarPersonaPorDNI(usuarios, dniBuscado);
 
+        if (persona == null) {
+            System.out.println("No se encontró una persona con ese DNI.");
 
+        }
 
+        if (persona.getCuentasBancarias() == null || persona.getCuentasBancarias().length == 0) {
+            System.out.println("La persona no tiene cuentas bancarias registradas.");
 
+        }
+
+        System.out.println("Cuentas disponibles:");
+        for (int i = 0; i < persona.getCuentasBancarias().length; i++) {
+            System.out.println((i + 1) + ". " + persona.getCuentasBancarias()[i]);
+        }
+
+        System.out.print("Seleccione el número de cuenta (1, 2, etc.): ");
+        int indiceCuenta = scan.nextInt() - 1;
+
+        if (indiceCuenta < 0 || indiceCuenta >= persona.getCuentasBancarias().length) {
+            System.out.println("Selección inválida.");
+            return;
+        }
+
+        Cuenta cuentaSeleccionada = persona.getCuentasBancarias()[indiceCuenta];
+
+        System.out.print("Ingrese el monto de la nómina: ");
+        double monto = scan.nextDouble();
+
+        cuentaSeleccionada.depositar(monto); // Método que deposita el dinero en la cuenta
+
+        System.out.println("Nómina de " + monto + " depositada correctamente en la cuenta " + cuentaSeleccionada.getNumeroCuenta());
+    }
 
 
 
