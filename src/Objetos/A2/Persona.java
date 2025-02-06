@@ -23,7 +23,7 @@ public class Persona {
 
 
 
-    public static Persona registarPersona(Persona[] usuarios) {
+    public static void registarPersona(Persona[] usuarios) {
         Scanner scan = new Scanner(System.in);
 
         Persona persona = new Persona(DNI);
@@ -38,6 +38,5 @@ public class Persona {
 
 
         }
-        return persona;
-    }
+¡    }
 }

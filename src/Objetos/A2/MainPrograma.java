@@ -24,9 +24,8 @@ public class MainPrograma {
 
             switch (seleccion) {
                 case 1:
-                    Persona persona = Persona.registarPersona(usuarios);
+                    Persona.registarPersona(usuarios);
                     System.out.println("Bienvenido a nuestro banco, estos son tus datos");
-                    System.out.println(persona);
                     break;
 
 
