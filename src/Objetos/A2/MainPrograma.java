@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import static Objetos.A2.Persona.buscarPersonaPorDNI;
+import static Objetos.A2.Persona.usuarioRegistrado;
 
 public class MainPrograma {
     public static void main(String[] args) {
@@ -27,13 +28,40 @@ public class MainPrograma {
 
             switch (seleccion) {
                 case 1:
-                    Persona.registrarPersona(usuarios);
-                    System.out.println("Bienvenido a nuestro banco, estos son tus datos");
+                    System.out.println("Introduce tu DNI:");
+                    int dni = scan.nextInt();
+
+                    Persona persona = new Persona(dni);
+                    for (int i = 0; i < usuarios.length; i++) {
+                        if (usuarios[i] == null) {
+                            usuarios[i] = persona;
+                        }
+                    }
                     break;
 
                 case 2:
-                    Cuenta[] cuentas = Cuenta.anyadirCuentas();
-                    System.out.println(Arrays.toString(cuentas));
+                    System.out.println("Introduce tu dni");
+                     dni = scan.nextInt();
+
+                    boolean usuarioRegistrado = usuarioRegistrado(usuarios, dni);
+
+                    if (usuarioRegistrado == true) {
+                        System.out.println("Introduce cuantas cuentas quieres (Max 3)");
+                        int numCuentasPersona = scan.nextInt();
+
+                        for (int i = 0; i < numCuentasPersona; i++) {
+                            System.out.println("Introduce el numero de cuenta que quieras");
+                            int numeroCuenta = scan.nextInt();
+
+                            Cuenta cuenta = new Cuenta(numeroCuenta, dni);
+                            cuenta = Persona.cuentasBancarias[i];
+
+
+
+                        }
+
+                    }
+
                     break;
 
                 case 3:
@@ -47,7 +75,6 @@ public class MainPrograma {
                     }
                     break;
                 case 4:
-                    Cuenta.recibirNomina();
                 case 8:
                     break;
 
