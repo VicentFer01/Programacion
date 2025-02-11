@@ -9,7 +9,7 @@ public class Persona {
 
     public Persona(int DNI) {
         this.DNI = DNI;
-        cuentasBancarias = new Cuenta[3]; // Inicializamos el array vacío
+        cuentasBancarias = new Cuenta[3];
     }
 
     public Cuenta[] getCuentasBancarias() {
@@ -30,19 +30,7 @@ public class Persona {
 
 
 
-    public  void registrarPersona(Persona[] usuarios) {
-        Scanner scan = new Scanner(System.in);
 
-
-
-        Persona persona = new Persona(dni); // Usamos el DNI ingresado
-
-        for (int i = 0; i < usuarios.length; i++) {
-            if (usuarios[i] == null) {
-                usuarios[i] = persona;
-            }
-        }
-    }
 
 
 

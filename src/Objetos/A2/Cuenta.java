@@ -1,17 +1,16 @@
 package Objetos.A2;
 
-import java.util.Scanner;
-
-import static Objetos.A2.Persona.buscarPersonaPorDNI;
-
 public class Cuenta {
+    private int dni;
     private int numCuenta;
     private int saldo;
 
 
-    public Cuenta(int numCuenta, int saldo) {
+    public Cuenta(int numCuenta, int dni, int saldoCuenta) {
         this.numCuenta = numCuenta;
-        this.saldo = saldo;
+        this.dni = dni;
+        this.saldo = saldoCuenta;
+
     }
 
     public int getNumCuenta() {

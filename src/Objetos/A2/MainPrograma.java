@@ -40,27 +40,41 @@ public class MainPrograma {
                     break;
 
                 case 2:
-                    System.out.println("Introduce tu dni");
-                     dni = scan.nextInt();
+                    System.out.println("Introduce tu DNI:");
+                    dni = scan.nextInt();
 
                     boolean usuarioRegistrado = usuarioRegistrado(usuarios, dni);
 
                     if (usuarioRegistrado == true) {
-                        System.out.println("Introduce cuantas cuentas quieres (Max 3)");
+                        System.out.println("Introduce cuántas cuentas quieres (Máx 3):");
                         int numCuentasPersona = scan.nextInt();
 
-                        for (int i = 0; i < numCuentasPersona; i++) {
-                            System.out.println("Introduce el numero de cuenta que quieras");
-                            int numeroCuenta = scan.nextInt();
+                         persona = buscarPersonaPorDNI(usuarios, dni);
 
-                            Cuenta cuenta = new Cuenta(numeroCuenta, dni);
-                            cuenta = Persona.cuentasBancarias[i];
-
-
+                        if (persona == null) {
+                            System.out.println(" La persona no fue encontrada.");
 
                         }
 
+                        Cuenta[] cuentas = new Cuenta[numCuentasPersona]; // aqui creo el array de cuentas
+
+                        for (int i = 0; i < numCuentasPersona; i++) {
+                            System.out.println("Introduce el número de cuenta:");
+                            int numeroCuenta = scan.nextInt();
+
+                            System.out.println("Intrdouce el saldo inicial");
+                            int saldoCuenta = scan.nextInt();
+
+                            cuentas[i] = new Cuenta(numeroCuenta, dni, saldoCuenta); // crear los objetos de cuenta
+                        }
+
+                        persona.setCuentasBancarias(cuentas); // asignar las cuentas a la persona
+
+                        System.out.println("Cuentas registradas correctamente.");
+                    } else {
+                        System.out.println("El usuario con ese DNI no está registrado.");
                     }
+
 
                     break;
 
@@ -81,7 +95,7 @@ public class MainPrograma {
 
             }
 
-        } while (seleccion != 9);
+        } while (seleccion != 8);
     }
 
 
