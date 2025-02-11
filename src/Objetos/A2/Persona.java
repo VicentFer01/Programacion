@@ -53,6 +53,10 @@ public class Persona {
         return false;
     }
 
+    public void recibirNomina() {
+
+    }
+
 
     @Override
     public String toString() {

@@ -43,22 +43,17 @@ public class MainPrograma {
                     System.out.println("Introduce tu DNI:");
                     dni = scan.nextInt();
 
-                    boolean usuarioRegistrado = usuarioRegistrado(usuarios, dni);
+                    boolean registrado = usuarioRegistrado(usuarios, dni); // primero compruebo si el usuario esta registrao
 
-                    if (usuarioRegistrado == true) {
+                    if (registrado == true) { // Si
                         System.out.println("Introduce cuántas cuentas quieres (Máx 3):");
                         int numCuentasPersona = scan.nextInt();
 
                          persona = buscarPersonaPorDNI(usuarios, dni);
 
-                        if (persona == null) {
-                            System.out.println(" La persona no fue encontrada.");
+                        Cuenta[] cuentas = new Cuenta[numCuentasPersona]; // aqui creo el array de cuentas de la clase cuenta
 
-                        }
-
-                        Cuenta[] cuentas = new Cuenta[numCuentasPersona]; // aqui creo el array de cuentas
-
-                        for (int i = 0; i < numCuentasPersona; i++) {
+                        for (int i = 0; i < numCuentasPersona; i++) { // el bucle que crea los objetos de cuenta
                             System.out.println("Introduce el número de cuenta:");
                             int numeroCuenta = scan.nextInt();
 
@@ -74,8 +69,6 @@ public class MainPrograma {
                     } else {
                         System.out.println("El usuario con ese DNI no está registrado.");
                     }
-
-
                     break;
 
                 case 3:
@@ -89,6 +82,16 @@ public class MainPrograma {
                     }
                     break;
                 case 4:
+                    System.out.println("Introduce tu dni");
+                    dniBuscar = scan.nextInt();
+
+                    registrado = usuarioRegistrado(dniBuscar);
+
+
+
+                    }
+
+
                 case 8:
                     break;
 
