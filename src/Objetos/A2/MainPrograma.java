@@ -1,4 +1,4 @@
-package Objetos.A2;
+/*package Objetos.A2;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -103,3 +103,4 @@ public class MainPrograma {
 
 
 }
+*/
