@@ -18,6 +18,7 @@ public class GimnasioMain {
                     "3. Mostrar datos usuarios \n" +
                     "4. Modificar usuario");
 
+            System.out.println();
             System.out.print("Elige una opcion: ");
             eleccion = scan.nextInt();
 
@@ -33,12 +34,27 @@ public class GimnasioMain {
                     break;
                 case 4:
                     break;
+                    editarUser(personas);
             }
 
     } while (eleccion != 5);
 }
 
+    private static void editarUser(Map<String, Usuario> personas) {
+        Scanner scan = new Scanner(System.in);
 
+        System.out.print("Introduce tu dni ");
+        String dni = scan.next();
+
+        if (personas.containsKey(dni)) {
+            System.out.println("Introduce tu edad actualizada");
+            Usuarios user =
+
+        }
+
+
+
+    }
 
 
     private static void anyadirUser(Map <String, Usuario> personas) {
@@ -79,13 +95,14 @@ public class GimnasioMain {
 
     }
 
-    private static void mostrarUsuario(Map<String, Usuario> personas, Usuario user) {
+    private static void mostrarUsuario(Map<String, Usuario> personas) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Introduce tu dni");
+        System.out.print("Introduce tu dni");
         String dni = scan.next();
 
         if (personas.containsKey(dni)) {
-            Usuario.getNombre
+            System.out.println(personas.get(dni));
+
         }
     }
 }

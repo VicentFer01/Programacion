@@ -32,4 +32,7 @@ public class Usuario {
                 ", edad=" + edad +
                 '}';
     }
+
+    public void get(String dni) {
+    }
 }
