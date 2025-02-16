@@ -6,18 +6,12 @@ import java.util.Scanner;
 public class Persona {
     private int DNI;
     public Cuenta[] cuentasBancarias;
+    private int nomina;
 
     public Persona(int DNI) {
         this.DNI = DNI;
         cuentasBancarias = new Cuenta[3];
-    }
-
-    public Cuenta[] getCuentasBancarias() {
-        return cuentasBancarias;
-    }
-
-    public void setCuentasBancarias(Cuenta[] cuentasBancarias) {
-        this.cuentasBancarias = cuentasBancarias;
+        this.nomina = nomina;
     }
 
     public int getDNI() {
@@ -28,12 +22,21 @@ public class Persona {
         this.DNI = DNI;
     }
 
+    public Cuenta[] getCuentasBancarias() {
+        return cuentasBancarias;
+    }
 
+    public void setCuentasBancarias(Cuenta[] cuentasBancarias) {
+        this.cuentasBancarias = cuentasBancarias;
+    }
 
+    public int getNomina() {
+        return nomina;
+    }
 
-
-
-
+    public void setNomina(int nomina) {
+        this.nomina = nomina;
+    }
 
     public static Persona buscarPersonaPorDNI(Persona[] usuarios, int dni) {
         for (Persona usuario : usuarios) { // aqui se recorre la array de los usuarios con un for-each
@@ -53,9 +56,14 @@ public class Persona {
         return false;
     }
 
-    public void recibirNomina() {
 
-    }
+
+
+
+
+
+
+
 
 
     @Override

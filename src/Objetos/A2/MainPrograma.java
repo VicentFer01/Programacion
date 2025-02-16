@@ -85,11 +85,8 @@ public class MainPrograma {
                     System.out.println("Introduce tu dni");
                     dniBuscar = scan.nextInt();
 
-                    registrado = usuarioRegistrado(dniBuscar);
+                    registrado = usuarioRegistrado(usuarios, dniBuscar);
 
-
-
-                    }
 
 
                 case 8:
